@@ -1,0 +1,15 @@
+<webapp-structure>
+  <registeredFiles>
+    <entry>
+      <string>currentBuild</string>
+      <path-set>
+        <pathsSet class="linked-hash-set">
+          <string>WEB-INF/config/portlet/content/taskmanagerportlet/webui/configuration.xml</string>
+          <string>WEB-INF/web.xml</string>
+          <string>WEB-INF/portlet.xml</string>
+        </pathsSet>
+      </path-set>
+    </entry>
+  </registeredFiles>
+  <dependenciesInfo/>
+</webapp-structure>
