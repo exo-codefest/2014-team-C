@@ -16,10 +16,8 @@
  */
 package org.exoplatform.content.webui.component;
 
-import org.exoplatform.webui.config.annotation.ComponentConfig;
-import org.exoplatform.webui.core.UIPortletApplication;
-import org.exoplatform.webui.core.lifecycle.UIApplicationLifecycle;
-
+import org.exoplatform.webui.core.UIComponent;
+import org.exoplatform.webui.form.UIForm;
 
 /**
  * Created by The eXo Platform SAS
@@ -27,13 +25,9 @@ import org.exoplatform.webui.core.lifecycle.UIApplicationLifecycle;
  *          exo@exoplatform.com
  * Jun 26, 2014  
  */
-@ComponentConfig(
-  lifecycle = UIApplicationLifecycle.class
- // template = "app:/templates/TaskManagerPortlet/UITaskManagerPortlet.gtmpl"
-  )
-public class UITaskManagerPortlet extends UIPortletApplication {
+public class UITaskMenuContainer extends UIForm {
 
-  public UITaskManagerPortlet()  throws Exception{
-    addChild(UITaskManagerLayout.class,null,null);
+  public UITaskMenuContainer() throws Exception{
+    
   }
 }

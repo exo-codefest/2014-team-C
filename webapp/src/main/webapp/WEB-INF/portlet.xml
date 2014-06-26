@@ -24,7 +24,7 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"> 
   <portlet>
     <description xml:lang="EN">description about Task Manager Portlet</description>
-    <portlet-name>TaskManagerPortlet</portlet-name>
+    <portlet-name>UITaskManagerPortlet</portlet-name>
     <display-name xml:lang="EN">Task Manager Portlet</display-name>
     <portlet-class>org.exoplatform.webui.application.portlet.PortletApplicationController</portlet-class>    
 
@@ -38,7 +38,7 @@
       <mime-type>text/html</mime-type>
     </supports>
     <supported-locale>en</supported-locale>
-	<resource-bundle>locale.portlet.content.taskmanager.TaskManagerPortlet_en</resource-bundle>
+	<resource-bundle>locale.portlet.content.taskmanager.UITaskManagerPortlet_en</resource-bundle>
     <portlet-info>
       <title>Task Manager Portlet</title>
       <short-title>task manager portlet</short-title>

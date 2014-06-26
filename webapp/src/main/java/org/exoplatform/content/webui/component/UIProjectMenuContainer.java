@@ -17,9 +17,11 @@
 package org.exoplatform.content.webui.component;
 
 import org.exoplatform.webui.config.annotation.ComponentConfig;
-import org.exoplatform.webui.core.UIPortletApplication;
-import org.exoplatform.webui.core.lifecycle.UIApplicationLifecycle;
-
+import org.exoplatform.webui.config.annotation.EventConfig;
+import org.exoplatform.webui.core.lifecycle.UIFormLifecycle;
+import org.exoplatform.webui.event.Event;
+import org.exoplatform.webui.event.EventListener;
+import org.exoplatform.webui.form.UIForm;
 
 /**
  * Created by The eXo Platform SAS
@@ -28,12 +30,23 @@ import org.exoplatform.webui.core.lifecycle.UIApplicationLifecycle;
  * Jun 26, 2014  
  */
 @ComponentConfig(
-  lifecycle = UIApplicationLifecycle.class
- // template = "app:/templates/TaskManagerPortlet/UITaskManagerPortlet.gtmpl"
-  )
-public class UITaskManagerPortlet extends UIPortletApplication {
+                 lifecycle = UIFormLifecycle.class,
+                 template = "app:/templates/TaskManagerPortlet/UIProjectMenuContainer.gtmpl",
+                 events = { 
+                   @EventConfig(listeners = UIProjectMenuContainer.AddProjectActionListener.class)
+                 }
+               )
+public class UIProjectMenuContainer extends UIForm {
 
-  public UITaskManagerPortlet()  throws Exception{
-    addChild(UITaskManagerLayout.class,null,null);
+  public UIProjectMenuContainer() throws Exception{
+    
+  }
+  public static class AddProjectActionListener extends EventListener<UIProjectMenuContainer> {
+
+    @Override
+    public void execute(Event<UIProjectMenuContainer> event) throws Exception {
+
+    }
+    
   }
 }

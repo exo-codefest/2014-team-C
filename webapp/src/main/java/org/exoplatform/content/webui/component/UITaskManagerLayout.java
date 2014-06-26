@@ -14,12 +14,11 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.exoplatform.content.webui.component;
+package  org.exoplatform.content.webui.component;
 
 import org.exoplatform.webui.config.annotation.ComponentConfig;
-import org.exoplatform.webui.core.UIPortletApplication;
-import org.exoplatform.webui.core.lifecycle.UIApplicationLifecycle;
-
+import org.exoplatform.webui.core.UIContainer;
+import org.exoplatform.webui.core.lifecycle.Lifecycle;
 
 /**
  * Created by The eXo Platform SAS
@@ -28,12 +27,14 @@ import org.exoplatform.webui.core.lifecycle.UIApplicationLifecycle;
  * Jun 26, 2014  
  */
 @ComponentConfig(
-  lifecycle = UIApplicationLifecycle.class
- // template = "app:/templates/TaskManagerPortlet/UITaskManagerPortlet.gtmpl"
-  )
-public class UITaskManagerPortlet extends UIPortletApplication {
+                 lifecycle = Lifecycle.class,
+                 template = "app:/templates/TaskManagerPortlet/UITaskManagerLayout.gtmpl"
+                 )
+public class UITaskManagerLayout extends UIContainer {
 
-  public UITaskManagerPortlet()  throws Exception{
-    addChild(UITaskManagerLayout.class,null,null);
+  public UITaskManagerLayout() throws Exception{
+    addChild(UIProjectMenuContainer.class,null,null);
+    addChild(UITaskFilterContainer.class,null,null);
+    addChild(UITaskListContainer.class,null,null);
   }
 }

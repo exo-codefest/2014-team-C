@@ -1,0 +1,15 @@
+<div class="UITaskManagerPortlet" id="$uicomponent.id">
+<%
+def rcontext = _ctx.getRequestContext() ;
+def jsManager = rcontext.getJavascriptManager();
+jsManager.require("SHARED/portalControl", "portalControl");
+
+
+  for(component in uicomponent.getChildren()) {
+
+    if(component.isRendered()){
+        uicomponent.renderChild(component.getClass());
+    }
+  }
+%>
+</div>
