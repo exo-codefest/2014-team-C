@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<portlet-app version="1.0" xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd"> 
+ 
+	<portlet>
+    	<description xml:lang="EN">description about Task Manager Portlet</description>
+    	<portlet-name>TaskManagerPortlet</portlet-name>
+    	<display-name xml:lang="EN">Task Manager Portlet</display-name>
+    	<portlet-class>org.exoplatform.webui.application.portlet.PortletApplicationController</portlet-class>    
+    	<init-param>
+      		<name>webui.configuration</name>
+      		<value>/WEB-INF/conf/portlet/content/TaskManagerPortlet/webui/configuration.xml</value>
+    	</init-param>  
+	</portlet>
+</portlet-app>

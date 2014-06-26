@@ -3,20 +3,20 @@
 
     Copyright (C) 2003-2014 eXo Platform SAS.
 
-    This file is part of Codefest 2014 - Team A Addon - Webapp.
+    This file is part of Codefest 2014 - Team A Addon - Library.
 
-    Codefest 2014 - Team A Addon - Webapp is free software; you can redistribute it and/or modify it
+    Codefest 2014 - Team A Addon - Library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as
     published by the Free Software Foundation; either version 3 of
     the License, or (at your option) any later version.
 
-    Codefest 2014 - Team A Addon - Webapp software is distributed in the hope that it will be useful,
+    Codefest 2014 - Team A Addon - Library software is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
     Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public
-    License along with Codefest 2014 - Team A Addon - Webapp; if not, write to the Free
+    License along with Codefest 2014 - Team A Addon - Library; if not, write to the Free
     Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
     02110-1301 USA, or see <http://www.gnu.org/licenses/>.
 
@@ -28,15 +28,15 @@
     <groupId>org.exoplatform.addons.codefest.team_c</groupId>
     <version>1.0.x-SNAPSHOT</version>
   </parent>
-  <artifactId>team-c-addon-webapp</artifactId>
-  <packaging>war</packaging>
-  <name>Codefest 2014 - Team C Addon - Webapp</name>
-  <description>Codefest 2014 - Team C Addon - A portlet or any webapp</description>
+  <artifactId>team-c-addon-lib</artifactId>
+  <packaging>jar</packaging>
+  <name>Codefest 2014 - Team C Addon - Library</name>
+  <description>Codefest 2014 - Team C Addon - Extension Library providing all services</description>
   <dependencies>
     <dependency>
-      <groupId>org.exoplatform.commons</groupId>
-      <artifactId>commons-webui-component</artifactId>
-      <scope>provided</scope>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 </project>

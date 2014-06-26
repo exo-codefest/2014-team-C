@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <!--
 
     Copyright (C) 2003-2014 eXo Platform SAS.
@@ -21,22 +21,11 @@
     02110-1301 USA, or see <http://www.gnu.org/licenses/>.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>team-c-addon</artifactId>
-    <groupId>org.exoplatform.addons.codefest.team_c</groupId>
-    <version>1.0.x-SNAPSHOT</version>
-  </parent>
-  <artifactId>team-c-addon-webapp</artifactId>
-  <packaging>war</packaging>
-  <name>Codefest 2014 - Team C Addon - Webapp</name>
-  <description>Codefest 2014 - Team C Addon - A portlet or any webapp</description>
-  <dependencies>
-    <dependency>
-      <groupId>org.exoplatform.commons</groupId>
-      <artifactId>commons-webui-component</artifactId>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
-</project>
+
+<web-app version="3.0"
+        metadata-complete="true"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+</web-app>
