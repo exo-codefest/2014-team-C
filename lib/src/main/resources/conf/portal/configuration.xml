@@ -21,15 +21,26 @@
     02110-1301 USA, or see <http://www.gnu.org/licenses/>.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>team-c-addon</artifactId>
-    <groupId>org.exoplatform.addons.codefest.team_c</groupId>
-    <version>1.0.x-SNAPSHOT</version>
-  </parent>
-  <artifactId>team-c-addon-config</artifactId>
-  <packaging>jar</packaging>
-  <name>Codefest 2014 - Team C Addon - Config</name>
-  <description>Codefest 2014 - Team C Addon - Extension Configuration JAR</description>
-</project>
+<configuration
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
+   xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
+   
+  <!-- JCR NODE TYPES -->
+  <external-component-plugins>
+  <target-component>org.exoplatform.services.jcr.RepositoryService</target-component>
+  <component-plugin>
+    <name>add.services.nodeType</name>
+    <set-method>addPlugin</set-method>
+    <type>org.exoplatform.services.jcr.impl.AddNodeTypePlugin</type>
+    <init-params>
+      <values-param>
+        <name>autoCreatedInNewRepository</name>
+        <description>Node types configuration file</description>
+        <value>jar:/conf/portal/nodetype-task-management.xml</value>
+      </values-param>
+    </init-params>
+  </component-plugin>
+  </external-component-plugins>
+  
+</configuration>
