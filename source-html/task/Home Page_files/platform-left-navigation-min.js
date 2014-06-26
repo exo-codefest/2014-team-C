@@ -1,0 +1,1 @@
+define("SHARED/platform-left-navigation",["SHARED/jquery"],function(a){eXo.define.names=["$"];eXo.define.deps=[a];return function(b){return{resize:function(){var a=b(document).height()-44;b(".LeftNavigationTDContainer");b(".LeftNavigationTDContainer").css("height",a+"px")}}}(a)});

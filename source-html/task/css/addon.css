@@ -1,0 +1,146 @@
+.UITaskManagementPortlet{
+	padding: 20px;
+}
+.UITaskManagementPortlet .uiGrayLightBox {
+	margin-bottom: 20px;
+}
+.UITaskManagementPortlet .badge  {
+	background: none repeat scroll 0 0 #e58686;
+    border: 2px solid white;
+    border-radius: 50%;
+    color: #fff;
+    height: 20px;
+    line-height: 20px;
+    padding: 0;
+    text-align: center;
+    width: 20px;
+}
+.UITaskManagementPortlet .actionBarMoreItem  .actionIcon{
+	position: relative;
+}
+.UITaskManagementPortlet .actionBarMoreItem .badge {
+	position: absolute;
+	right: -17px;
+    top: -10px;
+}
+.UITaskManagementPortlet .uiGrayLightBox select,.UITaskManagementPortlet .rounded-corners-top select {
+	width: auto;
+}
+.UITaskManagementPortlet  .rounded-corners-top .pull-right {
+	margin-top:5px;
+}
+.uiTaskSearch .btn {margin-left: 5px;}
+
+.view-project td{
+	padding: 10px;
+}
+
+/*--------------uiTaskActionBar--------------*/
+
+.uiTaskActionBar {
+	background: none repeat scroll 0 0 #fff;
+    padding: 4px 10px;
+}
+
+.uiTaskActionBar li {
+    cursor: pointer;
+    float: left;
+    padding: 0 8px;
+    white-space: nowrap;
+}
+.uiTaskActionBar li  + li{
+	border-left: 1px solid #ddd;
+}
+
+.uiTaskActionBar li a {
+	  color: #333;
+}
+
+.layout-chart {
+}
+.layout-chart .uiBox {
+    padding: 1px;
+}
+.UITaskManagementPortlet .rounded-corners-top {
+    background: none repeat scroll 0 0 #f0f0f0;
+    border-color: #ccc #ccc transparent;
+    border-image: none;
+    border-radius: 4px 4px 0 0;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+    line-height: 20px;
+    text-align: left;
+	padding: 0 20px;
+}
+
+.task-box {
+	background:none;
+	border-radius: 5px;border: 1px solid #ccc;
+	box-shadow:none;
+	width: 31%;
+}
+.task-box .uiContentBox {
+	
+	padding:10px;
+	
+}
+
+.task-box .bottom ,.task-box .title{
+	padding: 10px;
+}
+.task-box .title {
+	/*background:#c4e7f4*/
+}
+.layout-grid .task-box {
+	float: left;
+}
+.layout-grid .task-box  + .task-box {
+	margin-left: 3%;
+}
+.task-name {
+	font-weight: bold; 
+	font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 80%;
+}
+.task-list {
+	padding: 10px;
+	border-radius: 5px;cursor:pointer;
+	margin-top:10px;
+}
+.priority-heigh {
+	background: none repeat scroll 0 0 #ffcccc;
+    border: 1px solid #fd0000;
+}
+.priority-low{
+	    background: none repeat scroll 0 0 #f4ffdc;
+    border: 1px solid #9acb31;
+}
+.priority-medium {
+	  background: none repeat scroll 0 0 #ffe6c1;
+    border: 1px solid #fc9800;
+}
+.task-box .title {margin:0}
+.uiBox .title {
+	box-shadow: none;
+}
+
+.edit-task {
+	display: none;
+	position: absolute;
+	top: 8px;
+	right: 10px;
+	transition: all 0.5s ease;
+}
+.task-list:hover  .edit-task {
+	display: block;
+}
+
+.actionIcon.active {
+	background-color: #ececec;
+    border: 1px solid #c7c7c7;
+    border-radius: 3px;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.15) inset;
+}
