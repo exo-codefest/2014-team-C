@@ -85,7 +85,8 @@ public class RestTasks implements ResourceContainer {
   
   @GET
   @Path("/createTask/")
-  public void createTask(@QueryParam("name") String name,
+  public void createTask(@QueryParam("projectId") String projectId,
+                         @QueryParam("name") String name,
                          @QueryParam("description") String description,
                          @QueryParam("assigneeId") String assigneeId,
                          @QueryParam("coWorkers") String coWorkers,
@@ -115,13 +116,14 @@ public class RestTasks implements ResourceContainer {
 	  task.setStartedDate(DateUtil.stringToDate(startedDate, "dd-MM-yyyy"));
 	  task.setResolvedDate(DateUtil.stringToDate(resolvedDate, "dd-MM-yyyy"));
 	  
-	  _managementService.createTask(task);
+	  _managementService.createTask(projectId,task);
   }
   
   @GET
   @Path("/updateTask/")
-  public void updateTask(@QueryParam("id") String id,
-		  				 @QueryParam("name") String name,
+  public void updateTask(@QueryParam("projectId") String projectId,
+                         @QueryParam("id") String id,
+		  				           @QueryParam("name") String name,
                          @QueryParam("description") String description,
                          @QueryParam("assigneeId") String assigneeId,
                          @QueryParam("coWorkers") String coWorkers,
@@ -152,7 +154,7 @@ public class RestTasks implements ResourceContainer {
 	  task.setStartedDate(DateUtil.stringToDate(startedDate, "dd-MM-yyyy"));
 	  task.setResolvedDate(DateUtil.stringToDate(resolvedDate, "dd-MM-yyyy"));
 	  
-	  _managementService.updateTask(task);
+	  _managementService.updateTask(projectId,task);
   }
   
   @GET

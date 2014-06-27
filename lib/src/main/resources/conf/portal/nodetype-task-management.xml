@@ -184,6 +184,10 @@
             <valueConstraints/>
          </propertyDefinition>
          
+         <propertyDefinition name="exo:totalTask" requiredType="Long" autoCreated="false" mandatory="true" onParentVersion="COPY" protected="false" multiple="false">
+            <valueConstraints/>
+         </propertyDefinition>
+         
       </propertyDefinitions>
       
       <childNodeDefinitions>
