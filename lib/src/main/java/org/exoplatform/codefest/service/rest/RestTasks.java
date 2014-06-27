@@ -120,7 +120,7 @@ public class RestTasks implements ResourceContainer {
   
   @GET
   @Path("/updateTask/")
-  public void createTask(@QueryParam("id") String id,
+  public void updateTask(@QueryParam("id") String id,
 		  				 @QueryParam("name") String name,
                          @QueryParam("description") String description,
                          @QueryParam("assigneeId") String assigneeId,
