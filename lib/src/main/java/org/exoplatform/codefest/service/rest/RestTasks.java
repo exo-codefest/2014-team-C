@@ -129,11 +129,5 @@ public class RestTasks implements ResourceContainer {
 	  _managementService.createTask(task);
   }
   
-  @GET
-  @Path("/createProject/")
-  public void createProject(@PathParam("name") String name,
-		  ) throws Exception {
-	  
-  }
 }
 
