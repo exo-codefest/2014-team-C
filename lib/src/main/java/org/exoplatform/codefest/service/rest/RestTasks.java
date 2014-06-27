@@ -160,36 +160,34 @@ public class RestTasks implements ResourceContainer {
   @GET
   @Path("/createProject/")
   public void createProject(@QueryParam("id") String id,
-		  				 @QueryParam("name") String name,
+		  				           @QueryParam("name") String name,
                          @QueryParam("description") String description,
                          @QueryParam("membersId") String membersId,
                          @QueryParam("managerId") String managerId,
                          @QueryParam("listTaskStatus") String listTaskStatus,
                          @QueryParam("isDeleted") String isDeleted,
-                         @QueryParam("createdDate") String createdDate,
-                         @QueryParam("modifiedDate") String modifiedDate,
                          @QueryParam("ownerType") String ownerType,
-                         @QueryParam("ownerID") String ownerID
-		  ) throws Exception{
+                         @QueryParam("ownerID") String ownerID) throws Exception{
 	  ProjectBean project = new ProjectBean();
 	  project.setId(id);
 	  project.setName(name);
-	  project.setOwnerType(ownerType);
-	  String[] taskS = listTaskStatus.split(",");
-	  List<String> taskStatus = new ArrayList<String>() ;
+	  project.setDescription(description);
 	  
-	  for (int i = 0; i < taskS.length; i++) {
-		  taskStatus.add(taskS[i]);
-	  }
+	  //project.setOwnerType(ownerType);
+	  project.setOwnerType(ProjectBean.OWNER_TYPE_USER);
 	  
- 	  project.setListTaskStatus(taskStatus);
-	  
+	  List<String> ListManagerId = new ArrayList<String>() ;
+	  String[] arrayManagerId = managerId.split(",");
+    for (String string : arrayManagerId) {
+      ListManagerId.add(string);
+    }
+ 	  project.setManagerId(ListManagerId);
+ 	  
+    List<String> memberIds = new ArrayList<String>() ;
  	  String[] mIds = membersId.split(",");
- 	  List<String> memberIds = new ArrayList<String>() ;
-	  
-	  for (int i = 0; i < mIds.length; i++) {
-		  memberIds.add(mIds[i]);
-	  }
+    for (String string : mIds) {
+      memberIds.add(string);
+    }
  	  
  	  project.setMembersId(memberIds);
  	  
