@@ -26,9 +26,15 @@ Vu Tuan Anh | CWI
 
 * How to use (test)
 
-Choose projects
+ - Choose projects
 
-View task by 3 supported view: List, Icon, Grantt 
+ - View task by 3 supported view: List, Icon, Grantt 
+
+<img src="https://github.com/exo-codefest/2014-team-C/blob/master/source-html/task/icon_view.png" >
+
+<img src="https://github.com/exo-codefest/2014-team-C/blob/master/source-html/task/list_view.png" >
+
+<img src="https://github.com/exo-codefest/2014-team-C/blob/master/source-html/task/grantt_view.png" >
 
 
 * What we would like to include in this add-ons
