@@ -19,13 +19,12 @@
   			url: url,
   			data: data,
   			success: function(){
-
   			}
 		});
 		this.closePopupContainer();
 	};
 	TaskManager.prototype.getRestByAction = function(action){
-		var rest = '/rest/taskmanager/';
+		var rest = '/rest/taskmanagement/';
 		if(action == 'createProject'){
 			rest +='createProject';	
 		}
@@ -36,20 +35,26 @@
 		this.showProjects('');
 	};
 	TaskManager.prototype.showProjects = function (projects){
-		
+
 		console.info('show projects in select');
 	};
 	TaskManager.prototype.getInputVal = function(inputName){
-		return gj('.LightBoxContent input[name='+inputName+']').val();
+
+			return gj('.LightBoxContent input[name='+inputName+']').val();
+	}
+	TaskManager.prototype.getTextVal = function(inputName){
+
+			return gj('.LightBoxContent #'+inputName).val();
 	}
 	TaskManager.prototype.doCreateProject = function(){
-
+		alert(this.getTextVal('description'));
 		var data = {
 			'action':'createProject',
+			'id':this.getInputVal('displayName'),
 			'name':this.getInputVal('displayName'),
-			'description':this.getInputVal('description'),
-			'memberIds':this.getInputVal('displayMember'),	
-			'managerIds':this.getInputVal('displayManager')		
+			'description':this.getTextVal('description'),
+			'membersId':this.getInputVal('displayMember'),	
+			'managerId':this.getInputVal('displayManager')		
 	};
 
 		this.ajaxCommonRequest(data);

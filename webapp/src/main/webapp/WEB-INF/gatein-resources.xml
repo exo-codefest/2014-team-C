@@ -34,7 +34,7 @@
 	<module>
    		<depends>
     		<module>teamctaskmanager</module>
-    	</depends>
+    	</depends>    	
     	<depends>
       		<module>portalControl</module>
     	</depends>   
@@ -49,5 +49,5 @@
       <module>jquery</module>
       <as>gj</as>
     </depends>
-  </module>     
+  </module>      
 </gatein-resources>

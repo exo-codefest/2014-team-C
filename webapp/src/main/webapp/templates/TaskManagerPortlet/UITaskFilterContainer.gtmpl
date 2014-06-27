@@ -19,31 +19,33 @@ jsManager.require("SHARED/portalControl", "portalControl");
   </button>
   <ul class="actionBarMoreItem pull-left">
     <li>
-      <a class="actionIcon"  onclick="" href="javascript:void(0);">
+      <a class="actionIcon active" href="javascript:void(0);">
+        <i class="uiIconUser uiIconLightGray"></i>
+        Assign to me
+         <span class="badge badge-important">6</span> 
+        
+      </a>
+    </li>
+    <li>
+      <a class="actionIcon" href="javascript:void(0);">
         <i class="uiIconExport uiIconLightGray"></i>
         Assisting
       </a>
     </li>
     <li>
-      <a class="actionIcon" onclick="javascript:void(0);">
-        <i class="uiIconUser uiIconLightGray"></i>
-        Sent by me
-      </a>
-    </li>
-    <li>
-      <a class="actionIcon"  onclick="" href="javascript:void(0);">
+      <a class="actionIcon" href="javascript:void(0);">
         <i class="uiIconWatch uiIconLightGray"></i>
         Follow
       </a>
     </li>
     <li>
-      <a class="actionIcon"  onclick="" href="javascript:void(0);">
+      <a class="actionIcon" href="javascript:void(0);">
         <i class="uiIconDownload uiIconLightGray"></i>
         All
       </a>
     </li>
     <li>
-      <a class="actionIcon"  onclick="" href="javascript:void(0);">
+      <a class="actionIcon" href="javascript:void(0);">
         <i class="uiIconFlags uiIconLightGray"></i>
         Report
       </a>
@@ -51,4 +53,39 @@ jsManager.require("SHARED/portalControl", "portalControl");
   </ul>
 </div>
 <!--end filter bar-->
+
+
+<!--Beign notice-->
+<div class="uiGrayLightBox clearfix ">
+  <div class="pull-right">
+    <span>View</span>&nbsp;&nbsp;
+    
+    <a class="actionIcon active" rel="TaskListView" href="javascript:void(0);">
+        <i class="uiIconViewList uiIconLightGray"></i>            
+    </a> 
+    <a class="actionIcon" rel="TaskBoxView" href="javascript:void(0);">
+        <i class="uiIconCreateNewGadget uiIconLightGray"></i>           
+    </a> 
+    <a class="actionIcon" rel="TaskChartView" href="javascript:void(0);">
+        <i class="uiIconViewStatistic uiIconLightGray"></i>           
+    </a> 
+  </div>
+  <span>i'm responsible , show tasks</span>&nbsp;&nbsp;
+  <select>
+    <option selected="">in progress</option>
+    <option>waiting</option>
+    <option>close</option>
+  </select>
+  &nbsp;&nbsp;<span>by</span>&nbsp;&nbsp;
+  <select>
+    <option selected="">all</option>
+  </select>
+</div>
+<!--Beign notice-->
+<div class="alert">
+ <span class="badge badge-important">6</span>  <strong> Tasks</strong> <a href="">are assigned to me!</a>
+</div>
+
+<!--End notice-->
+
 </div>
