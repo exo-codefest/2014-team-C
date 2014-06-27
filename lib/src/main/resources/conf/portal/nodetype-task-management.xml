@@ -58,6 +58,10 @@
             <valueConstraints/>
          </propertyDefinition>
          
+         <propertyDefinition name="exo:startedDate" requiredType="Date" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
+            <valueConstraints/>
+         </propertyDefinition>
+         
          <propertyDefinition name="exo:resolvedDate" requiredType="Date" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
             <valueConstraints/>
          </propertyDefinition>

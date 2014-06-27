@@ -45,7 +45,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
-@Path("tasks/")
+@Path("taskmanagement/")
 @Produces(MediaType.APPLICATION_JSON)
 public class RestTasks implements ResourceContainer {
   private static final Log LOG = ExoLogger.getLogger(RestUsefulLink.class);
@@ -90,7 +90,12 @@ public class RestTasks implements ResourceContainer {
 		  @PathParam("priority") String priority,
 		  @PathParam("dueDate") String dueDate,
 		  @PathParam("status") String status,
-		  @PathParam("isDeleted") String isDeleted) throws Exception{
+		  @PathParam("isDeleted") String isDeleted,
+		  @PathParam("startedDate") String startedDate,
+		  @PathParam("resolvedDate") String resolvedDate,
+		  @PathParam("creatorId") String creatorId,
+		  @PathParam("modifiedDate") String modifiedDate,
+		  ) throws Exception{
 	  ExoContainer container = ExoContainerContext.getCurrentContainer();  
 	  TaskManagementService taskMS = (TaskManagementService) container.getComponentInstanceOfType(TaskManagementServiceImpl.class);
 	  TaskBean task = new TaskBean();
@@ -98,7 +103,22 @@ public class RestTasks implements ResourceContainer {
 	  task.setDescription(description);
 	  task.setAssigneeId(assigneeId);
 	  task.setEstimateTime(estimateTime);
+	  task.setLoggedTime(loggedTime);
+	  task.setRemainingTime(remainingTime);
+	  task.setDueDate(dueDate);
+	  task.setStatus(status);
+	  task.setPriority(priority);
+	  task.setCreatorId(creatorId);
+	  task.setStartedDate(DateUtil.stringToDate(startedDate, 'dd/MM/yyyy'))
+	  task.setResolvedDate(DateUtil.stringToDate(resolvedDate, 'dd/MM/yyyy'))
 	  taskMS.createTask(task);
+  }
+  
+  @GET
+  @Path("/createProject/")
+  public void createProject(@PathParam("name") String name,
+		  ) throws Exception {
+	  
   }
 }
 
