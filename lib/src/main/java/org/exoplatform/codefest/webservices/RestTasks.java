@@ -41,6 +41,7 @@ import java.net.URI;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.CacheControl;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
@@ -50,11 +51,54 @@ public class RestTasks implements ResourceContainer {
   private static final Log LOG = ExoLogger.getLogger(RestUsefulLink.class);
 
   @GET
-	@Path("/getTaskOfProject/")
-	public void getTaskOfProject(@PathParam("projectId") String projectId) throws Exception{
-		ExoContainer container = ExoContainerContext.getCurrentContainer();  
-		TaskManagementService taskMS = (TaskManagementService) container.getComponentInstanceOfType(TaskManagementServiceImpl.class);
-
-  	}
+  @Path("/getTaskOfProject/")
+  public Response getTaskOfProject(@PathParam("projectId") String projectId) throws Exception{
+	  ExoContainer container = ExoContainerContext.getCurrentContainer();  
+	  TaskManagementService taskMS = (TaskManagementService) container.getComponentInstanceOfType(TaskManagementServiceImpl.class);
+	  List<TaskBean> tasks = taskMS.getTaskOfProject(projectId);
+	  return Response.ok(tasks, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+  }
+  
+  @GET
+  @Path("/getTask/")
+  public Response getTask(@PathParam("projectId") String projectId, @PathParam("taskId") String taskId) throws Exception{
+	  ExoContainer container = ExoContainerContext.getCurrentContainer();  
+	  TaskManagementService taskMS = (TaskManagementService) container.getComponentInstanceOfType(TaskManagementServiceImpl.class);
+	  TaskBean task = taskMS.getTask(projectId, taskId);
+	  return Response.ok(task, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+  }
+  
+  @GET
+  @Path("/getAllProject/")
+  public Response getAllProject() throws Exception{
+	  ExoContainer container = ExoContainerContext.getCurrentContainer();  
+	  TaskManagementService taskMS = (TaskManagementService) container.getComponentInstanceOfType(TaskManagementServiceImpl.class);
+	  List<ProjectBean> projects = taskMS.getAllProject();
+	  return Response.ok(projects, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+  }
+  
+  @GET
+  @Path("/createTask/")
+  public void createTask(@PathParam("name") String name,
+		  @PathParam("name") String name,
+		  @PathParam("description") String description,
+		  @PathParam("assigneeId") String assigneeId,
+		  @PathParam("coWorkers") String coWorkers,
+		  @PathParam("estimateTime") String estimateTime,
+		  @PathParam("loggedTime") String loggedTime,
+		  @PathParam("remainingTime") String remainingTime,
+		  @PathParam("priority") String priority,
+		  @PathParam("dueDate") String dueDate,
+		  @PathParam("status") String status,
+		  @PathParam("isDeleted") String isDeleted) throws Exception{
+	  ExoContainer container = ExoContainerContext.getCurrentContainer();  
+	  TaskManagementService taskMS = (TaskManagementService) container.getComponentInstanceOfType(TaskManagementServiceImpl.class);
+	  TaskBean task = new TaskBean();
+	  task.setName(name);
+	  task.setDescription(description);
+	  task.setAssigneeId(assigneeId);
+	  task.setEstimateTime(estimateTime);
+	  taskMS.createTask(task);
+  }
 }
 
