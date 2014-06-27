@@ -47,6 +47,8 @@ public class ProjectBean {
   private List<String> listTaskStatus;
   private boolean isDeleted;
   
+  private Long totalTask;
+  
   public Date getCreatedDate() {
     return createdDate;
   }
@@ -113,5 +115,13 @@ public class ProjectBean {
   public void setDeleted(boolean isDeleted) {
     this.isDeleted = isDeleted;
   }
+  public Long getTotalTask() {
+    return totalTask;
+  }
+  public void setTotalTask(Long totalTask) {
+    this.totalTask = totalTask;
+  }
+  
+  
   
 }

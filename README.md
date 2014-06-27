@@ -16,22 +16,27 @@ Vu Tuan Anh | CWI
 	cd 2014-team-C
 	mvn clean install
 
-* Description 
+# Description 
+	
 
-
-
-* Goals 
+# Goals 
 
 - Managing the personal tasks and group tasks  
 
-* How to use (test)
+# How to use (test)
 
-Choose projects
+ - Choose projects
 
-View task by 3 supported view: List, Icon, Grantt 
+ - View task by 3 supported view: List, Icon, Grantt 
+
+<img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/icon_view.png" />
+
+<img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/list_view.png" />
+
+<img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/grantt_view.png" />
 
 
-* What we would like to include in this add-ons
+# What we would like to include in this add-ons
 
 - Publish action as (start progress, create new task, update task...) on Activity Space that will hepl other can follow "What you're working on"
 

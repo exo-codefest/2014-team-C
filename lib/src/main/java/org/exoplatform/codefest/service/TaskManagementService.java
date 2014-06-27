@@ -41,8 +41,8 @@ public interface TaskManagementService {
   public abstract ProjectBean updateProject(ProjectBean project) throws Exception;
   public abstract boolean deleteProject(String projectId) throws Exception;
   
-  public abstract TaskBean createTask(TaskBean taskBean) throws Exception;
-  public abstract TaskBean updateTask(TaskBean taskBean) throws Exception;
+  public abstract TaskBean createTask(String projectId, TaskBean taskBean) throws Exception;
+  public abstract TaskBean updateTask(String projectId, TaskBean taskBean) throws Exception;
   public abstract boolean deleteTask(String projectId, String taskId) throws Exception;
   
   public abstract TaskLogBean createTaskLogBean(String projectId, String taskId, TaskLogBean takTaskLogBean) throws Exception;

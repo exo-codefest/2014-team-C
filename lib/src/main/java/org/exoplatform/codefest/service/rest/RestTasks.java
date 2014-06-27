@@ -19,7 +19,7 @@
 
 package org.exoplatform.codefest.service.rest;
 
-import java.util.List;
+import java.util.*;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -85,7 +85,7 @@ public class RestTasks implements ResourceContainer {
   
   @GET
   @Path("/createTask/")
-  public void createTask(@QueryParam("id") String id,
+  public void createTask(@QueryParam("projectId") String projectId,
                          @QueryParam("name") String name,
                          @QueryParam("description") String description,
                          @QueryParam("assigneeId") String assigneeId,
@@ -115,7 +115,83 @@ public class RestTasks implements ResourceContainer {
 	  task.setCreatorId(creatorId);
 	  task.setStartedDate(DateUtil.stringToDate(startedDate, "dd-MM-yyyy"));
 	  task.setResolvedDate(DateUtil.stringToDate(resolvedDate, "dd-MM-yyyy"));
-	  _managementService.createTask(task);
+	  
+	  _managementService.createTask(projectId,task);
+  }
+  
+  @GET
+  @Path("/updateTask/")
+  public void updateTask(@QueryParam("projectId") String projectId,
+                         @QueryParam("id") String id,
+		  				           @QueryParam("name") String name,
+                         @QueryParam("description") String description,
+                         @QueryParam("assigneeId") String assigneeId,
+                         @QueryParam("coWorkers") String coWorkers,
+                         @QueryParam("estimateTime") String estimateTime,
+                         @QueryParam("loggedTime") String loggedTime,
+                         @QueryParam("remainingTime") String remainingTime,
+                         @QueryParam("priority") String priority,
+                         @QueryParam("dueDate") String dueDate,
+                         @QueryParam("status") String status,
+                         @QueryParam("isDeleted") String isDeleted,
+                         @QueryParam("startedDate") String startedDate,
+                         @QueryParam("resolvedDate") String resolvedDate,
+                         @QueryParam("creatorId") String creatorId,
+                         @QueryParam("modifiedDate") String modifiedDate
+		  ) throws Exception{
+	  TaskBean task = new TaskBean();
+	  task.setId(id);
+	  task.setName(name);
+	  task.setDescription(description);
+	  task.setAssigneeId(assigneeId);
+	  task.setEstimateTime(estimateTime);
+	  task.setLoggedTime(loggedTime);
+	  task.setRemainingTime(remainingTime);
+	  task.setDueDate(DateUtil.stringToDate(dueDate, "dd-MM-yyyy"));
+	  task.setStatus(status);
+	  task.setPriority(priority);
+	  task.setCreatorId(creatorId);
+	  task.setStartedDate(DateUtil.stringToDate(startedDate, "dd-MM-yyyy"));
+	  task.setResolvedDate(DateUtil.stringToDate(resolvedDate, "dd-MM-yyyy"));
+	  
+	  _managementService.updateTask(projectId,task);
+  }
+  
+  @GET
+  @Path("/createProject/")
+  public void createProject(@QueryParam("id") String id,
+		  				           @QueryParam("name") String name,
+                         @QueryParam("description") String description,
+                         @QueryParam("membersId") String membersId,
+                         @QueryParam("managerId") String managerId,
+                         @QueryParam("listTaskStatus") String listTaskStatus,
+                         @QueryParam("isDeleted") String isDeleted,
+                         @QueryParam("ownerType") String ownerType,
+                         @QueryParam("ownerID") String ownerID) throws Exception{
+	  ProjectBean project = new ProjectBean();
+	  project.setId(id);
+	  project.setName(name);
+	  project.setDescription(description);
+	  
+	  //project.setOwnerType(ownerType);
+	  project.setOwnerType(ProjectBean.OWNER_TYPE_USER);
+	  
+	  List<String> ListManagerId = new ArrayList<String>() ;
+	  String[] arrayManagerId = managerId.split(",");
+    for (String string : arrayManagerId) {
+      ListManagerId.add(string);
+    }
+ 	  project.setManagerId(ListManagerId);
+ 	  
+    List<String> memberIds = new ArrayList<String>() ;
+ 	  String[] mIds = membersId.split(",");
+    for (String string : mIds) {
+      memberIds.add(string);
+    }
+ 	  
+ 	  project.setMembersId(memberIds);
+ 	  
+	  _managementService.createProject(project);
   }
   
 }
