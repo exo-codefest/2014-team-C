@@ -75,21 +75,45 @@
 <!--my stylesheet-->		
 <link rel="stylesheet" href="jquery/jquery-ui.css">
 <script src="jquery/jquery-1.10.2.js"></script>
+<!-- Add fancyBox main JS and CSS files -->
+<script type="text/javascript" src="fancyapps/jquery.fancybox.js"></script>
+<link rel="stylesheet" type="text/css" href="fancyapps/jquery.fancybox.css" media="screen" />
 <script src="jquery/jquery-ui.js"></script>
- <script>
-$(function() {
-	$( ".draggable" ).draggable();
-	$( ".droppable" ).droppable({
-	drop: function( event, ui ) {
-		$( this )
-		.addClass( "ui-state-highlight" )
-		.find( "p" )
-		.html( "Dropped!" );
-	}
-	});
-});
-</script>
+<script>
 
+
+
+$(function() {
+  
+ 
+  $( ".connectedSortable" ).sortable({
+    opacity: "0.5",
+    connectWith: ".connectedSortable",
+
+  }).disableSelection();
+
+
+});
+
+</script>
+ <style>
+.LightBoxContainer {
+  display: none;
+  position: absolute;
+  min-height: 400px;
+  z-index: 10000;
+}
+
+.LightBoxContainer .BgContent {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: none repeat scroll 0 0 white;
+  display: block;
+  padding: 6px;
+  position: relative;
+}
+</style>
 <link  rel="stylesheet" type="text/css" href="css/addon.css">
 <!--end my stylesheet-->
 
@@ -353,7 +377,7 @@ $(function() {
 				<option>project 01</option>
 				</select>
 			</div>
-			<button onclick="javascript:eXo.webui.UIForm.submitForm('77e92975-1d6e-4351-b694-fd1043695674#UISpaceSearch','AddSpace',true)" type="button" class="btn btn-primary pull-left"><i class="uiIconSocSimplePlus uiIconSocWhite"></i> Add New Project</button>
+			<a class="btn btn-primary pull-left btnAddNewProject" href="#UIPopupAddSpace"><i class="uiIconSocSimplePlus uiIconSocWhite"></i> Add New Project</a>
 		</div>	
 		<!--End add project-->
 		
@@ -562,7 +586,7 @@ $(function() {
 				<h5 class="title clearfix">
 				
 				TODO</h5>
-				<div class="uiContentBox" class="">
+				<div class="uiContentBox connectedSortable">
 					<div class="task-list draggable priority-heigh">
 						<div class="task-name" data-placement="bottom" rel="tooltip" title="task1">Task1</div>
 						<a class="edit-task">
@@ -589,7 +613,7 @@ $(function() {
 			<div  class="ui-widget-header task-box">
 				<h5 class="title clearfix">
 				IN PROGRESS</h5>
-				<div class="uiContentBox droppable">
+				<div class="uiContentBox connectedSortable">
 					<div class="task-list draggable priority-low">
 						<div class="task-name" data-placement="bottom" rel="tooltip" title="task1">Task1</div>
 						<a class="edit-task">
@@ -602,10 +626,10 @@ $(function() {
 					<button class="btn btn-primary">Add a card</button>
 				</div>
 			</div>
-			<div id="droppable" class="ui-widget-header task-box">
+			<div class="ui-widget-header task-box">
 				<h5 class="title clearfix">
 				DONE</h5>
-				<div class="uiContentBox droppable">
+				<div class="uiContentBox connectedSortable">
 					<div class="task-list draggable priority-low">
 						<div class="task-name" data-placement="bottom" rel="tooltip" title="task1">Task1</div>
 						<a class="edit-task">
@@ -641,5 +665,72 @@ $(function() {
 	
 	</tr>
 	</table>
+
+
+
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    //$(".fancybox").fancybox();
+    //$(".btnAddNewProject").fancybox();
+    $(".btnAddNewProject").fancybox({
+      maxWidth  : 800,
+      maxHeight : 600,
+      fitToView : false,
+      width   : '70%',
+      height    : '70%',
+      autoSize  : false,
+      closeClick  : false,
+      openEffect  : 'none',
+      closeEffect : 'none'
+    });
+  });
+
+  
+</script>
+
+    <div class="uiPopupMySpaces">
+      <div style="width: 600px; display: none; visibility: visible; z-index: 4; top: 76px; left: 445px;" id="UIPopupAddSpace" exo:minheight="200" exo:minwidth="200" class="UIPopupWindow uiPopup UIDragObject NormalStyle">
+          <div class="popupHeader clearfix">          
+              <a onclick="javascript:ajaxGet('/portal/intranet/all-spaces?portal:componentId=99d623ad-e1aa-4422-becf-70c7b25a6b35&amp;interactionstate=JBPNS_rO0ABXc_AAJvcAAAAAEACkNsb3NlUG9wdXAAC3VpY29tcG9uZW50AAAAAQAPVUlQb3B1cEFkZFNwYWNlAAdfX0VPRl9f&amp;portal:type=action&amp;ajaxRequest=true')" title="Close Window" class="uiIconClose pull-right"></a>
+              <span class="PopupTitle popupTitle">Add New Project</span>
+          </div>
+          <div class="PopupContent popupContent">
+            <form>
+              <div class="resizable">
+                <div class="form-horizontal">
+                  <div class="control-group">
+                    <label class="control-label" for="displayName">Name:</label>
+                    <div class="controls">
+                      <input type="text" name="displayName" id="displayName" placeholder="Display Name"> *</div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="description">Description:</label>
+                    <div class="controls">
+                      <textarea class="textarea" name="description" id="description" rows="10" cols="30" placeholder="Description"></textarea>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="displayName">Member:</label>
+                    <div class="controls">
+                      <input type="text" name="displayName" id="displayName" placeholder="Member"> *</div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="displayName">Manager:</label>
+                    <div class="controls">
+                      <input type="text" name="displayName" id="displayName" placeholder="Manager"> *</div>
+                  </div>
+                </div>
+              </div>                
+            </form>
+            <div class="uiAction uiActionBorder">         
+              <button class="btn" onclick="" type="button">Create</button>              
+              <button class="btn" onclick="" type="button">Cancel</button>              
+            </div>
+          </div>            
+        </div>
+      </div>  
+    <div>
 
 </body></html>
