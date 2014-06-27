@@ -97,32 +97,11 @@ $(function() {
 
 </script>
  <style>
-.LightBoxContainer {
-  display: none;
-  position: absolute;
-  min-height: 400px;
-  z-index: 10000;
-}
 
-.LightBoxContainer .BgContent {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  background: none repeat scroll 0 0 white;
-  display: block;
-  padding: 6px;
-  position: relative;
-}
+.TaskBoxView, .layout-chart {display: none;}
 </style>
 <link  rel="stylesheet" type="text/css" href="css/addon.css">
 <!--end my stylesheet-->
-
-
-
-
-
-
-
 
    <script type="text/javascript">
    //initialize eXo.ecm
@@ -388,39 +367,39 @@ $(function() {
 			</button>
 			<ul class="actionBarMoreItem pull-left">
 				<li>
-					<a class="actionIcon active"  onclick="" href="javascript:void(0);">
-						<i class="uiIconArrowRight uiIconLightGray"></i>
-						Ongoing
+					<a class="actionIcon active" href="javascript:void(0);">
+						<i class="uiIconUser uiIconLightGray"></i>
+						Assign to me
 						 <span class="badge badge-important">6</span> 
 						
 					</a>
 			  </li>
 			  <li>
-					<a class="actionIcon"  onclick="" href="javascript:void(0);">
+					<a class="actionIcon" href="javascript:void(0);">
 						<i class="uiIconExport uiIconLightGray"></i>
 						Assisting
 					</a>
 			  </li>
-			  <li>
-					<a class="actionIcon" onclick="javascript:void(0);">
+			  <!--li>
+					<a class="actionIcon" href="javascript:void(0);">
 						<i class="uiIconUser uiIconLightGray"></i>
 						Sent by me
 					</a>
-			  </li>
+			  </li-->
 			  <li>
-					<a class="actionIcon"  onclick="" href="javascript:void(0);">
+					<a class="actionIcon" href="javascript:void(0);">
 						<i class="uiIconWatch uiIconLightGray"></i>
 						Follow
 					</a>
 			  </li>
 			  <li>
-					<a class="actionIcon"  onclick="" href="javascript:void(0);">
+					<a class="actionIcon" href="javascript:void(0);">
 						<i class="uiIconDownload uiIconLightGray"></i>
 						All
 					</a>
 			  </li>
 			  <li>
-					<a class="actionIcon"  onclick="" href="javascript:void(0);">
+					<a class="actionIcon" href="javascript:void(0);">
 						<i class="uiIconFlags uiIconLightGray"></i>
 						Report
 					</a>
@@ -435,13 +414,13 @@ $(function() {
 			<div class="pull-right">
 				<span>View</span>&nbsp;&nbsp;
 				
-				<a class="actionIcon active"  onclick="" href="javascript:void(0);">
+				<a class="actionIcon active" rel="TaskListView" href="javascript:void(0);">
 						<i class="uiIconViewList uiIconLightGray"></i>						
 				</a> 
-				<a class="actionIcon"  onclick="" href="javascript:void(0);">
+				<a class="actionIcon" rel="TaskBoxView" href="javascript:void(0);">
 						<i class="uiIconCreateNewGadget uiIconLightGray"></i>						
 				</a> 
-				<a class="actionIcon"  onclick="" href="javascript:void(0);">
+				<a class="actionIcon" rel="TaskChartView" href="javascript:void(0);">
 						<i class="uiIconViewStatistic uiIconLightGray"></i>						
 				</a> 
 			</div>
@@ -458,7 +437,7 @@ $(function() {
 		</div>
 		<!--Beign notice-->
 		<div class="alert">
-		 <span class="badge badge-important">6</span>  <strong>Task!</strong> <a href="">1 task viewed</a>
+		 <span class="badge badge-important">6</span>  <strong> Tasks</strong> <a href="">are assigned to you!</a>
 		</div>
 	
 		<!--End notice-->
@@ -466,7 +445,7 @@ $(function() {
 		
 		
 		<!--begin list task-->
-		<table class="uiGrid table table-hover table-striped">
+		<table class="uiGrid table table-hover table-striped TaskListView">
 			<caption class="rounded-corners-top">				
 				<h4 class="task-title">Task List</h4>
 			</caption>			
@@ -483,9 +462,7 @@ $(function() {
 				</tr>
 			</thead>
 			<tbody>	
-			
 				<tr>
-					
 					<td ><a href="">Invited new employees</a></td>
 					<td class="center " >Low</i></td>	
 					<td >Open</td>	
@@ -498,9 +475,8 @@ $(function() {
 					</td>
 				</tr>
 				<tr>
-					
 					<td ><a href="">Invited new employees</a></td>
-					<td class="center "  >High</i></td>	
+					<td class="center">High</i></td>	
 					<td >Open</td>	
 					<td >root</td>	
 					<td >12-12-2014</td>
@@ -510,15 +486,99 @@ $(function() {
 						<a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
 					</td>
 				</tr>
+        <tr>
+          <td ><a href="">Invited new employees</a></td>
+          <td class="center">High</i></td>  
+          <td >Open</td>  
+          <td >root</td>  
+          <td >12-12-2014</td>
+          <td >John</td>          
+          <td class="center">            
+            <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
+            <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td ><a href="">Invited new employees</a></td>
+          <td class="center">High</i></td>  
+          <td >Open</td>  
+          <td >root</td>  
+          <td >12-12-2014</td>
+          <td >John</td>          
+          <td class="center">            
+            <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
+            <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td ><a href="">Invited new employees</a></td>
+          <td class="center">High</i></td>  
+          <td >Open</td>  
+          <td >root</td>  
+          <td >12-12-2014</td>
+          <td >John</td>          
+          <td class="center">            
+            <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
+            <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td ><a href="">Invited new employees</a></td>
+          <td class="center">High</i></td>  
+          <td >Open</td>  
+          <td >root</td>  
+          <td >12-12-2014</td>
+          <td >John</td>          
+          <td class="center">            
+            <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
+            <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td ><a href="">Invited new employees</a></td>
+          <td class="center">High</i></td>  
+          <td >Open</td>  
+          <td >root</td>  
+          <td >12-12-2014</td>
+          <td >John</td>          
+          <td class="center">            
+            <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
+            <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td ><a href="">Invited new employees</a></td>
+          <td class="center">High</i></td>  
+          <td >Open</td>  
+          <td >root</td>  
+          <td >12-12-2014</td>
+          <td >John</td>          
+          <td class="center">            
+            <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
+            <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td ><a href="">Invited new employees</a></td>
+          <td class="center">High</i></td>  
+          <td >Open</td>  
+          <td >root</td>  
+          <td >12-12-2014</td>
+          <td >John</td>          
+          <td class="center">            
+            <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
+            <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
+          </td>
+        </tr>
 			</tbody>	  
 		</table>
 		<!--End list task-->
 		
 		
 		<!--Begin chart layout-->
-		<div class="layout-chart ">
+		<div class="layout-chart TaskChartView">
 			<div class=" uiBox">
-				<div class=" uiContentBosx">
+				<div class="uiContentBosx">
 					<div style="position:relative" class="gantt" id="GanttChartDIV"></div>	
 				</div>
 				
@@ -580,7 +640,7 @@ $(function() {
 	<!--End chart layout-->
 	
 	<!--begin layout column-->
-	<div class="uiBox">
+	<div class="uiBox TaskBoxView">
 		<div class="layout-grid clearfix uiContentBox">
 			<div  class="ui-widget-content task-box">
 				<h5 class="title clearfix">
@@ -672,8 +732,7 @@ $(function() {
 
 <script type="text/javascript">
   $(document).ready(function() {
-    //$(".fancybox").fancybox();
-    //$(".btnAddNewProject").fancybox();
+
     $(".btnAddNewProject").fancybox({
       maxWidth  : 800,
       maxHeight : 600,
@@ -685,6 +744,37 @@ $(function() {
       openEffect  : 'none',
       closeEffect : 'none'
     });
+
+    $(".actionIcon[rel]").click(function(){
+       var viewType =  $(this).attr("rel");
+       var currentActive = $(this).hasClass("active"); 
+       if($(this).hasClass("active")) {
+          return;
+       } else {
+          if(viewType == "TaskListView") {
+            $(".actionIcon[rel]").removeClass("active");
+            $(this).addClass("active") ;
+            $(".TaskChartView").hide();
+            $(".TaskBoxView").hide();
+            $(".TaskListView").show() ;
+          } else if(viewType == "TaskBoxView") {
+            $(".actionIcon[rel]").removeClass("active");
+            $(this).addClass("active") ;
+            $(".TaskListView").hide() ;
+            $(".TaskChartView").hide();
+            $(".TaskBoxView").show();
+
+          } else {
+            $(".actionIcon[rel]").removeClass("active");
+            $(this).addClass("active") ;
+            $(".TaskListView").hide() ;
+            $(".TaskChartView").show();
+            $(".TaskBoxView").hide();
+
+          }
+       }
+    });
+
   });
 
   
