@@ -29,6 +29,13 @@ import org.exoplatform.codefest.service.bean.TaskLogBean;
 public interface TaskManagementService {
   
   public static final String HOME = "exo:taskManagementHome";
+  public static final String TASK_LOG_HOME = "exo:logTaskHome";
+  
+  public static final String TASK_MANAGEMENT_HOME_NOTE_TYPE = "exo:taskManagement";
+  public static final String PROJECT_NOTE_TYPE = "exo:project";
+  public static final String TASK_NOTE_TYPE = "exo:task";
+  public static final String TASK_LOG_HOME_NOTE_TYPE = "exo:logTaskHome";
+  public static final String TASK_LOG_NOTE_TYPE = "exo:logTask";
   
   public abstract ProjectBean createProject(ProjectBean project) throws Exception;
   public abstract ProjectBean updateProject(ProjectBean project) throws Exception;
