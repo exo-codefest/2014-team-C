@@ -121,7 +121,7 @@ public class RestTasks implements ResourceContainer {
   
   @GET
   @Path("/updateTask/")
-  public void updateTask(@QueryParam("projectId") String projectId,
+  public Response updateTask(@QueryParam("projectId") String projectId,
                          @QueryParam("id") String id,
 		  				           @QueryParam("name") String name,
                          @QueryParam("description") String description,
@@ -154,18 +154,22 @@ public class RestTasks implements ResourceContainer {
 	  task.setStartedDate(DateUtil.stringToDate(startedDate, "dd-MM-yyyy"));
 	  task.setResolvedDate(DateUtil.stringToDate(resolvedDate, "dd-MM-yyyy"));
 	  
-	  _managementService.updateTask(projectId,task);
+	  TaskBean taskBean = _managementService.updateTask(projectId,task);
+
+	    if(null!=taskBean){
+	      return Response.ok("true", MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+	    }else{
+	      return Response.ok("false", MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+	    }
   }
   
   @GET
   @Path("/createProject/")
-  public void createProject(@QueryParam("id") String id,
+  public Response createProject(@QueryParam("id") String id,
 		  				           @QueryParam("name") String name,
                          @QueryParam("description") String description,
                          @QueryParam("membersId") String membersId,
                          @QueryParam("managerId") String managerId,
-                         @QueryParam("listTaskStatus") String listTaskStatus,
-                         @QueryParam("isDeleted") String isDeleted,
                          @QueryParam("ownerType") String ownerType,
                          @QueryParam("ownerID") String ownerID) throws Exception{
 	  ProjectBean project = new ProjectBean();
@@ -191,7 +195,12 @@ public class RestTasks implements ResourceContainer {
  	  
  	  project.setMembersId(memberIds);
  	  
-	  _managementService.createProject(project);
+	  ProjectBean projectResult = _managementService.createProject(project);
+	  if(null!=projectResult){
+	    return Response.ok("true", MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+	  }else{
+	    return Response.ok("false", MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+	  }
   }
   
 }
