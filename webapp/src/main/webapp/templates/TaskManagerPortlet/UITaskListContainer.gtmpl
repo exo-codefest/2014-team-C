@@ -12,5 +12,52 @@ jsManager.require("SHARED/portalControl", "portalControl");
     }
   }
 %>
-i am UITaskFilterContainer
+<!--begin list task-->
+<table class="uiGrid table table-hover table-striped">
+  <caption class="rounded-corners-top">       
+    <h4 class="task-title">Task List</h4>
+  </caption>      
+  <thead>
+    <tr>
+      
+      <th style="width:30%;">Name</th>
+      <th style="20px">Priority</th>
+      <th style="20px">Status</th>
+      <th >Assignee</th>
+      <th style="width:15%;">Deadline </th>
+      <th style="width:15%;">Created by</th>
+      <th class="center action" >Action</th>
+    </tr>
+  </thead>
+  <tbody id="containerTaskListID"> 
+  
+    <tr>
+      
+      <td ><a href="">Invited new employees</a></td>
+      <td class="center " >Low</i></td> 
+      <td >Open</td>  
+      <td >root</td>  
+      <td >12-12-2014</td>
+      <td >root</td>          
+      <td class="center">            
+        <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
+        <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
+      </td>
+    </tr>
+    <tr>
+      
+      <td ><a href="">Invited new employees</a></td>
+      <td class="center "  >High</i></td> 
+      <td >Open</td>  
+      <td >root</td>  
+      <td >12-12-2014</td>
+      <td >John</td>          
+      <td class="center">            
+        <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
+        <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
+      </td>
+    </tr>
+  </tbody>    
+</table>
+<!--End list task-->
 </div>

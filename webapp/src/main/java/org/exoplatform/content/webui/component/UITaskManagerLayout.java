@@ -16,6 +16,7 @@
  */
 package  org.exoplatform.content.webui.component;
 
+import org.exoplatform.webui.application.WebuiRequestContext;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.core.UIContainer;
 import org.exoplatform.webui.core.lifecycle.Lifecycle;
@@ -36,5 +37,13 @@ public class UITaskManagerLayout extends UIContainer {
     addChild(UIProjectMenuContainer.class,null,null);
     addChild(UITaskFilterContainer.class,null,null);
     addChild(UITaskListContainer.class,null,null);
+  }
+  public void processRender(WebuiRequestContext context) throws Exception {
+    super.processRender(context);
+    context.getJavascriptManager()
+           .getRequireJS()
+           .require("SHARED/teamctaskmanager", "teamctaskmanager")
+           .addScripts("teamctaskmanager.init();");
+
   }
 }

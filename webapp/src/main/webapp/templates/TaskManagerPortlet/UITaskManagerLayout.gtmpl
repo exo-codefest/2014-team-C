@@ -12,5 +12,4 @@ jsManager.require("SHARED/portalControl", "portalControl");
     }
   }
 %>
-i am task manager layout
 </div>
