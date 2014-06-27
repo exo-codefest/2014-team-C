@@ -30,6 +30,7 @@ public class TaskBean {
   
   private Date createdDate;
   private Date modifiedDate;
+  private Date startedDate;
   private Date resolvedDate;
   private String creatorId;
   
@@ -140,6 +141,12 @@ public class TaskBean {
   }
   public void setDeleted(boolean isDeleted) {
     this.isDeleted = isDeleted;
+  }
+  public Date getStartedDate() {
+    return startedDate;
+  }
+  public void setStartedDate(Date startedDate) {
+    this.startedDate = startedDate;
   }
   
   
