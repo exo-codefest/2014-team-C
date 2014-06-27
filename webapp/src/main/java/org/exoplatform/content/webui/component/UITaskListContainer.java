@@ -16,6 +16,8 @@
  */
 package org.exoplatform.content.webui.component;
 
+import org.exoplatform.webui.config.annotation.ComponentConfig;
+import org.exoplatform.webui.core.lifecycle.UIFormLifecycle;
 import org.exoplatform.webui.form.UIForm;
 
 /**
@@ -24,6 +26,10 @@ import org.exoplatform.webui.form.UIForm;
  *          exo@exoplatform.com
  * Jun 26, 2014  
  */
+@ComponentConfig(
+                 lifecycle = UIFormLifecycle.class,
+                 template = "app:/templates/TaskManagerPortlet/UITaskListContainer.gtmpl"
+               )
 public class UITaskListContainer extends UIForm {
 
   public UITaskListContainer() throws Exception{
