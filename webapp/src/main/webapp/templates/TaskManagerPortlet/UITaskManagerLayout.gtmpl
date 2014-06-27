@@ -3,7 +3,8 @@
 def rcontext = _ctx.getRequestContext() ;
 def jsManager = rcontext.getJavascriptManager();
 jsManager.require("SHARED/portalControl", "portalControl");
-
+jsManager.require("SHARED/teamctaskmanager");
+jsManager.require("SHARED/eXolightbox");
 
   for(component in uicomponent.getChildren()) {
 
@@ -12,4 +13,10 @@ jsManager.require("SHARED/portalControl", "portalControl");
     }
   }
 %>
+
+<div class="LightBoxContainer">
+    <div class="LightBoxContent">
+
+    </div>
+</div>    
 </div>

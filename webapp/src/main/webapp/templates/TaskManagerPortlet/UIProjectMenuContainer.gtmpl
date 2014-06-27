@@ -1,10 +1,5 @@
-<div class="UIProjectMenuContainer" id="$uicomponent.id">
+<div class="UIProjectMenuContainer" id="jQueryuicomponent.id">
 <%
-def rcontext = _ctx.getRequestContext() ;
-def jsManager = rcontext.getJavascriptManager();
-jsManager.require("SHARED/portalControl", "portalControl");
-
-
   for(component in uicomponent.getChildren()) {
 
     if(component.isRendered()){
@@ -13,14 +8,63 @@ jsManager.require("SHARED/portalControl", "portalControl");
   }
 %>
 
-<div class="uiGrayLightBox clearfix uiTaskSearch">
-<div class="pull-left">
-  <select >
-  <option selected>--select project--</option>
-  <option>project 01</option>
-  <option>project 01</option>
-  </select>
-  </div>
-    <button onclick="alert('show popup create project')" type="button" class="btn btn-primary pull-left"><i class="uiIconSocSimplePlus uiIconSocWhite"></i> Add New Project</button>
-  </div>  
+  <div class="uiGrayLightBox clearfix uiTaskSearch">
+    <div class="pull-left">
+      <select >
+      <option selected>--select project--</option>
+      <option>project 01</option>
+      <option>project 01</option>
+      </select>
+     </div>
+        <a href="#" onclick="TaskManager.showProjectCreationForm();" class="btn btn-primary pull-left btnAddNewProject">
+          <i class="uiIconSocSimplePlus uiIconSocWhite"></i> Add New Project
+        </a>
+  </div> 
+
+    <!-- /popup project creation form -->   
+    <div  style="display:none;" id="uiPopupProjectCreationForm">
+      <div class="uiPopupProjectCreationForm">
+        <div style="width: 600px;" exo:minheight="200" exo:minwidth="200" class="UIPopupWindow uiPopup UIDragObject NormalStyle">
+            <div class="popupHeader clearfix">          
+                <a title="Close Window" class="uiIconClose pull-right BtnClose"></a>
+                <span class="PopupTitle popupTitle">Add New Project</span>
+            </div>
+            <div class="PopupContent popupContent">
+              <form>
+                <div class="resizable">
+                  <div class="form-horizontal">
+                    <div class="control-group">
+                      <label class="control-label" for="displayName">Name:</label>
+                      <div class="controls">
+                        <input type="text" name="displayName" id="displayName" placeholder="Display Name"> *</div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="description">Description:</label>
+                      <div class="controls">
+                        <textarea class="textarea" name="description" id="description" rows="10" cols="30" placeholder="Description"></textarea>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="displayName">Member:</label>
+                      <div class="controls">
+                        <input type="text" name="displayMember" id="displayMember" placeholder="Member"> *</div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="displayName">Manager:</label>
+                      <div class="controls">
+                        <input type="text" name="displayManager" id="displayManager" placeholder="Manager"> *</div>
+                    </div>
+                  </div>
+                </div>                
+              </form>
+              <div class="uiAction uiActionBorder">         
+                <a class="btn" href="#" onclick="TaskManager.doCreateProject();" type="button">Create</a>              
+                <a class="btn BtnClose" href="#" type="button">Cancel</a>              
+              </div>
+            </div>            
+          </div>
+        </div>  
+      <div>
+    </div>
+  <!-- /popup project creation form -->   
 </div>
