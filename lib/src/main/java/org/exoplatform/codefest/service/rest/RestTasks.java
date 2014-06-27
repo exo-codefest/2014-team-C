@@ -84,6 +84,13 @@ public class RestTasks implements ResourceContainer {
   }
   
   @GET
+  @Path("/getTaskOfProject/{projectId}")
+  public Response getTaskOfProject(@PathParam("projectId") String projectId) throws Exception{
+	  List<TaskBean> tasks = _managementService.getTaskOfProject(projectId);
+	  return Response.ok(tasks, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+  }
+  
+  @GET
   @Path("/createTask/")
   public void createTask(@QueryParam("projectId") String projectId,
                          @QueryParam("name") String name,
