@@ -21,7 +21,7 @@ Vu Tuan Anh | CWI
 
 # Goals 
 
-	- Managing the personal tasks and group tasks  
+- Managing the personal tasks and group tasks  
 
 # How to use (test)
 
@@ -38,8 +38,8 @@ Vu Tuan Anh | CWI
 
 # What we would like to include in this add-ons
 
-	- Publish action as (start progress, create new task, update task...) on Activity Space that will hepl other can follow "What you're working on"
+- Publish action as (start progress, create new task, update task...) on Activity Space that will hepl other can follow "What you're working on"
 
-	- Manage projects: add members or groups into projects who will be assigned tasks or manager the projects
+- Manage projects: add members or groups into projects who will be assigned tasks or manager the projects
 
-	- Allow create more status for task as "Re-Open", "Close"....
+- Allow create more status for task as "Re-Open", "Close"....
