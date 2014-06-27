@@ -19,7 +19,7 @@
 
 package org.exoplatform.codefest.service.rest;
 
-import java.util.List;
+import java.util.*;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -85,8 +85,7 @@ public class RestTasks implements ResourceContainer {
   
   @GET
   @Path("/createTask/")
-  public void createTask(@QueryParam("id") String id,
-                         @QueryParam("name") String name,
+  public void createTask(@QueryParam("name") String name,
                          @QueryParam("description") String description,
                          @QueryParam("assigneeId") String assigneeId,
                          @QueryParam("coWorkers") String coWorkers,
@@ -115,7 +114,47 @@ public class RestTasks implements ResourceContainer {
 	  task.setCreatorId(creatorId);
 	  task.setStartedDate(DateUtil.stringToDate(startedDate, "dd-MM-yyyy"));
 	  task.setResolvedDate(DateUtil.stringToDate(resolvedDate, "dd-MM-yyyy"));
+	  
 	  _managementService.createTask(task);
+  }
+  
+  @GET
+  @Path("/createProject/")
+  public void createProject(@QueryParam("id") String id,
+		  				 @QueryParam("name") String name,
+                         @QueryParam("description") String description,
+                         @QueryParam("membersId") String membersId,
+                         @QueryParam("managerId") String managerId,
+                         @QueryParam("listTaskStatus") String listTaskStatus,
+                         @QueryParam("isDeleted") String isDeleted,
+                         @QueryParam("createdDate") String createdDate,
+                         @QueryParam("modifiedDate") String modifiedDate,
+                         @QueryParam("ownerType") String ownerType,
+                         @QueryParam("ownerID") String ownerID
+		  ) throws Exception{
+	  ProjectBean project = new ProjectBean();
+	  project.setId(id);
+	  project.setName(name);
+	  project.setOwnerType(ownerType);
+	  String[] taskS = listTaskStatus.split(",");
+	  List<String> taskStatus = new ArrayList<String>() ;
+	  
+	  for (int i = 0; i < taskS.length; i++) {
+		  taskStatus.add(taskS[i]);
+	  }
+	  
+ 	  project.setListTaskStatus(taskStatus);
+	  
+ 	  String[] mIds = membersId.split(",");
+ 	  List<String> memberIds = new ArrayList<String>() ;
+	  
+	  for (int i = 0; i < mIds.length; i++) {
+		  memberIds.add(mIds[i]);
+	  }
+ 	  
+ 	  project.setMembersId(memberIds);
+ 	  
+	  _managementService.createProject(project);
   }
   
 }
