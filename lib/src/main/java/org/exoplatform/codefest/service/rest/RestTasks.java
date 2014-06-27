@@ -19,37 +19,26 @@
 
 package org.exoplatform.codefest.service.rest;
 
-import org.exoplatform.codefest.service.TaskManagementService;
-import org.exoplatform.codefest.service.bean.ProjectBean;
-import org.exoplatform.codefest.service.bean.TaskBean;
-import org.exoplatform.codefest.util.DateUtil;
-import org.exoplatform.common.http.HTTPStatus;
-import org.exoplatform.container.ExoContainerContext;
-import org.exoplatform.services.jcr.ext.common.SessionProvider;
-import org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator;
-import org.exoplatform.services.log.ExoLogger;
-import org.exoplatform.services.log.Log;
-import org.exoplatform.services.rest.impl.RuntimeDelegateImpl;
-import org.exoplatform.services.rest.resource.ResourceContainer;
+import java.util.List;
 
-import javax.jcr.Node;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.*;
-import javax.ws.rs.ext.RuntimeDelegate;
-
-import java.net.URI;
-import java.util.List;
-
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.CacheControl;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.SecurityContext;
-import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.RuntimeDelegate;
+
+import org.exoplatform.codefest.service.TaskManagementService;
+import org.exoplatform.codefest.service.bean.ProjectBean;
+import org.exoplatform.codefest.service.bean.TaskBean;
+import org.exoplatform.codefest.util.DateUtil;
+import org.exoplatform.services.log.ExoLogger;
+import org.exoplatform.services.log.Log;
+import org.exoplatform.services.rest.impl.RuntimeDelegateImpl;
+import org.exoplatform.services.rest.resource.ResourceContainer;
 
 @Path("taskmanagement/")
 @Produces(MediaType.APPLICATION_JSON)
