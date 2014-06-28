@@ -13,6 +13,41 @@ jsManager.require("SHARED/portalControl", "portalControl");
   }
 %>
 
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    jQuery(".actionIcon[rel]").click(function(){
+       var viewType =  jQuery(this).attr("rel");
+       var currentActive = jQuery(this).hasClass("active"); 
+       if(jQuery(this).hasClass("active")) {
+          return;
+       } else {
+          if(viewType == "TaskListView") {
+            jQuery(".actionIcon[rel]").removeClass("active");
+            jQuery(this).addClass("active") ;
+            jQuery(".TaskChartView").hide();
+            jQuery(".TaskBoxView").hide();
+            jQuery(".TaskListView").show() ;
+          } else if(viewType == "TaskBoxView") {
+            jQuery(".actionIcon[rel]").removeClass("active");
+            jQuery(this).addClass("active") ;
+            jQuery(".TaskListView").hide() ;
+            jQuery(".TaskChartView").hide();
+            jQuery(".TaskBoxView").show();
+
+          } else {
+            jQuery(".actionIcon[rel]").removeClass("active");
+            jQuery(this).addClass("active") ;
+            jQuery(".TaskListView").hide() ;
+            jQuery(".TaskChartView").show();
+            jQuery(".TaskBoxView").hide();
+
+          }
+       }
+    });
+
+  });
+</script>
+
     <!-- /popup task creation form -->   
     <div  style="display:none;" id="uiPopupTaskCreationForm">
       <div class="uiPopupTaskCreationForm">
@@ -159,12 +194,14 @@ jsManager.require("SHARED/portalControl", "portalControl");
   <div class="pull-right">
     <span>View</span>&nbsp;&nbsp;
     
-    <a class="actionIcon active" rel="TaskListView" href="javascript:void(0);">
+    <a class="actionIcon active" rel="TaskBoxView" href="javascript:void(0);">
+        <i class="uiIconCreateNewGadget uiIconLightGray"></i>           
+    </a>
+
+    <a class="actionIcon" rel="TaskListView" href="javascript:void(0);">
         <i class="uiIconViewList uiIconLightGray"></i>            
     </a> 
-    <a class="actionIcon" rel="TaskBoxView" href="javascript:void(0);">
-        <i class="uiIconCreateNewGadget uiIconLightGray"></i>           
-    </a> 
+
     <a class="actionIcon" rel="TaskChartView" href="javascript:void(0);">
         <i class="uiIconViewStatistic uiIconLightGray"></i>           
     </a> 

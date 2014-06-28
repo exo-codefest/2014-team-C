@@ -14,7 +14,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
 %>
 
 <!--begin list task-->
-<table class="uiGrid table table-hover table-striped TaskListView">
+<table class="uiGrid table table-hover table-striped TaskListView"  style="display:none">
   <thead>
     <tr>
       
@@ -142,7 +142,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
 
 
 <!--Begin chart layout-->
-<div class="layout-chart TaskChartView">
+<div class="layout-chart TaskChartView"  style="display:none">
   <div class=" uiBox">
     <div class="uiContentBosx">
       <div style="position:relative" class="gantt" id="GanttChartDIV"></div>  

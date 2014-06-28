@@ -1,11 +1,26 @@
+
 <div class="UITaskManagerLayout" id="$uicomponent.id">
 <%
 def rcontext = _ctx.getRequestContext() ;
 def jsManager = rcontext.getJavascriptManager();
 jsManager.require("SHARED/portalControl", "portalControl");
 jsManager.require("SHARED/teamctaskmanager");
-jsManager.require("SHARED/eXolightbox");
+%>
 
+
+<link rel="stylesheet" type="text/css" href="/team-c-addon-webapp/skin/css/teamc/jsgantt.css"/>
+<script src="/team-c-addon-webapp/javascript/eXo/teamc/jsgantt.js"></script> 
+
+<!--my stylesheet-->
+<script type="text/javascript" src="/team-c-addon-webapp/javascript/eXo/teamc/jquery/jquery-1.10.2.js"></script>
+<link rel="stylesheet" href="/team-c-addon-webapp/skin/css/teamc/jquery/jquery-ui.css">
+<!-- Add fancyBox main JS and CSS files -->
+<script src="/team-c-addon-webapp/javascript/eXo/teamc/jquery/jquery-ui.js"></script>
+
+
+
+
+<%
   for(component in uicomponent.getChildren()) {
 
     if(component.isRendered()){
