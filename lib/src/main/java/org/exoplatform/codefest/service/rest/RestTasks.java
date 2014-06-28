@@ -34,6 +34,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.RuntimeDelegate;
 
 import org.exoplatform.codefest.service.TaskManagementService;
@@ -84,9 +85,24 @@ public class RestTasks implements ResourceContainer {
   
   @GET
   @Path("/getAllProject/")
-  public Response getAllProject() throws Exception{
+  @RolesAllowed("users")
+  public Response getAllProject(@Context SecurityContext sc,
+                                @Context UriInfo uriInfo) throws Exception{
 	  List<ProjectBean> projects = _managementService.getAllProject();
 	  return Response.ok(projects, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+  }
+  
+  @GET
+  @Path("/getTaskOfProject/")
+  @RolesAllowed("users")
+  public Response getTaskOfProject(@Context SecurityContext sc,
+                                   @Context UriInfo uriInfo,
+                                   @QueryParam("projectId") String projectId) throws Exception{
+    if(null==projectId || projectId.trim().length()==0)
+      return Response.status(Status.BAD_REQUEST).build();
+    
+    List<TaskBean> tasks = _managementService.getTaskOfProject(projectId);
+    return Response.ok(tasks, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
   }
   
   @GET
