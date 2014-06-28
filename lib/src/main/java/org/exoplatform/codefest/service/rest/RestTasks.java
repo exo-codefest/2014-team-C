@@ -122,8 +122,7 @@ public class RestTasks implements ResourceContainer {
                          @QueryParam("dueDate") String dueDate,
                          @QueryParam("status") String status,
                          @QueryParam("startedDate") String startedDate,
-                         @QueryParam("resolvedDate") String resolvedDate,
-                         @QueryParam("modifiedDate") String modifiedDate
+                         @QueryParam("resolvedDate") String resolvedDate
 		  ) throws Exception{
     
     //TODO
