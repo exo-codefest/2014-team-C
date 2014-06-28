@@ -28,7 +28,28 @@ jsManager.require("SHARED/teamctaskmanager");
 
     }).disableSelection();
 
+    //event when drop
+    jQuery( ".connectedSortable" ).droppable({
+       drop: function (event, ui) {
+                
+          status = jQuery(this).attr("name");
+          var draggable = ui.draggable;
+          projectId = (jQuery(draggable).find('.projectId').val());
+          taskId = (jQuery(draggable).find('.taskId').val()); 
+          var url = "/rest/taskmanagement/changeTaskStatus?projectId=" + projectId + "&id=" + taskId + "&status=" + status;
+
+          jQuery.ajax({
+              type: "GET",
+              url: url,
+              dataType: 'json',
+              async: false
+          });
+
+       }
+    });
+
   });
+
 
 </script>
 

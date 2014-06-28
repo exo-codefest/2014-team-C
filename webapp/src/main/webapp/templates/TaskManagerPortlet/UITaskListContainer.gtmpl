@@ -125,7 +125,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
     <h5 class="title clearfix">
     
     TODO</h5>
-    <div class="uiContentBox connectedSortable" id="taskTodoContainerId">
+    <div name="TODO" class="uiContentBox connectedSortable" id="taskTodoContainerId">
       <div class="task-list draggable priority-heigh">
         <div class="task-name" data-placement="bottom" rel="tooltip" title="task1">Task1</div>
         <a class="edit-task">
@@ -152,7 +152,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
   <div  class="ui-widget-content task-box">
     <h5 class="title clearfix">
     IN PROGRESS</h5>
-    <div class="uiContentBox connectedSortable" id="taskIPContainerId">
+    <div name="IN PROGRESS" class="uiContentBox connectedSortable" id="taskIPContainerId">
       <div class="task-list draggable priority-low">
         <div class="task-name" data-placement="bottom" rel="tooltip" title="task1">Task1</div>
         <a class="edit-task">
@@ -168,7 +168,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
   <div class="ui-widget-content task-box">
     <h5 class="title clearfix">
     DONE</h5>
-    <div class="uiContentBox connectedSortable" id="taskDoneContainerId">
+    <div name="DONE" class="uiContentBox connectedSortable" id="taskDoneContainerId">
       <div class="task-list draggable priority-low">
         <div class="task-name" data-placement="bottom" rel="tooltip" title="task1">Task1</div>
         <a class="edit-task">
