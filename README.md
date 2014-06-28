@@ -19,11 +19,7 @@ Vu Tuan Anh | CWI
 
 - Task progress and project status will be notified to <b>follower</b> and <b>published on Activity Stream</b> to others can follow what they are working on.
 
-# How to use
-
-- Open Tasks page on the left menu.
-
-- Choose a project (create a new one in case there is no project existed)
+# Features
 
 - View tasks by 3 supported views: List View, Icon View, Grantt View
 
@@ -43,3 +39,11 @@ Vu Tuan Anh | CWI
 * View Task's detail
 
 <img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/task-detail.png" />
+
+# Usages:
+
+- Open Tasks page on the left menu.
+
+- Choose a project (create a new one in case there is no project existed)
+
+- 
