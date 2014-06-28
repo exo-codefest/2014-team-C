@@ -38,3 +38,8 @@ Vu Tuan Anh | CWI
 * Grantt View
 
 <img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/grantt_view.png" />
+
+
+* View Task's detail
+
+<img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/task-detail.png" />
