@@ -3,7 +3,7 @@
 
 		this.lightboxContainerDOM = gj(".LightBoxContainer"); 
 		this.lightboxContentDOM = gj(".LightBoxContent");
-		
+		this.projectComboDOM = gj("#projectComBoId");
 	};
 	TaskManager.prototype.init = function(){
 		this.initProjectLayout();
@@ -14,6 +14,8 @@
 			restURL +='createProject';	
 		}else if(action == 'getAllProject'){
 			restURL +='getAllProject';
+		}else if(action == 'createTask'){
+			restURL +='createTask';
 		}
 		return restURL;
 	}
@@ -63,8 +65,13 @@
 			gj("#exo-mask").remove();	
 			gj("body").css("overflow", "visible");
 		});
+		
+		var top = (gj(window).height() - this.lightboxContainerDOM.outerHeight()) ;
+		if(contentid == 'uiPopupProjectCreationForm')
+			top = top/2;
+		else
+			top = top/8;
 
-		var top = (gj(window).height() - this.lightboxContainerDOM.outerHeight())/2 ;
 		top += gj(window).scrollTop() || 0;
 		
 		var left = (gj(window).width() - gj(this.lightboxContainerDOM).width())/4;
@@ -87,20 +94,20 @@
 	TaskManager.prototype.showProjectCreationForm = function(){
 		this.showPopupContainer('uiPopupProjectCreationForm');
 	};
-	TaskManager.prototype.getInputVal = function(inputName){
+	TaskManager.prototype.setInputVal = function(id,val){
 
-			return gj('.LightBoxContent input[name='+inputName+']').val();
+			gj('.LightBoxContent #'+id).val(val);
 	}
-	TaskManager.prototype.getTextVal = function(inputName){
+	TaskManager.prototype.getInputVal = function(id){
 
-			return gj('.LightBoxContent #'+inputName).val();
+			return gj('.LightBoxContent #'+id).val();
 	}
 	TaskManager.prototype.doCreateProject = function(){
 		var data = {
 			'action':'createProject',
 			'id':this.getInputVal('displayName'),
 			'name':this.getInputVal('displayName'),
-			'description':this.getTextVal('description'),
+			'description':this.getInputVal('description'),
 			'membersId':this.getInputVal('displayMember'),	
 			'managerId':this.getInputVal('displayManager')		
 			};
@@ -109,32 +116,70 @@
 	};
 	TaskManager.prototype.createProjectCallBack = function(data,parent){
 		console.log('callBackFct createProject '+data);
-	//	if(data){
+		if(data){
 			parent.getProjects();
-	//	}
+		}
+		else{
+			alert('something is wrong');
+		}
 	}
 	TaskManager.prototype.validProjectCreationForm = function (){
 		console.log('validate form');
 	};
 	TaskManager.prototype.getProjects = function(){
-		console.info('get project json');
 		var data = {'action':'getAllProject'};
-		this.ajaxCommonRequest(data,this.showProjects);
+		this.ajaxCommonRequest(data,this.getProjectsCallBack);
 	};
-	TaskManager.prototype.showProjects = function (projects){
-		var projectComboDOM = gj("#projectComBoId");
-		projectComboDOM.html('');;
+	TaskManager.prototype.getProjectsCallBack = function(data,parent){
+		parent.showProjects(data,parent);
+	}
+	TaskManager.prototype.showProjects = function (projects,parent){
+		var _this = parent;
+		if(_this != null || _this === undefined ){
+			_this = this;
+		}
+		_this.projectComboDOM.html('');;
 		console.info('show projects in select');
+
+		if(projects.length > 0){
+			gj.each(projects,function(key,val){
+				_this.projectComboDOM.append('<option id="' + val.id + '">' + val.name + '</option>');
+			});
+
+		}
 	};
+
 	TaskManager.prototype.initTaskFilterLayout = function(){
 
 	};
 	TaskManager.prototype.showTaskCreationForm = function(){
-
+		var projectName = gj("#projectComBoId option:selected").text();
+		var projectId = gj("#projectComBoId option:selected").val();
+		this.showPopupContainer('uiPopupTaskCreationForm');
+		this.setInputVal('displayProjectNameTask',projectName);
+		this.setInputVal('displayProjectIdTask',projectId);
 	};
 	TaskManager.prototype.doCreateTask = function(){
+		var data = {
+			'action':'createTask',
+			'projectId':this.getInputVal('displayProjectIdTask'),
+			'name':this.getInputVal('displayTaskName'),
+			'description':this.getInputVal('taskDescription'),
+			'assigneeId':this.getInputVal('taskAssigne'),	
+			'coWorkers':this.getInputVal('taskCoWorker'),		
+			'estimateTime':this.getInputVal('taskEstimateTime'),		
+			'remainingTime':this.getInputVal('taskRemainTime'),		
+			'priority':this.getInputVal('taskPriorityComBoId'),		
+			'dueDate':this.getInputVal('taskDueDate'),		
+			'status':this.getInputVal('taskStatusComBoId')														
+			};
+
+		this.ajaxCommonRequest(data,this.createTaskCallBack);
 
 	};
+	TaskManager.prototype.createTaskCallBack = function(data,parent){
+		alert(data);
+	}
 	TaskManager.prototype.doEditTask = function(){
 
 	};
