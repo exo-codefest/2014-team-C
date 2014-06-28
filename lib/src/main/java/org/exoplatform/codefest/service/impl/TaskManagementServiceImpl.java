@@ -95,7 +95,6 @@ public class TaskManagementServiceImpl implements TaskManagementService {
     SessionProvider sessionProvider = null;
     try {
       sessionProvider = SessionProvider.createSystemProvider();
-      //Create home node if it is not existed
       ManageableRepository currentRepo = this.repositoryService.getCurrentRepository();
       Session session = sessionProvider.getSession(currentRepo.getConfiguration().getDefaultWorkspaceName(), currentRepo);
       
@@ -187,7 +186,6 @@ public class TaskManagementServiceImpl implements TaskManagementService {
     SessionProvider sessionProvider = null;
     try {
       sessionProvider = SessionProvider.createSystemProvider();
-      //Create home node if it is not existed
       ManageableRepository currentRepo = this.repositoryService.getCurrentRepository();
       Session session = sessionProvider.getSession(currentRepo.getConfiguration().getDefaultWorkspaceName(), currentRepo);
       
@@ -264,9 +262,109 @@ public class TaskManagementServiceImpl implements TaskManagementService {
 
   @Override
   public TaskBean updateTask(String projectId, TaskBean taskBean) throws Exception {
-    // TODO Auto-generated method stub
-    return null;
+    SessionProvider sessionProvider = null;
+    try {
+      sessionProvider = SessionProvider.createSystemProvider();
+      ManageableRepository currentRepo = this.repositoryService.getCurrentRepository();
+      Session session = sessionProvider.getSession(currentRepo.getConfiguration().getDefaultWorkspaceName(), currentRepo);
+      
+      Node homeNode = getTaskManagementHomeNode(sessionProvider);
+      if(homeNode.hasNode(projectId) ==false){
+        return null;
+      }
+      Node projectNode = homeNode.getNode(projectId);
+      if(projectNode.hasNode(taskBean.getId())==false){
+        return null;
+      }
+      
+      Node taskNode = projectNode.getNode(taskBean.getId());
+      taskBean.setModifiedDate(new Date());
+      
+      Calendar cal = Calendar.getInstance();
+      cal.clear();
+      cal.setTime(taskBean.getModifiedDate() );
+      taskNode.setProperty("exo:modifiedDate", cal);
+      taskNode.setProperty("exo:name",taskBean.getName());
+      taskNode.setProperty("exo:description",taskBean.getDescription());
+      taskNode.setProperty("exo:assigneeId",taskBean.getAssigneeId());
+      
+      if(null!=taskBean.getCoWorkers() && taskBean.getCoWorkers().size()>0){
+        int lengh = taskBean.getCoWorkers().size();
+        Value[] value = new Value[lengh];
+        for (int i=0; i<lengh; i++) {
+          Value value2add = session.getValueFactory().createValue(taskBean.getCoWorkers().get(i));
+          value[i]= value2add;
+        }
+        taskNode.setProperty("exo:coWorkers",value);
+      }else{
+        taskNode.setProperty("exo:coWorkers",(Value[])null);
+      }
+
+      taskNode.setProperty("exo:estimateTime",taskBean.getEstimateTime());
+      taskNode.setProperty("exo:loggedTime",taskBean.getLoggedTime());
+      taskNode.setProperty("exo:remainingTime",taskBean.getRemainingTime());
+      
+
+      if(null != taskBean.getDueDate()){
+        cal.clear();
+        cal.setTime(taskBean.getDueDate());
+        taskNode.setProperty("exo:dueDate",cal);
+      }
+      
+      taskNode.setProperty("exo:status",taskBean.getStatus());
+      taskNode.setProperty("exo:priority",taskBean.getPriority());
+      
+      homeNode.save();
+      
+    }catch (Exception e){
+      LOG.error(e);
+      return null;
+    }finally {
+      if (sessionProvider != null) {
+        sessionProvider.close();
+      }
+    }
+    return taskBean;
   }
+  
+
+  @Override
+  public boolean changeTaskStatus(String projectId, String taskId, String newStatus) throws Exception {
+    SessionProvider sessionProvider = null;
+    try {
+      sessionProvider = SessionProvider.createSystemProvider();
+      Node homeNode = getTaskManagementHomeNode(sessionProvider);
+      if(homeNode.hasNode(projectId) ==false){
+        return false;
+      }
+      Node projectNode = homeNode.getNode(projectId);
+      if(projectNode.hasNode(taskId)==false){
+        return false;
+      }
+      
+      Node taskNode = projectNode.getNode(taskId);
+      
+      Calendar cal = Calendar.getInstance();
+      cal.clear();
+      cal.setTime(new Date());
+      taskNode.setProperty("exo:modifiedDate", cal);
+      
+      taskNode.setProperty("exo:status", newStatus);
+      
+      homeNode.save();
+      
+      return true;
+      
+    }catch (Exception e){
+      LOG.error(e);
+      return false;
+    }finally {
+      if (sessionProvider != null) {
+        sessionProvider.close();
+      }
+    }
+  }
+  
 
   @Override
   public boolean deleteTask(String projectId, String taskId) throws Exception {
@@ -426,5 +524,6 @@ public class TaskManagementServiceImpl implements TaskManagementService {
     // TODO Auto-generated method stub
     return null;
   }
+
 
 }
