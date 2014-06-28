@@ -216,13 +216,17 @@ public class TaskManagementServiceImpl implements TaskManagementService {
       cal.setTime(taskBean.getCreatedDate() );
       taskNode.setProperty("exo:createdDate", cal);
       
-      cal.clear();
-      cal.setTime(taskBean.getResolvedDate() );
-      taskNode.setProperty("exo:resolvedDate", cal);
+      if(null!=taskBean.getResolvedDate()){
+        cal.clear();
+        cal.setTime(taskBean.getResolvedDate() );
+        taskNode.setProperty("exo:resolvedDate", cal);
+      }
       
-      cal.clear();
-      cal.setTime(taskBean.getStartedDate() );
-      taskNode.setProperty("exo:startedDate", cal);
+      if(null!=taskBean.getStartedDate() ){
+        cal.clear();
+        cal.setTime(taskBean.getStartedDate() );
+        taskNode.setProperty("exo:startedDate", cal);
+      }
       
       taskNode.setProperty("exo:creatorId",taskBean.getCreatorId());
       taskNode.setProperty("exo:id",taskId);
@@ -295,13 +299,17 @@ public class TaskManagementServiceImpl implements TaskManagementService {
       cal.setTime(taskBean.getModifiedDate() );
       taskNode.setProperty("exo:modifiedDate", cal);
       
-      cal.clear();
-      cal.setTime(taskBean.getResolvedDate() );
-      taskNode.setProperty("exo:resolvedDate", cal);
+      if(null!=taskBean.getResolvedDate()){
+        cal.clear();
+        cal.setTime(taskBean.getResolvedDate() );
+        taskNode.setProperty("exo:resolvedDate", cal);
+      }
       
-      cal.clear();
-      cal.setTime(taskBean.getStartedDate() );
-      taskNode.setProperty("exo:startedDate", cal);
+      if(null!=taskBean.getStartedDate() ){
+        cal.clear();
+        cal.setTime(taskBean.getStartedDate() );
+        taskNode.setProperty("exo:startedDate", cal);
+      }
       
       taskNode.setProperty("exo:name",taskBean.getName());
       taskNode.setProperty("exo:description",taskBean.getDescription());
