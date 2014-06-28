@@ -63,8 +63,13 @@
 			gj("#exo-mask").remove();	
 			gj("body").css("overflow", "visible");
 		});
+		
+		var top = (gj(window).height() - this.lightboxContainerDOM.outerHeight()) ;
+		if(contentid == 'uiPopupProjectCreationForm')
+			top = top/2;
+		else
+			top = top/8;
 
-		var top = (gj(window).height() - this.lightboxContainerDOM.outerHeight())/2 ;
 		top += gj(window).scrollTop() || 0;
 		
 		var left = (gj(window).width() - gj(this.lightboxContainerDOM).width())/4;
@@ -117,7 +122,6 @@
 		console.log('validate form');
 	};
 	TaskManager.prototype.getProjects = function(){
-		console.info('get project json');
 		var data = {'action':'getAllProject'};
 		this.ajaxCommonRequest(data,this.showProjects);
 	};
@@ -125,12 +129,19 @@
 		var projectComboDOM = gj("#projectComBoId");
 		projectComboDOM.html('');;
 		console.info('show projects in select');
+		if(projects.length > 0){
+			gj.each(projects,function(key,val){
+				projectComboDOM.append('<option id="' + val.id + '">' + val.name + '</option>');
+			});
+
+		}
 	};
+
 	TaskManager.prototype.initTaskFilterLayout = function(){
 
 	};
 	TaskManager.prototype.showTaskCreationForm = function(){
-
+		this.showPopupContainer('uiPopupTaskCreationForm');
 	};
 	TaskManager.prototype.doCreateTask = function(){
 

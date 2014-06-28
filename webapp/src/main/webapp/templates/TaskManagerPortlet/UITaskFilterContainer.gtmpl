@@ -12,9 +12,101 @@ jsManager.require("SHARED/portalControl", "portalControl");
     }
   }
 %>
+
+    <!-- /popup task creation form -->   
+    <div  style="display:none;" id="uiPopupTaskCreationForm">
+      <div class="uiPopupTaskCreationForm">
+        <div style="width: 600px;" exo:minheight="200" exo:minwidth="200" class="UIPopupWindow uiPopup UIDragObject NormalStyle">
+            <div class="popupHeader clearfix">          
+                <a title="Close Window" class="uiIconClose pull-right BtnClose"></a>
+                <span class="PopupTitle popupTitle">Add New Task</span>
+            </div>
+            <div class="PopupContent popupContent">
+              <form>
+                <div class="resizable">
+                  <div class="form-horizontal">
+                    <div class="control-group">
+                      <label class="control-label" for="displayProjectName">Project Name:</label>
+                      <div class="controls">
+                        <input type="text" readonly name="displayProjectName" id="displayProjectName"></div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="displayTaskName">Name:</label>
+                      <div class="controls">
+                        <input type="text" name="displayTaskName" id="displayTaskName" placeholder="Name"> *</div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="taskDescription">Description:</label>
+                      <div class="controls">
+                        <textarea class="textarea" name="taskDescription" id="taskDescription" rows="10" cols="30" placeholder="Description"></textarea>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="taskAssigne">Assigne:</label>
+                      <div class="controls">
+                        <input type="text" name="taskAssigne" id="taskAssigne" placeholder="Assigne"> *</div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="taskCoWorker">Co-Worker:</label>
+                      <div class="controls">
+                        <input type="text" name="taskCoWorker" id="taskCoWorker" placeholder="Co-Worker"> *</div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="taskEstimateTime">Estimate Time:</label>
+                      <div class="controls">
+                        <input type="text" name="taskEstimateTime" id="taskEstimateTime" placeholder="Estimate Time"> *</div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="taskRemainTime">Remaining Time:</label>
+                      <div class="controls">
+                        <input type="text" name="taskRemainTime" id="taskRemainTime" placeholder="Remaining Time"> *</div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="taskRemainTime">Priority:</label>
+                      <div class="controls">
+                          <select id="taskPriorityComBoId">
+                            <option value="LOW">LOW</option>
+                            <option value="MEDIUM">MEDIUM</option>
+                            <option value="HIGH">HIGH</option>                            
+                          </select>
+                        </div>  
+                    </div>                    
+                    <div class="control-group">
+                      <label class="control-label" for="taskDueDate">Due Date:</label>
+                      <div class="controls">
+                        <input type="text" name="taskDueDate" id="taskDueDate" placeholder="Due Date"> *</div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="taskStatus">Status:</label>
+                      <div class="controls">
+                        <input type="text" name="taskStatus" id="taskStatus" placeholder="Status"> *</div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="taskStartdDate">Start Date:</label>
+                      <div class="controls">
+                        <input type="text" name="taskStartdDate" id="taskStartdDate" placeholder="Start Date"> *</div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="taskResolvedDate">Resolved Date:</label>
+                      <div class="controls">
+                        <input type="text" name="taskResolvedDate" id="taskResolvedDate" placeholder="Resolved Date"> *</div>
+                    </div>                                        
+                  </div>
+                </div>                
+              </form>
+              <div class="uiAction uiActionBorder">         
+                <a class="btn" href="#" onclick="TaskManager.doCreateTeask();" type="button">Create</a>              
+                <a class="btn BtnClose" href="#" type="button">Cancel</a>              
+              </div>
+            </div>            
+        </div>
+      </div>  
+    </div>
+  <!-- /popup task creation form -->   
+
 <!--Beign filter bar-->
 <div class="uiTaskActionBar uiBox clearfix">
-  <button onclick="" type="button" class="btn btn-primary pull-right">
+  <button onclick="TaskManager.showTaskCreationForm();" type="button" class="btn btn-primary pull-right">
   <i class="uiIconSocSimplePlus uiIconSocWhite"></i> Add New Task
   </button>
   <ul class="actionBarMoreItem pull-left">
@@ -87,5 +179,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
 </div>
 
 <!--End notice-->
+
+
 
 </div>
