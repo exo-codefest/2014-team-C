@@ -82,6 +82,7 @@ public class RestTasks implements ResourceContainer {
   
   @GET
   @Path("/getTask/{projectId}/{taskId}")
+  @RolesAllowed("users")
   public Response getTask(@PathParam("projectId") String projectId, @PathParam("taskId") String taskId) throws Exception{
 	  TaskBean task = _managementService.getTask(projectId, taskId);
 	  return Response.ok(task, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();

@@ -651,8 +651,30 @@ public class TaskManagementServiceImpl implements TaskManagementService {
 
   @Override
   public TaskBean getTask(String projectId, String taskId) throws Exception {
-    // TODO Auto-generated method stub
-    return null;
+    SessionProvider sessionProvider = null;
+    try {
+      sessionProvider = SessionProvider.createSystemProvider();
+      Node homeNode = getTaskManagementHomeNode(sessionProvider);
+      
+      if(homeNode.hasNode(projectId)==false)
+        return null;
+      
+      Node projectNode = homeNode.getNode(projectId);
+      if(projectNode.hasNode(taskId)==false) 
+        return null;
+      
+      Node taskNode = projectNode.getNode(taskId);
+      
+      TaskBean task = fillNodeToTaskBean(taskNode);
+      return task;
+    }catch (Exception e){
+      LOG.error(e);
+      return null;
+    }finally {
+      if (sessionProvider != null) {
+        sessionProvider.close();
+      }
+    }
   }
 
   @Override
