@@ -70,11 +70,12 @@ jsManager.require("SHARED/portalControl", "portalControl");
         <i class="uiIconViewStatistic uiIconLightGray"></i>           
     </a> 
   </div>
-  <span>i'm responsible , show tasks</span>&nbsp;&nbsp;
+  <span>Show tasks</span>&nbsp;&nbsp;
   <select>
-    <option selected="">in progress</option>
-    <option>waiting</option>
-    <option>close</option>
+    <option selected="">All</option>
+    <option>To do</option>	
+    <option>In progress</option>
+    <option>Done</option>
   </select>
   &nbsp;&nbsp;<span>by</span>&nbsp;&nbsp;
   <select>

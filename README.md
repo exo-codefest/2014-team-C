@@ -23,9 +23,9 @@ Vu Tuan Anh | CWI
 
 - Open Tasks page on the left menu.
 
-- Choose an project (created a new one in case there is no project existed)
+- Choose a project (create a new one in case there is no project existed)
 
-- View task by 3 supported view: List, Icon, Grantt 
+- View tasks by 3 supported views: List View, Icon View, Grantt View
 
 * Icon View
 
