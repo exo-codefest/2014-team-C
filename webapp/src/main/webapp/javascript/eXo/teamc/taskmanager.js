@@ -16,6 +16,8 @@
 			restURL +='getAllProject';
 		}else if(action == 'createTask'){
 			restURL +='createTask';
+		}else if(action == 'getTaskOfProject'){
+			restURL +='getTaskOfProject';
 		}
 		return restURL;
 	}
@@ -138,26 +140,40 @@
 		if(_this != null || _this === undefined ){
 			_this = this;
 		}
-		_this.projectComboDOM.html('');;
-		console.info('show projects in select');
-
+		_this.projectComboDOM.html('');
 		if(projects.length > 0){
 			gj.each(projects,function(key,val){
 				_this.projectComboDOM.append('<option id="' + val.id + '">' + val.name + '</option>');
 			});
+			parent.getTasksByProject(projects[0].id);
 
 		}
 	};
-
 	TaskManager.prototype.initTaskFilterLayout = function(){
+		this.getTasksByProject();
 
 	};
-	TaskManager.prototype.showTaskCreationForm = function(){
+	TaskManager.prototype.getProjectSelected = function(){
 		var projectName = gj("#projectComBoId option:selected").text();
-		var projectId = gj("#projectComBoId option:selected").val();
-		this.showPopupContainer('uiPopupTaskCreationForm');
-		this.setInputVal('displayProjectNameTask',projectName);
-		this.setInputVal('displayProjectIdTask',projectId);
+		var projectId = gj("#projectComBoId option:selected").val();		
+		if(projectName == null || projectName === undefined)
+			return false;
+		return {
+			'name':projectName,
+			'id':projectId
+		}
+	}
+	TaskManager.prototype.showTaskCreationForm = function(){
+
+		var currentProject = this.getProjectSelected();
+		if(currentProject !== false){
+			this.showPopupContainer('uiPopupTaskCreationForm');
+			this.setInputVal('displayProjectNameTask',currentProject.name);
+			this.setInputVal('displayProjectIdTask',currentProject.id);			
+		}
+		else
+			alert('cannot get project');
+
 	};
 	TaskManager.prototype.doCreateTask = function(){
 		var data = {
@@ -171,17 +187,44 @@
 			'remainingTime':this.getInputVal('taskRemainTime'),		
 			'priority':this.getInputVal('taskPriorityComBoId'),		
 			'dueDate':this.getInputVal('taskDueDate'),		
-			'status':this.getInputVal('taskStatusComBoId')														
+			'status':this.getInputVal('taskStatusComBoId'),
+			'startedDate':this.getInputVal('taskStartdDate'),														
+			'resolvedDate':this.getInputVal('taskResolvedDate')													
 			};
 
 		this.ajaxCommonRequest(data,this.createTaskCallBack);
 
 	};
 	TaskManager.prototype.createTaskCallBack = function(data,parent){
-		alert(data);
-	}
+		if(data){
+			var currentProject = parent.getProjectSelected();
+			if(currentProject !== false)
+					parent.getTasksByProject(currentProject.id);			
+		}
+		else
+			alert('something is wrong');
+
+	};
+	TaskManager.prototype.cloneTemplateTask = function(tasks){
+  
+
+	};
 	TaskManager.prototype.doEditTask = function(){
 
+	};
+	TaskManager.prototype.getTasksByProject = function(projectId){
+		if(projectId == null || projectId === undefined){
+			projectId =  this.getProjectSelected().id;
+
+		}
+		var data = {
+			'action':'getTaskOfProject',
+			'projectId':projectId
+		};				
+		this.ajaxCommonRequest(data,this.getTasksByProjectCallBack);
+	};
+	TaskManager.prototype.getTasksByProjectCallBack = function(tasks,parent){
+		parent.showTasks(tasks,parent);
 	};
 	TaskManager.prototype.getTaskCreationFormData = function(){
 
@@ -189,21 +232,48 @@
 	TaskManager.prototype.getTasksByType = function(type){
 
 	};
-	TaskManager.prototype.showTasks = function(){
+	TaskManager.prototype.showTasks = function(tasks,parent){
+  			
+		var taskContainerDOM = gj("#taskListContainerId");
+		var tasksHTML = '<tr><td colspan="7">no task found</td></tr>';
+		if(tasks.length > 0){
+			tasksHTML = '';	
+
+			gj.each(tasks,function(key,val){
+				try{
+					var row = '<tr>';
+					var date = new Date(parseInt(val.dueDate.time));
+					row +='<td><a href="#" onclick="TaskManager.showTaskDetail(\''+val.id+'\')">'+val.name+'</a></td>';
+					row +='<td class="center">'+val.priority+'</i></td>';
+					row +='<td>'+val.status+'</td>';
+					row +='<td>'+val.assigneeId+'</td>';
+					row +='<td>'+date.getDay()+'-'+date.getMonth()+'-'+date.getYear()+'</td>';
+					row +='<td>'+val.creatorId+'</td>';
+					row +='<td class="center">';
+					row +='<a onclick="alert(\''+val.id+'\');" data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon">';
+					row +='<i class="uiIconEdit"></i></a>';
+					row +='<a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon">';
+					row +='<i class="uiIconDelete"></i></a>'
+					row +='</td>';	
+					row +='</tr>';	
+					tasksHTML +=row;
+				}catch(e){}
+			});
+		}
+		taskContainerDOM.html(tasksHTML);
+	
+	};
+	TaskManager.prototype.showTaskDetail = function(taskId){
+		var currentProject = this.getProjectSelected();
+		if(currentProject !== false){
+			var data = {'action':'getTask','pid':currentProject.id,'tid':taskId};			
+			this.ajaxCommonRequest(data,this.showTaskDetailCallBack);
+		}
 
 	};
-	TaskManager.prototype.showTaskDetail = function(){
-
-	};
-	TaskManager.prototype.putTask2Tmp = function(task){
-
-	};
-
-
-
-
-
-
+	TaskManager.prototype.showTaskDetailCallBack = function(data,parent){
+		
+	}
 	window.TaskManager = new TaskManager();
 	return window.TaskManager;
 })(gj);

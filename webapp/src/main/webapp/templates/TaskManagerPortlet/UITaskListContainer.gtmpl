@@ -27,7 +27,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
       <th class="center action" >Action</th>
     </tr>
   </thead>
-  <tbody> 
+  <tbody id="taskListContainerId"> 
     <tr>
       <td ><a href="">Invited new employees</a></td>
       <td class="center " >Low</i></td> 

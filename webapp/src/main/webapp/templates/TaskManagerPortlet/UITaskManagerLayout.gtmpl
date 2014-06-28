@@ -29,9 +29,71 @@ jsManager.require("SHARED/teamctaskmanager");
   }
 %>
 
-<div class="LightBoxContainer">
-    <div class="LightBoxContent">
+	<div class="LightBoxContainer">
+	    <div class="LightBoxContent">
 
-    </div>
-</div>    
+	    </div>
+	</div>    
+
+	<!--Begin detail task page-->
+	<div  style="display:none;" id="uiPopupTaskDetail">
+		<div class="uiDetailTask">
+			<div class="back-to-list">
+				<a href="" class="btn btn-primary"> &#8592; Back to list</a>
+			</div>
+			<div class="alert invite-box ">
+				<div class="title">Task name and description</div>
+				<div class="invite-content">				
+					<h5>Invite new employees</h5>				
+					<p>Invited new employees to join the intranet portal</p>
+					<p><strong>Checklist</strong></p>
+					<p class="add-tags"><a href="" class="add">add</a></p>
+				</div>
+			</div>
+			
+			<div class="uiGrayLightBox clearfix ">				
+				<p>This task is in group(project): <a href="" class="add">add</a></p>
+			</div>
+			<div class="task-detail-bar">
+				<a class="btn btn-primary"><i class="uiIconArrowRight uiIconLightGray"></i> Start excution</a>
+				<a class="btn btn-primary"><i class="uiIconStop  uiIconLightGray"></i> Finished</a>
+				    <div class="btn-group">
+					<button class="btn"><i class="uiIconViewList uiIconLightGray"></i></button>
+					<button class="btn dropdown-toggle" data-toggle="dropdown">
+					<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+					<!-- dropdown menu links -->
+					</ul>
+					</div>
+				<a class="btn "><i class="uiIconGroup  uiIconLightGray"></i> Delegate </a>
+				<a class="btn "><i class="uiIconEdit uiIconLightGray"></i> Edit</a>
+				<a class="btn "><i class="uiIconClock  uiIconLightGray"></i> postpone</a>
+				<a class="btn "><i class="uiIconDelete uiIconLightGray"></i> Delete</a>
+			</div>
+			<div class="task-detail-tab">
+				<div class="uiTabNormal uiTabInPage">
+					<ul class="nav nav-tabs">
+					  <li class="active"><a href="" data-target="#Comment-tab" data-toggle="tab"> Comment(0)</a></li>
+					  <li ><a href="#" data-target="#Change-Log-tab" data-toggle="tab">Change Log (3)</a></li>
+					  <li><a href="#" data-target="#Time-Spent-tab" data-toggle="tab">Time Spent (1d)</a></li>
+					</ul>
+					<div id="" class="tab-content">
+						<div class="tab-pane fade in active " id="Comment-tab">
+							<div class="uiBox">
+								<div class="uiContentBox">
+								<p><a class="">Add a comment</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade " id="Change-Log-tab">Change Log</div>
+						<div class="tab-pane fade " id="Time-Spent-tab">Time Spent</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--End detail task page-->
+
+
 </div>

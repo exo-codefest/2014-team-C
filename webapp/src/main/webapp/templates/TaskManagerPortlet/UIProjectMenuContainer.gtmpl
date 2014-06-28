@@ -10,7 +10,7 @@
 
   <div class="uiGrayLightBox clearfix uiTaskSearch">
     <div class="pull-left">
-      <select id="projectComBoId">
+      <select id="projectComBoId" onchange="TaskManager.getTasksByProject();">
       <option>project 01</option>
       <option>project 01</option>
       </select>
