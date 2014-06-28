@@ -228,3 +228,6 @@ tr, th {
 DIV.scroll {  PADDING-RIGHT: 0px;  PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; OVERFLOW: hidden;WIDTH: 420px; PADDING-TOP: 0px;  BACKGROUND-COLOR: #ffffff }
 
 DIV.scroll2 { position:relative; PADDING-RIGHT: 0px; overflow:auto ;overflow-x:scroll;overflow-y:hidden; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; WIDTH: 540px; PADDING-TOP: 0px; BACKGROUND-COLOR: #ffffff }
+.detail-task td {
+    padding: 5px 10px;
+}
