@@ -26,9 +26,11 @@ jsManager.require("SHARED/portalControl", "portalControl");
                 <div class="resizable">
                   <div class="form-horizontal">
                     <div class="control-group">
-                      <label class="control-label" for="displayProjectName">Project Name:</label>
+                      <label class="control-label" for="displayProjectNameTask">Project Name:</label>
                       <div class="controls">
-                        <input type="text" readonly name="displayProjectName" id="displayProjectName"></div>
+                        <input type="text" readonly name="displayProjectNameTask" id="displayProjectNameTask">
+                        <input type="hidden" name="displayProjectIdTask" id="displayProjectIdTask">                          
+                        </div>
                     </div>
                     <div class="control-group">
                       <label class="control-label" for="displayTaskName">Name:</label>
@@ -79,7 +81,12 @@ jsManager.require("SHARED/portalControl", "portalControl");
                     <div class="control-group">
                       <label class="control-label" for="taskStatus">Status:</label>
                       <div class="controls">
-                        <input type="text" name="taskStatus" id="taskStatus" placeholder="Status"> *</div>
+                          <select id="taskStatusComBoId">
+                            <option value="TODO">TODO</option>
+                            <option value="IN PROGRESS">IN PROGRESS</option>
+                            <option value="DONE">DONE</option>                            
+                          </select>
+                      </div>
                     </div>
                     <div class="control-group">
                       <label class="control-label" for="taskStartdDate">Start Date:</label>
@@ -165,7 +172,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
   <span>Show tasks</span>&nbsp;&nbsp;
   <select>
     <option selected="">All</option>
-    <option>To do</option>	
+    <option>To do</option>  
     <option>In progress</option>
     <option>Done</option>
   </select>
