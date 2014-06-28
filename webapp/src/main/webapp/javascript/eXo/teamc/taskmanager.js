@@ -18,6 +18,8 @@
 			restURL +='createTask';
 		}else if(action == 'getTaskOfProject'){
 			restURL +='getTaskOfProject';
+		}else if(action == 'getTask'){
+			restURL +='getTask';
 		}
 		return restURL;
 	}
@@ -232,15 +234,20 @@
 	TaskManager.prototype.getTasksByType = function(type){
 
 	};
-	TaskManager.prototype.showTasks = function(tasks,parent){
-  			
+	TaskManager.prototype.showTasks = function(tasks,parent,view){
+  		
+  		var hasTask = false;	
 		var taskContainerDOM = gj("#taskListContainerId");
 		var tasksHTML = '<tr><td colspan="7">no task found</td></tr>';
+		var tasksTodo = '';
+		var tasksIP = '';
+		var tasksDone = '';
 		if(tasks.length > 0){
 			tasksHTML = '';	
 
 			gj.each(tasks,function(key,val){
 				try{
+					hasTask = true;
 					var row = '<tr>';
 					var date = new Date(parseInt(val.dueDate.time));
 					row +='<td><a href="#" onclick="TaskManager.showTaskDetail(\''+val.id+'\')">'+val.name+'</a></td>';
@@ -256,10 +263,30 @@
 					row +='<i class="uiIconDelete"></i></a>'
 					row +='</td>';	
 					row +='</tr>';	
-					tasksHTML +=row;
+					tasksHTML +=row;  
+
+					var rowView1 ='<div class="task-list draggable priority-'+val.priority.toLowerCase()+'">';
+						rowView1 +='<div class="task-name" data-placement="bottom" rel="tooltip" title="" data-original-title="task1">';
+						rowView1 +=val.name+'</div>';
+						rowView1 +='<a class="edit-task">';
+          				rowView1 +='<i class="uiIconEdit uiIconLightGray"></i>';
+        				rowView1 +='</a>';
+      					rowView1 +='</div>';
+					if(val.status == 'TODO'){
+						tasksTodo +=rowView1;
+					}else if(val.status == 'IN PROGRESS'){
+						tasksIP +=rowView1;
+					}else{
+						tasksDone +=rowView1;
+					}
 				}catch(e){}
 			});
 		}
+	
+		gj("#taskTodoContainerId").html(tasksTodo);
+		gj("#taskIPContainerId").html(tasksIP);
+		gj("#taskDoneContainerId").html(tasksDone);
+
 		taskContainerDOM.html(tasksHTML);
 	
 	};
@@ -267,9 +294,9 @@
 		var currentProject = this.getProjectSelected();
 		if(currentProject !== false){
 			var data = {'action':'getTask','pid':currentProject.id,'tid':taskId};			
-			this.ajaxCommonRequest(data,this.showTaskDetailCallBack);
+//			this.ajaxCommonRequest(data,this.showTaskDetailCallBack);
 		}
-
+		this.showPopupContainer('uiPopupTaskDetail');
 	};
 	TaskManager.prototype.showTaskDetailCallBack = function(data,parent){
 		

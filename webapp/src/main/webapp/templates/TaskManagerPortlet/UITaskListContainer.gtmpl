@@ -28,90 +28,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
     </tr>
   </thead>
   <tbody id="taskListContainerId"> 
-    <tr>
-      <td ><a href="">Invited new employees</a></td>
-      <td class="center " >Low</i></td> 
-      <td >Open</td>  
-      <td >root</td>  
-      <td >12-12-2014</td>
-      <td >root</td>          
-      <td class="center">            
-        <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
-        <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <td ><a href="">Invited new employees</a></td>
-      <td class="center">High</i></td>  
-      <td >Open</td>  
-      <td >root</td>  
-      <td >12-12-2014</td>
-      <td >John</td>          
-      <td class="center">            
-        <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
-        <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <td ><a href="">Invited new employees</a></td>
-      <td class="center">High</i></td>  
-      <td >Open</td>  
-      <td >root</td>  
-      <td >12-12-2014</td>
-      <td >John</td>          
-      <td class="center">            
-        <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
-        <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <td ><a href="">Invited new employees</a></td>
-      <td class="center">High</i></td>  
-      <td >Open</td>  
-      <td >root</td>  
-      <td >12-12-2014</td>
-      <td >John</td>          
-      <td class="center">            
-        <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
-        <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <td ><a href="">Invited new employees</a></td>
-      <td class="center">High</i></td>  
-      <td >Open</td>  
-      <td >root</td>  
-      <td >12-12-2014</td>
-      <td >John</td>          
-      <td class="center">            
-        <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
-        <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <td ><a href="">Invited new employees</a></td>
-      <td class="center">High</i></td>  
-      <td >Open</td>  
-      <td >root</td>  
-      <td >12-12-2014</td>
-      <td >John</td>          
-      <td class="center">            
-        <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
-        <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <td ><a href="">Invited new employees</a></td>
-      <td class="center">High</i></td>  
-      <td >Open</td>  
-      <td >root</td>  
-      <td >12-12-2014</td>
-      <td >John</td>          
-      <td class="center">            
-        <a data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon"><i class="uiIconEdit"></i></a>
-        <a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon"><i class="uiIconDelete"></i></a>
-      </td>
-    </tr>
+
     <tr>
       <td ><a href="">Invited new employees</a></td>
       <td class="center">High</i></td>  
@@ -208,7 +125,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
     <h5 class="title clearfix">
     
     TODO</h5>
-    <div class="uiContentBox connectedSortable">
+    <div class="uiContentBox connectedSortable" id="taskTodoContainerId">
       <div class="task-list draggable priority-heigh">
         <div class="task-name" data-placement="bottom" rel="tooltip" title="task1">Task1</div>
         <a class="edit-task">
@@ -229,13 +146,13 @@ jsManager.require("SHARED/portalControl", "portalControl");
       </div>  
     </div>
     <div class="bottom">
-      <button class="btn btn-primary">Add a card</button>
+      <button class="btn btn-primary" onclick="TaskManager.showTaskCreationForm();">Add a card</button>
     </div>
   </div>
-  <div  class="ui-widget-header task-box">
+  <div  class="ui-widget-content task-box">
     <h5 class="title clearfix">
     IN PROGRESS</h5>
-    <div class="uiContentBox connectedSortable">
+    <div class="uiContentBox connectedSortable" id="taskIPContainerId">
       <div class="task-list draggable priority-low">
         <div class="task-name" data-placement="bottom" rel="tooltip" title="task1">Task1</div>
         <a class="edit-task">
@@ -245,13 +162,13 @@ jsManager.require("SHARED/portalControl", "portalControl");
       
     </div>
     <div class="bottom">
-      <button class="btn btn-primary">Add a card</button>
+      <button class="btn btn-primary" onclick="TaskManager.showTaskCreationForm();">Add a card</button>
     </div>
   </div>
-  <div class="ui-widget-header task-box">
+  <div class="ui-widget-content task-box">
     <h5 class="title clearfix">
     DONE</h5>
-    <div class="uiContentBox connectedSortable">
+    <div class="uiContentBox connectedSortable" id="taskDoneContainerId">
       <div class="task-list draggable priority-low">
         <div class="task-name" data-placement="bottom" rel="tooltip" title="task1">Task1</div>
         <a class="edit-task">
@@ -261,7 +178,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
       
     </div>
     <div class="bottom">
-      <button class="btn btn-primary">Add a card</button>
+      <button class="btn btn-primary" onclick="TaskManager.showTaskCreationForm();">Add a card</button>
     </div>
   </div>
 </div>

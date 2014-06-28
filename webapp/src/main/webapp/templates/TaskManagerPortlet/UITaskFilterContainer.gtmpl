@@ -137,7 +137,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
                 </div>                
               </form>
               <div class="uiAction uiActionBorder">         
-                <a class="btn" href="#" onclick="TaskManager.doCreateTeask();" type="button">Create</a>              
+                <a class="btn" href="#" onclick="TaskManager.doCreateTask();" type="button">Create</a>              
                 <a class="btn BtnClose" href="#" type="button">Cancel</a>              
               </div>
             </div>            
