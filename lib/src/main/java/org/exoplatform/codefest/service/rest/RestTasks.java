@@ -34,6 +34,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.RuntimeDelegate;
 
 import org.exoplatform.codefest.service.TaskManagementService;
@@ -84,9 +85,24 @@ public class RestTasks implements ResourceContainer {
   
   @GET
   @Path("/getAllProject/")
-  public Response getAllProject() throws Exception{
+  @RolesAllowed("users")
+  public Response getAllProject(@Context SecurityContext sc,
+                                @Context UriInfo uriInfo) throws Exception{
 	  List<ProjectBean> projects = _managementService.getAllProject();
 	  return Response.ok(projects, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+  }
+  
+  @GET
+  @Path("/getTaskOfProject/")
+  @RolesAllowed("users")
+  public Response getTaskOfProject(@Context SecurityContext sc,
+                                   @Context UriInfo uriInfo,
+                                   @QueryParam("projectId") String projectId) throws Exception{
+    if(null==projectId || projectId.trim().length()==0)
+      return Response.status(Status.BAD_REQUEST).build();
+    
+    List<TaskBean> tasks = _managementService.getTaskOfProject(projectId);
+    return Response.ok(tasks, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
   }
   
   @GET
@@ -147,9 +163,26 @@ public class RestTasks implements ResourceContainer {
   }
   
   @GET
+  @Path("/changeTaskStatus/")
+  @RolesAllowed("users")
+  public Response changeTaskStatus(@Context SecurityContext sc,
+                             @Context UriInfo uriInfo,
+                             @QueryParam("projectId") String projectId,
+                             @QueryParam("id") String id,
+                             @QueryParam("status") String status
+                            ) throws Exception{
+    
+    boolean result = _managementService.changeTaskStatus(projectId, id, status);
+    
+    return Response.ok(result+"", MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+  
+  }
+  @GET
   @Path("/updateTask/")
   @RolesAllowed("users")
-  public Response updateTask(@QueryParam("projectId") String projectId,
+  public Response updateTask(@Context SecurityContext sc,
+                             @Context UriInfo uriInfo,
+                         @QueryParam("projectId") String projectId,
                          @QueryParam("id") String id,
 		  				           @QueryParam("name") String name,
                          @QueryParam("description") String description,
@@ -161,34 +194,42 @@ public class RestTasks implements ResourceContainer {
                          @QueryParam("priority") String priority,
                          @QueryParam("dueDate") String dueDate,
                          @QueryParam("status") String status,
-                         @QueryParam("isDeleted") String isDeleted,
                          @QueryParam("startedDate") String startedDate,
-                         @QueryParam("resolvedDate") String resolvedDate,
-                         @QueryParam("creatorId") String creatorId,
-                         @QueryParam("modifiedDate") String modifiedDate
+                         @QueryParam("resolvedDate") String resolvedDate
 		  ) throws Exception{
-	  TaskBean task = new TaskBean();
-	  task.setId(id);
-	  task.setName(name);
-	  task.setDescription(description);
-	  task.setAssigneeId(assigneeId);
-	  task.setEstimateTime(estimateTime);
-	  task.setLoggedTime(loggedTime);
-	  task.setRemainingTime(remainingTime);
-	  task.setDueDate(DateUtil.stringToDate(dueDate, "dd-MM-yyyy"));
-	  task.setStatus(status);
-	  task.setPriority(priority);
-	  task.setCreatorId(creatorId);
-	  task.setStartedDate(DateUtil.stringToDate(startedDate, "dd-MM-yyyy"));
-	  task.setResolvedDate(DateUtil.stringToDate(resolvedDate, "dd-MM-yyyy"));
-	  
-	  TaskBean taskBean = _managementService.updateTask(projectId,task);
-
-	    if(null!=taskBean){
-	      return Response.ok("true", MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
-	    }else{
-	      return Response.ok("false", MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
-	    }
+    
+    //TODO
+    //check permission of logined user with project first
+    //only members and managers of project can update task
+    
+    TaskBean task = new TaskBean();
+    task.setName(name);
+    task.setId(id);
+    task.setDescription(description);
+    task.setAssigneeId(assigneeId);
+    task.setEstimateTime(estimateTime);
+    task.setLoggedTime(loggedTime);
+    task.setRemainingTime(remainingTime);
+    task.setDueDate(DateUtil.stringToDate(dueDate, "dd-MM-yyyy"));
+    task.setStatus(status);
+    task.setPriority(priority);
+    task.setStartedDate(DateUtil.stringToDate(startedDate, "dd-MM-yyyy"));
+    task.setResolvedDate(DateUtil.stringToDate(resolvedDate, "dd-MM-yyyy"));
+    
+    List<String> listCoWorkers = new ArrayList<String>() ;
+    String[] arrayCoWorkers = coWorkers.split(",");
+    for (String string : arrayCoWorkers) {
+      listCoWorkers.add(string);
+    }
+    task.setCoWorkers(listCoWorkers);
+    
+    TaskBean taskBean= _managementService.updateTask(projectId,task);
+    
+    if(null!=taskBean){
+      return Response.ok("true", MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+    }else{
+      return Response.ok("false", MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+    }
   }
   
   @GET

@@ -43,6 +43,7 @@ public interface TaskManagementService {
   
   public abstract TaskBean createTask(String projectId, TaskBean taskBean) throws Exception;
   public abstract TaskBean updateTask(String projectId, TaskBean taskBean) throws Exception;
+  public abstract boolean changeTaskStatus(String projectId, String taskId, String newStatus) throws Exception;
   public abstract boolean deleteTask(String projectId, String taskId) throws Exception;
   
   public abstract TaskLogBean createTaskLogBean(String projectId, String taskId, TaskLogBean takTaskLogBean) throws Exception;
