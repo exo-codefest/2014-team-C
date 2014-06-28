@@ -19,16 +19,21 @@
 
 package org.exoplatform.codefest.service.rest;
 
+import java.net.URI;
 import java.util.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.CacheControl;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
+import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.RuntimeDelegate;
 
 import org.exoplatform.codefest.service.TaskManagementService;
@@ -41,6 +46,7 @@ import org.exoplatform.services.rest.impl.RuntimeDelegateImpl;
 import org.exoplatform.services.rest.resource.ResourceContainer;
 
 @Path("taskmanagement/")
+@RolesAllowed("users")
 @Produces(MediaType.APPLICATION_JSON)
 public class RestTasks implements ResourceContainer {
   
@@ -85,7 +91,10 @@ public class RestTasks implements ResourceContainer {
   
   @GET
   @Path("/createTask/")
-  public void createTask(@QueryParam("projectId") String projectId,
+  @RolesAllowed("users")
+  public Response createTask(@Context SecurityContext sc,
+                         @Context UriInfo uriInfo,
+                         @QueryParam("projectId") String projectId,
                          @QueryParam("name") String name,
                          @QueryParam("description") String description,
                          @QueryParam("assigneeId") String assigneeId,
@@ -96,12 +105,15 @@ public class RestTasks implements ResourceContainer {
                          @QueryParam("priority") String priority,
                          @QueryParam("dueDate") String dueDate,
                          @QueryParam("status") String status,
-                         @QueryParam("isDeleted") String isDeleted,
                          @QueryParam("startedDate") String startedDate,
                          @QueryParam("resolvedDate") String resolvedDate,
-                         @QueryParam("creatorId") String creatorId,
                          @QueryParam("modifiedDate") String modifiedDate
 		  ) throws Exception{
+    
+    //TODO
+    //check permission of logined user with project first
+    //only members and managers of project can create task
+    
 	  TaskBean task = new TaskBean();
 	  task.setName(name);
 	  task.setDescription(description);
@@ -112,15 +124,31 @@ public class RestTasks implements ResourceContainer {
 	  task.setDueDate(DateUtil.stringToDate(dueDate, "dd-MM-yyyy"));
 	  task.setStatus(status);
 	  task.setPriority(priority);
-	  task.setCreatorId(creatorId);
+	  task.setCreatorId(getUserId(sc, uriInfo));
 	  task.setStartedDate(DateUtil.stringToDate(startedDate, "dd-MM-yyyy"));
 	  task.setResolvedDate(DateUtil.stringToDate(resolvedDate, "dd-MM-yyyy"));
 	  
-	  _managementService.createTask(projectId,task);
+	  List<String> listCoWorkers = new ArrayList<String>() ;
+    String[] arrayCoWorkers = coWorkers.split(",");
+    for (String string : arrayCoWorkers) {
+      listCoWorkers.add(string);
+    }
+    task.setCoWorkers(listCoWorkers);
+	    
+	  
+    TaskBean taskBean= _managementService.createTask(projectId,task);
+    
+	  if(null!=taskBean){
+      return Response.ok("true", MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+    }else{
+      return Response.ok("false", MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+    }
+	  
   }
   
   @GET
   @Path("/updateTask/")
+  @RolesAllowed("users")
   public Response updateTask(@QueryParam("projectId") String projectId,
                          @QueryParam("id") String id,
 		  				           @QueryParam("name") String name,
@@ -165,20 +193,38 @@ public class RestTasks implements ResourceContainer {
   
   @GET
   @Path("/createProject/")
-  public Response createProject(@QueryParam("id") String id,
-		  				           @QueryParam("name") String name,
-                         @QueryParam("description") String description,
-                         @QueryParam("membersId") String membersId,
-                         @QueryParam("managerId") String managerId,
-                         @QueryParam("ownerType") String ownerType,
-                         @QueryParam("ownerID") String ownerID) throws Exception{
+  @RolesAllowed("users")
+  public Response createProject(@Context SecurityContext sc,
+                                @Context UriInfo uriInfo,
+                                @QueryParam("id") String id,
+      		  				            @QueryParam("name") String name,
+                                @QueryParam("description") String description,
+                                @QueryParam("membersId") String membersId,
+                                @QueryParam("managerId") String managerId,
+                                @QueryParam("ownerType") String ownerType,
+                                @QueryParam("ownerID") String ownerID) throws Exception{
 	  ProjectBean project = new ProjectBean();
 	  project.setId(id);
 	  project.setName(name);
 	  project.setDescription(description);
 	  
 	  //project.setOwnerType(ownerType);
-	  project.setOwnerType(ProjectBean.OWNER_TYPE_USER);
+	  if(null==ownerType || ownerType.trim().length()==0 && 
+	      (ownerType.trim().equals(ProjectBean.OWNER_TYPE_USER)==false &&
+	      ownerType.trim().equals(ProjectBean.OWNER_TYPE_SPACE)==false &&
+	      ownerType.trim().equals(ProjectBean.OWNER_TYPE_GROUP)==false)){
+	    
+	      project.setOwnerType(ProjectBean.OWNER_TYPE_USER);
+	  }else{
+	      project.setOwnerType(ownerType.trim());
+	  }
+	  
+	  if(null==ownerID || ownerID.trim().length()==0){
+	    project.setOwnerType(ProjectBean.OWNER_TYPE_USER);
+	    project.setOwnerID(getUserId(sc, uriInfo));
+	  }else{
+	    project.setOwnerID(ownerID);
+	  }
 	  
 	  List<String> ListManagerId = new ArrayList<String>() ;
 	  String[] arrayManagerId = managerId.split(",");
@@ -201,6 +247,41 @@ public class RestTasks implements ResourceContainer {
 	  }else{
 	    return Response.ok("false", MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
 	  }
+  }
+  
+  /**
+   * Get Logined userid
+   * @param sc
+   * @param uriInfo
+   * @return
+   */
+  private String getUserId(SecurityContext sc, UriInfo uriInfo) {
+
+    try {
+      return sc.getUserPrincipal().getName();
+    } catch (NullPointerException e) {
+      return getViewerId(uriInfo);
+    } catch (Exception e) {
+      return null;
+    }
+  }
+  
+  private String getViewerId(UriInfo uriInfo) {
+    
+    URI uri = uriInfo.getRequestUri();
+    String requestString = uri.getQuery();
+    if (requestString == null) {
+      return null;
+    }
+    String[] queryParts = requestString.split("&");
+    
+    for (String queryPart : queryParts) {
+      if (queryPart.startsWith("opensocial_viewer_id")) {
+        return queryPart.substring(queryPart.indexOf("=") + 1, queryPart.length());
+      }
+    }
+    
+    return null;
   }
   
 }

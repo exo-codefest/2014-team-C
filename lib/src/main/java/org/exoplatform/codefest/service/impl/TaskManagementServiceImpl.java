@@ -204,11 +204,11 @@ public class TaskManagementServiceImpl implements TaskManagementService {
       if(projectNode.hasProperty("exo:totalTask")){
         totalTask = (projectNode.getProperty("exo:totalTask").getLong());
         totalTask += 1;
-        projectNode.setProperty("projectNode", totalTask);
+        projectNode.setProperty("exo:totalTask", totalTask);
       }
       
       //create task node
-      String taskId = projectId + totalTask;
+      String taskId = projectId + "-" + totalTask;
       Node taskNode = projectNode.addNode(taskId, TASK_NOTE_TYPE);
       
       Calendar cal = Calendar.getInstance();
@@ -217,7 +217,7 @@ public class TaskManagementServiceImpl implements TaskManagementService {
       taskNode.setProperty("exo:createdDate", cal);
       
       taskNode.setProperty("exo:creatorId",taskBean.getCreatorId());
-      taskNode.setProperty("exo:id",taskBean.getId());
+      taskNode.setProperty("exo:id",taskId);
       taskNode.setProperty("exo:name",taskBean.getName());
       taskNode.setProperty("exo:description",taskBean.getDescription());
       taskNode.setProperty("exo:assigneeId",taskBean.getAssigneeId());
