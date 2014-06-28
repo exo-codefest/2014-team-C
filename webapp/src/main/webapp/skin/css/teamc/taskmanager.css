@@ -192,6 +192,14 @@
 .UITaskManagementPortlet  .tab-content .uiBox {
 	box-shadow: none;
 }
+
+.invite-box {
+	background:#fcf8e3;
+	box-shadow: none;
+}
+.UITaskManagementPortlet  .uiDetailTask .uiGrayLightBox {
+	box-shadow: none;
+}
 /****** chart ***************/
 
 // These are the class/styles used by various objects in GanttChart.  However, Firefox has problems deciphering class style when DIVs are embedded in other DIVs.
