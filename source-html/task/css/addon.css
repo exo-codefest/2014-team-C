@@ -147,3 +147,29 @@
 .detail-task td {
     padding: 5px 10px;
 }
+
+.add {
+border-bottom: 1px dotted #2f5e92;
+}
+.invite-box .title {
+    border-bottom: 1px solid #edad00;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 -13px 15px;
+    padding: 4px 10px 10px;
+}
+
+.task-detail-bar {
+	margin: 0 0 15px;
+}
+
+.UITaskManagementPortlet  .tab-content .uiBox {
+	box-shadow: none;
+}
+.invite-box {
+	background:#fcf8e3;
+	box-shadow: none;
+}
+.UITaskManagementPortlet  .uiDetailTask .uiGrayLightBox {
+	box-shadow: none;
+}

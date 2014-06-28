@@ -41,8 +41,11 @@ import org.exoplatform.codefest.service.TaskManagementService;
 import org.exoplatform.codefest.service.bean.ProjectBean;
 import org.exoplatform.codefest.service.bean.TaskBean;
 import org.exoplatform.codefest.util.DateUtil;
+import org.exoplatform.commons.utils.ListAccess;
 import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
+import org.exoplatform.services.organization.OrganizationService;
+import org.exoplatform.services.organization.User;
 import org.exoplatform.services.rest.impl.RuntimeDelegateImpl;
 import org.exoplatform.services.rest.resource.ResourceContainer;
 
@@ -62,10 +65,11 @@ public class RestTasks implements ResourceContainer {
   }
   
   private TaskManagementService _managementService; 
+  private OrganizationService orgService_;
   
-  
-  public RestTasks(TaskManagementService  managementService){
+  public RestTasks(TaskManagementService  managementService, OrganizationService orgService){
     _managementService = managementService;
+    orgService_ = orgService;
   }
   
   @GET
@@ -103,6 +107,22 @@ public class RestTasks implements ResourceContainer {
     
     List<TaskBean> tasks = _managementService.getTaskOfProject(projectId);
     return Response.ok(tasks, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+  }
+  
+  @GET
+  @Path("/getTaskOfProjectToXML/")
+  @Produces(MediaType.APPLICATION_XML)
+  @RolesAllowed("users")
+  public Response getTaskOfProjectToXML(@Context SecurityContext sc,
+                                   @Context UriInfo uriInfo,
+                                   @QueryParam("projectId") String projectId) throws Exception{
+    if(null==projectId || projectId.trim().length()==0)
+      return Response.status(Status.BAD_REQUEST).build();
+    
+    //List<TaskBean> tasks = _managementService.getTaskOfProject(projectId);
+    String taskXML = "<user pin='123456'> <password>password</password><username>mkyong</username></user>";
+    
+    return Response.ok(taskXML, MediaType.APPLICATION_XML).cacheControl(cacheControl).build();
   }
   
   @GET
@@ -289,6 +309,26 @@ public class RestTasks implements ResourceContainer {
 	  }
   }
   
+  @GET
+  @Path("/getAllUser/")
+  @RolesAllowed("users")
+  public Response createProject(@Context SecurityContext sc,
+                                @Context UriInfo uriInfo)throws Exception{
+    
+    ListAccess<User> userList = orgService_.getUserHandler().findAllUsers();
+    List<User> list = new ArrayList<User>();
+    for(int i = 0; i < userList.getSize(); i++){
+      User user = null;
+      try{
+        user = userList.load(i, 1)[0];
+        list.add(user);
+      }
+      catch (Exception e) {
+        LOG.error(e);
+      }
+    }
+    return Response.ok(list, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+  }
   /**
    * Get Logined userid
    * @param sc
