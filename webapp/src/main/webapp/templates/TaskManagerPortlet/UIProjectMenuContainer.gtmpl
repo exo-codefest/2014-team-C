@@ -10,8 +10,7 @@
 
   <div class="uiGrayLightBox clearfix uiTaskSearch">
     <div class="pull-left">
-      <select >
-      <option selected>--select project--</option>
+      <select id="projectComBoId">
       <option>project 01</option>
       <option>project 01</option>
       </select>

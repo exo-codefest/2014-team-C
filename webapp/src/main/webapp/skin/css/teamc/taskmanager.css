@@ -1,11 +1,11 @@
 .UITaskManagementPortlet{
-	padding: 20px;
+  padding: 20px;
 }
 .UITaskManagementPortlet .uiGrayLightBox {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .UITaskManagementPortlet .badge  {
-	background: none repeat scroll 0 0 #e58686;
+  background: none repeat scroll 0 0 #e58686;
     border: 2px solid white;
     border-radius: 50%;
     color: #fff;
@@ -16,29 +16,29 @@
     width: 20px;
 }
 .UITaskManagementPortlet .actionBarMoreItem  .actionIcon{
-	position: relative;
+  position: relative;
 }
 .UITaskManagementPortlet .actionBarMoreItem .badge {
-	position: absolute;
-	right: -17px;
+  position: absolute;
+  right: -17px;
     top: -10px;
 }
 .UITaskManagementPortlet .uiGrayLightBox select,.UITaskManagementPortlet .rounded-corners-top select {
-	width: auto;
+  width: auto;
 }
 .UITaskManagementPortlet  .rounded-corners-top .pull-right {
-	margin-top:5px;
+  margin-top:5px;
 }
 .uiTaskSearch .btn {margin-left: 5px;}
 
 .view-project td{
-	padding: 10px;
+  padding: 10px;
 }
 
 /*--------------uiTaskActionBar--------------*/
 
 .uiTaskActionBar {
-	background: none repeat scroll 0 0 #fff;
+  background: none repeat scroll 0 0 #fff;
     padding: 4px 10px;
 }
 
@@ -49,11 +49,11 @@
     white-space: nowrap;
 }
 .uiTaskActionBar li  + li{
-	border-left: 1px solid #ddd;
+  border-left: 1px solid #ddd;
 }
 
 .uiTaskActionBar li a {
-	  color: #333;
+    color: #333;
 }
 
 .layout-chart {
@@ -70,76 +70,76 @@
     border-width: 1px 1px medium;
     line-height: 20px;
     text-align: left;
-	padding: 0 20px;
+  padding: 0 20px;
 }
 
 .task-box {
-	background:none;
-	border-radius: 5px;border: 1px solid #ccc;
-	box-shadow:none;
-	width: 31%;
+  background:none;
+  border-radius: 5px;border: 1px solid #ccc;
+  box-shadow:none;
+  width: 31%;
 }
 .task-box .uiContentBox {
-	
-	padding:10px;
-	
+  
+  padding:10px;
+  
 }
 
 .task-box .bottom ,.task-box .title{
-	padding: 10px;
+  padding: 10px;
 }
 .task-box .title {
-	/*background:#c4e7f4*/
+  /*background:#c4e7f4*/
 }
 .layout-grid .task-box {
-	float: left;
+  float: left;
 }
 .layout-grid .task-box  + .task-box {
-	margin-left: 3%;
+  margin-left: 3%;
 }
 .task-name {
-	font-weight: bold; 
-	font-weight: bold;
+  font-weight: bold; 
+  font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 80%;
 }
 .task-list {
-	padding: 10px;
-	border-radius: 5px;cursor:pointer;
-	margin-top:10px;
+  padding: 10px;
+  border-radius: 5px;cursor:pointer;
+  margin-top:10px;
 }
 .priority-heigh {
-	background: none repeat scroll 0 0 #ffcccc;
+  background: none repeat scroll 0 0 #ffcccc;
     border: 1px solid #fd0000;
 }
 .priority-low{
-	    background: none repeat scroll 0 0 #f4ffdc;
+      background: none repeat scroll 0 0 #f4ffdc;
     border: 1px solid #9acb31;
 }
 .priority-medium {
-	  background: none repeat scroll 0 0 #ffe6c1;
+    background: none repeat scroll 0 0 #ffe6c1;
     border: 1px solid #fc9800;
 }
 .task-box .title {margin:0}
 .uiBox .title {
-	box-shadow: none;
+  box-shadow: none;
 }
 
 .edit-task {
-	display: none;
-	position: absolute;
-	top: 8px;
-	right: 10px;
-	transition: all 0.5s ease;
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  transition: all 0.5s ease;
 }
 .task-list:hover  .edit-task {
-	display: block;
+  display: block;
 }
 
 .actionIcon.active {
-	background-color: #ececec;
+  background-color: #ececec;
     border: 1px solid #c7c7c7;
     border-radius: 3px;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.15) inset;
@@ -170,61 +170,3 @@
   z-index: 9998;
   display: block;
 }
-
-/****** chart ***************/
-
-// These are the class/styles used by various objects in GanttChart.  However, Firefox has problems deciphering class style when DIVs are embedded in other DIVs.
-
-// GanttChart makes heavy use of embedded DIVS, thus the style are often embedded directly in the objects html.  If this could be resolved with Firefox, it would
-
-// make alot of the code look simpleer/cleaner without all the embedded styles
-
-
-
-..gantt { font-family:tahoma, arial, verdana; font-size:14px;}
-
-tr, th {
-	height: 30px;
-}
-
-..gdatehead { BORDER-TOP: #efefef 1px solid;  BORDER-LEFT: #efefef 1px solid; HEIGHT: 18px }
-
-..ghead { BORDER-TOP: #efefef 1px solid;  BORDER-LEFT: #efefef 1px solid; WIDTH: 24px; HEIGHT: 20px }
-
-..gname { BORDER-TOP: #efefef 1px solid; WIDTH: 18px; HEIGHT: 18px }
-
-..ghead A { COLOR: #000000; TEXT-DECORATION: none }
-
-..gheadwkend A { COLOR: #000000; TEXT-DECORATION: none }
-
-..gheadwkend { BORDER-TOP: #efefef 1px solid; BORDER-LEFT: #efefef 1px solid; WIDTH: 24px; HEIGHT: 20px; background-color: #cfcfcf }
-
-..gfiller { BORDER-TOP: #efefef 1px solid; BORDER-LEFT: #efefef 1px solid; WIDTH: 18px; HEIGHT: 18px }
-
-..gfillerwkend { BORDER-LEFT: #efefef 1px solid; WIDTH: 18px; HEIGHT: 18px; BACKGROUND-COLOR: #cfcfcf }
-
-..gitem { BORDER-TOP: #cccccc 1px solid; WIDTH: 18px; HEIGHT: 18px }
-
-..gitemwkend { BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; WIDTH: 18px; HEIGHT: 18px }
-
-..gmilestone {	BORDER-TOP: #efefef 1px solid;  OVERFLOW: hidden; BORDER-LEFT: #efefef 1px solid; WIDTH: 18px; HEIGHT: 18px}
-
-..gmilestonewkend {	BORDER-TOP: #efefef 1px solid; BORDER-LEFT: #cccccc 1px solid; WIDTH: 18px; HEIGHT: 18px}
-
-..btn { BORDER-RIGHT: #ffffff; BORDER-TOP: #ffffff; FONT-WEIGHT: bold; BORDER-LEFT: #ffffff; WIDTH: 12px; COLOR: #cccccc; BORDER-BOTTOM: #ffffff; BACKGROUND-COLOR: #ffffff }
-
-..hrcomplete { BORDER-RIGHT: #000000 2px solid; PADDING-RIGHT: 0px; BORDER-TOP: #000000 2px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; BORDER-LEFT: #000000 2px solid; WIDTH: 20px; COLOR: #000000; PADDING-TOP: 0px; BORDER-BOTTOM: #000000 2px solid; HEIGHT: 4px }
-
-..hrhalfcomplete { BORDER-RIGHT: #000000 2px solid; BORDER-TOP: #000000 2px solid; BORDER-LEFT: #000000 2px solid; WIDTH: 9px; COLOR: #000000; BORDER-BOTTOM: #000000 2px solid; HEIGHT: 4px }
-
-..gweekend { font-family:tahoma, arial, verdana; background-color:#EEEEEE; text-align:center; }
-
-..gtask { font-family:tahoma, arial, verdana;background-color:#00FF00; text-align:center; }
-
-..gday { font-family:tahoma, arial, verdana;  text-align:center; }
-
-..gcomplete { background-color:black; height:5px; overflow: auto; margin-top:4px; }
-
-DIV.scroll {  PADDING-RIGHT: 0px;  PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; OVERFLOW: hidden;WIDTH: 420px; PADDING-TOP: 0px;  BACKGROUND-COLOR: #ffffff }
-
-DIV.scroll2 { position:relative; PADDING-RIGHT: 0px; overflow:auto ;overflow-x:scroll;overflow-y:hidden; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; WIDTH: 540px; PADDING-TOP: 0px; BACKGROUND-COLOR: #ffffff }

@@ -28,8 +28,8 @@ import org.exoplatform.webui.core.lifecycle.UIApplicationLifecycle;
  * Jun 26, 2014  
  */
 @ComponentConfig(
-  lifecycle = UIApplicationLifecycle.class
- // template = "app:/templates/TaskManagerPortlet/UITaskManagerPortlet.gtmpl"
+  lifecycle = UIApplicationLifecycle.class,
+    template = "app:/templates/TaskManagerPortlet/UITaskManagerPortlet.gtmpl"
   )
 public class UITaskManagerPortlet extends UIPortletApplication {
 

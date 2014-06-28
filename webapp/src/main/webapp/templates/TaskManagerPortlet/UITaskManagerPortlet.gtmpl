@@ -1,4 +1,4 @@
-<div class="UITaskManagerPortlet" id="$uicomponent.id">
+<div class="UITaskManagementPortlet" id="$uicomponent.id">
 <%
 def rcontext = _ctx.getRequestContext() ;
 def jsManager = rcontext.getJavascriptManager();
