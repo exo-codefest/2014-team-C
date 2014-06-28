@@ -19,10 +19,10 @@ jsManager.require("SHARED/portalControl", "portalControl");
   </button>
   <ul class="actionBarMoreItem pull-left">
     <li>
-      <a class="actionIcon active" href="javascript:void(0);">
+      <a class="actionIcon" href="javascript:void(0);">
         <i class="uiIconUser uiIconLightGray"></i>
         Assign to me
-         <span class="badge badge-important">6</span> 
+         <!—-span class="badge badge-important">6</span—> 
         
       </a>
     </li>
@@ -40,8 +40,8 @@ jsManager.require("SHARED/portalControl", "portalControl");
     </li>
     <li>
       <a class="actionIcon" href="javascript:void(0);">
-        <i class="uiIconDownload uiIconLightGray"></i>
-        All
+        <i class="uiIconSetting uiIconLightGray"></i>
+        Setting
       </a>
     </li>
     <li>

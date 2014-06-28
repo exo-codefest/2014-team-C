@@ -10,36 +10,31 @@ Do Thanh Tung | CWI
 Nguyen Thanh Trung | UI
 Vu Tuan Anh | CWI
 
-# How to build
-
-	git clone git@github.com:exo-codefest/2014-team-C.git
-	cd 2014-team-C
-	mvn clean install
 
 # Description 
-	
 
-# Goals 
+- Name: <b>Tasks and Projects Management Add-on</b>
 
-- Managing the personal tasks and group tasks  
+- The Tasks page helps view and manage the tasks an user is assigned to perform. Users can manage their tasks <b>across spaces, groups, projects</b>.
 
-# How to use (test)
+- Task progress and project status will be notified to <b>follower</b> and <b>published on Activity Stream</b> to others can follow what they are working on.
 
- - Choose projects
+# How to use
 
- - View task by 3 supported view: List, Icon, Grantt 
+- Open Tasks page on the left menu.
+
+- Choose an project (created a new one in case there is no project existed)
+
+- View task by 3 supported view: List, Icon, Grantt 
+
+* Icon View
 
 <img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/icon_view.png" />
 
+* List View
+
 <img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/list_view.png" />
 
+* Grantt View
+
 <img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/grantt_view.png" />
-
-
-# What we would like to include in this add-ons
-
-- Publish action as (start progress, create new task, update task...) on Activity Space that will hepl other can follow "What you're working on"
-
-- Manage projects: add members or groups into projects who will be assigned tasks or manager the projects
-
-- Allow create more status for task as "Re-Open", "Close"....
