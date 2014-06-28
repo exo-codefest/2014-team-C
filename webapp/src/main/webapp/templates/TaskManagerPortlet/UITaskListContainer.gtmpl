@@ -146,7 +146,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
       </div>  
     </div>
     <div class="bottom">
-      <button class="btn btn-primary" onclick="TaskManager.showTaskCreationForm();">Add a card</button>
+      <button class="btn btn-primary" onclick="TaskManager.showTaskCreationForm('TODO');">Add a card</button>
     </div>
   </div>
   <div  class="ui-widget-content task-box">
@@ -162,7 +162,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
       
     </div>
     <div class="bottom">
-      <button class="btn btn-primary" onclick="TaskManager.showTaskCreationForm();">Add a card</button>
+      <button class="btn btn-primary" onclick="TaskManager.showTaskCreationForm('IN PROGRESS');">Add a card</button>
     </div>
   </div>
   <div class="ui-widget-content task-box">
@@ -178,7 +178,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
       
     </div>
     <div class="bottom">
-      <button class="btn btn-primary" onclick="TaskManager.showTaskCreationForm();">Add a card</button>
+      <button class="btn btn-primary" onclick="TaskManager.showTaskCreationForm('DONE');">Add a card</button>
     </div>
   </div>
 </div>

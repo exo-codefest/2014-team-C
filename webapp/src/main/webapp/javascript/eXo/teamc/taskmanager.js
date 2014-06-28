@@ -165,13 +165,16 @@
 			'id':projectId
 		}
 	}
-	TaskManager.prototype.showTaskCreationForm = function(){
+	TaskManager.prototype.showTaskCreationForm = function(status){
 
 		var currentProject = this.getProjectSelected();
 		if(currentProject !== false){
 			this.showPopupContainer('uiPopupTaskCreationForm');
 			this.setInputVal('displayProjectNameTask',currentProject.name);
-			this.setInputVal('displayProjectIdTask',currentProject.id);			
+			this.setInputVal('displayProjectIdTask',currentProject.id);	
+			if(status != null && status !== undefined){
+				this.setInputVal('taskStatusComBoId',status);
+			}		
 		}
 		else
 			alert('cannot get project');
@@ -236,6 +239,7 @@
 	};
 	TaskManager.prototype.showTasks = function(tasks,parent,view){
   		
+  		var currentProject = this.getProjectSelected();
   		var hasTask = false;	
 		var taskContainerDOM = gj("#taskListContainerId");
 		var tasksHTML = '<tr><td colspan="7">no task found</td></tr>';
@@ -268,6 +272,8 @@
 					var rowView1 ='<div class="task-list draggable priority-'+val.priority.toLowerCase()+'">';
 						rowView1 +='<div class="task-name" data-placement="bottom" rel="tooltip" title="" data-original-title="task1">';
 						rowView1 +=val.name+'</div>';
+						rowView1 +='<input type="hidden" name="projectId" class="projectId" value="'+currentProject.id+'"/>';
+						rowView1 +='<input type="hidden" name="taskId" class="taskId" value="'+val.id+'"/>';
 						rowView1 +='<a class="edit-task">';
           				rowView1 +='<i class="uiIconEdit uiIconLightGray"></i>';
         				rowView1 +='</a>';
@@ -286,7 +292,10 @@
 		gj("#taskTodoContainerId").html(tasksTodo);
 		gj("#taskIPContainerId").html(tasksIP);
 		gj("#taskDoneContainerId").html(tasksDone);
-
+	
+		if(!hasTask){
+		//	gj(".TaskBoxView").html('No Task Found');
+		}
 		taskContainerDOM.html(tasksHTML);
 	
 	};
