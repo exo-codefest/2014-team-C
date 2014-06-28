@@ -18,6 +18,19 @@ jsManager.require("SHARED/teamctaskmanager");
 <script src="/team-c-addon-webapp/javascript/eXo/teamc/jquery/jquery-ui.js"></script>
 
 
+<script>
+  //DRAG and DROP for COLUMN view
+  jQuery(function() {
+    
+    jQuery( ".connectedSortable" ).sortable({
+      opacity: "0.5",
+      connectWith: ".connectedSortable",
+
+    }).disableSelection();
+
+  });
+
+</script>
 
 
 <%
