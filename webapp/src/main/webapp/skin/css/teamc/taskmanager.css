@@ -202,7 +202,7 @@
 	box-shadow: none;
 }
 
-.UITaskManagementPortlet .resizable {max-height: 300px;}
+.UITaskManagementPortlet .resizable {max-height: 400px;}
 
 .uiDetailTask {
     background: none repeat scroll 0 0 white;
