@@ -110,21 +110,25 @@ public class RestTasks implements ResourceContainer {
     return Response.ok(tasks, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
   }
   
+  
   @GET
-  @Path("/getTaskOfProjectToXML/")
-  @Produces(MediaType.APPLICATION_XML)
+  @Path("/getTaskOfProjectInRestBean/")
   @RolesAllowed("users")
-  public Response getTaskOfProjectToXML(@Context SecurityContext sc,
+  public Response getTaskOfProjectInRestBean(@Context SecurityContext sc,
                                    @Context UriInfo uriInfo,
                                    @QueryParam("projectId") String projectId) throws Exception{
     if(null==projectId || projectId.trim().length()==0)
       return Response.status(Status.BAD_REQUEST).build();
     
-    //List<TaskBean> tasks = _managementService.getTaskOfProject(projectId);
-    String taskXML = "<user pin='123456'> <password>password</password><username>mkyong</username></user>";
-    
-    return Response.ok(taskXML, MediaType.APPLICATION_XML).cacheControl(cacheControl).build();
+    List<TaskBean> tasks = _managementService.getTaskOfProject(projectId);
+    List<TaskRestBean> taskRestBeanList =  new ArrayList<TaskRestBean>();
+    for (TaskBean taskBean : tasks) {
+      TaskRestBean taskRest = new TaskRestBean(taskBean);
+      taskRestBeanList.add(taskRest);
+    }
+    return Response.ok(taskRestBeanList, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
   }
+ 
   
   @GET
   @Path("/createTask/")
@@ -157,6 +161,9 @@ public class RestTasks implements ResourceContainer {
 	  task.setEstimateTime(estimateTime);
 	  task.setLoggedTime(loggedTime);
 	  task.setRemainingTime(remainingTime);
+	  if(null==remainingTime || remainingTime.trim().length()==0){
+	    task.setRemainingTime(estimateTime);
+	  }
 	  task.setDueDate(DateUtil.stringToDate(dueDate, "dd-MM-yyyy"));
 	  task.setStatus(status);
 	  task.setPriority(priority);

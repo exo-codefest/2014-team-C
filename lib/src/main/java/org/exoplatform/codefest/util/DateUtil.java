@@ -26,9 +26,14 @@ import java.util.Date;
 public class DateUtil {
   
   public static String dateToString(Date date, String format){
-    SimpleDateFormat formatter = new SimpleDateFormat(format);
-    String s = formatter.format(date);
-    return s;
+    try {
+      SimpleDateFormat formatter = new SimpleDateFormat(format);
+      String s = formatter.format(date);
+      return s;
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
   }
   
   public static Date stringToDate(String date,String formatStr){
@@ -40,4 +45,31 @@ public class DateUtil {
       return null;
     } 
   }
+  
+  public static long parseMeasureTimeToMinisecond(String input) {
+    long result = 0;
+    String number = "";
+    for (int i = 0; i < input.length(); i++) {
+      char c = input.charAt(i);
+      if (Character.isDigit(c)) { 
+        number += c; 
+      } else if (Character.isLetter(c) && !number.isEmpty()) {
+        result += convert(Integer.parseInt(number), c);
+        number = "";
+      }
+    }
+    return result;
+ }
+
+ private static long convert(int value, char unit) {
+   switch(unit) {
+     case 'M' : return value * 1000*60*60*8*5*4;
+     case 'w' : return value * 1000*60*60*8*5;
+     case 'd' : return value * 1000*60*60*8;
+     case 'h' : return value * 1000*60*60;         
+     case 'm' : return value * 1000*60;
+     case 's' : return value * 1000;
+   }
+   return 0;
+ }
 }
