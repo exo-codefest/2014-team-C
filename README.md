@@ -76,3 +76,10 @@ Vu Tuan Anh | CWI
 
 <img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/task-detail.png" />
 
+## Note ##
+
+Due to Football World Cup, these buttons haven't implemented yet
+
+<img src="/source-html/task/waitingfeature.png" />
+
+
