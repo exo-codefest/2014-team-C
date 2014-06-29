@@ -42,6 +42,8 @@ jsManager.require("SHARED/portalControl", "portalControl");
             jQuery(".TaskBoxView").hide();
 
           }
+          //reload data;
+          TaskManager.getTasksByProject();
        }
     });
 
