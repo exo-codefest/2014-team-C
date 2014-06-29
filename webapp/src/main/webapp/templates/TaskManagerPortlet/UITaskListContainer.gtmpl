@@ -149,7 +149,6 @@ function pushDataForChart(task){
 
     var sD = new Date(task.startedDate); 
     var eD = new Date(task.dueDate);
-    console.log();
     tasksArray4Chart.push({
       'id':task.id,
       'name':task.name,

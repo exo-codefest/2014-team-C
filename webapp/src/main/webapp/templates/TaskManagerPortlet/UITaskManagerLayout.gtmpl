@@ -54,7 +54,12 @@ jsManager.require("SHARED/teamctaskmanager");
               type: "GET",
               url: url,
               dataType: 'json',
-              async: false
+              async: false,
+              success: function(data){
+              	if(data){
+	              	TaskManager.getTasksByProject();
+              	}
+              }
           });
 
        }

@@ -4,10 +4,12 @@
 		this.lightboxContainerDOM = gj(".LightBoxContainer"); 
 		this.lightboxContentDOM = gj(".LightBoxContent");
 		this.projectComboDOM = gj("#projectComBoId");
+/*
 		this.memberProjectComboDOM = gj(".LightBoxContent #displayMember");
 		this.ManagerProjectComboDOM = gj(".LightBoxContent #displayManager");
 		this.assigneTaskComboDOM = gj(".LightBoxContent #taskAssigne");
 		this.coworkerTaskComboDOM = gj(".LightBoxContent #taskCoWorker");
+		*/
 		this.isPopupProject = false;
 		this.isLoadingData4Popup = false;
 	};
@@ -40,7 +42,6 @@
   			url: url,
   			data: data,
   			success: function(data){
-  				callBackFct(data,_this);
   				if(!_this.isLoadingData4Popup){
 	  				// to do later
 	  				if(data){
@@ -50,7 +51,7 @@
 	  				}
 	  				_this.closePopupContainer();
   				}	
-
+  				callBackFct(data,_this);
   			}
 		});
 
@@ -96,6 +97,7 @@
 		gj("body").css("overflow", "hidden");
 
 		this.lightboxContainerDOM.show();
+		this.getUsers();
 	};
 	TaskManager.prototype.closePopupContainer = function(){
 		this.lightboxContentDOM.html('');
@@ -190,7 +192,6 @@
 				this.setInputVal('taskStatusComBoId',status);
 			}	
 			this.isPopupProject = false;
-			//this.getUsers();	
 		}
 		else
 			alert('cannot get project');
@@ -268,12 +269,11 @@
 				try{
 					hasTask = true;
 					var row = '<tr>';
-					var date = new Date(parseInt(val.dueDate.time));
 					row +='<td><a href="#" onclick="TaskManager.showTaskDetail(\''+val.id+'\')">'+val.name+'</a></td>';
 					row +='<td class="center">'+val.priority+'</i></td>';
 					row +='<td>'+val.status+'</td>';
 					row +='<td>'+val.assigneeId+'</td>';
-					row +='<td>'+date.getDay()+'-'+date.getMonth()+'-'+date.getYear()+'</td>';
+					row +='<td>'+val.dueDate+'</td>';
 					row +='<td>'+val.creatorId+'</td>';
 					row +='<td class="center">';
 					row +='<a onclick="alert(\''+val.id+'\');" data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon">';
@@ -309,7 +309,7 @@
 		gj("#taskDoneContainerId").html(tasksDone);
 
 		taskContainerDOM.html(tasksHTML);
-		showChart(tasks);
+		showChart();
 	};
 	TaskManager.prototype.showTaskDetail = function(taskId){
 		var currentProject = this.getProjectSelected();
@@ -336,21 +336,26 @@
 			if(_this == null || _this === undefined ){
 				_this = this;
 			}
+		_this.isLoadingData4Popup = false;
+		var memberProjectComboDOM = gj(".LightBoxContent #displayMember");
+		var ManagerProjectComboDOM = gj(".LightBoxContent #displayManager");
+		var assigneTaskComboDOM = gj(".LightBoxContent #taskAssigne");
+		var coworkerTaskComboDOM = gj(".LightBoxContent #taskCoWorker");
 			if(_this.isPopupProject){
-				gj(_this.memberProjectComboDOM).html('');
-				gj(_this.ManagerProjectComboDOM).html('');		
+				memberProjectComboDOM.html('');
+				ManagerProjectComboDOM.html('');		
 			}else{
-				_this.assigneTaskComboDOM.html('');
-				_this.coworkerTaskComboDOM.html('');				
+				assigneTaskComboDOM.html('');
+				coworkerTaskComboDOM.html('');				
 			}
 
 			gj.each(users,function(key,user){
 				if(_this.isPopupProject){
-					_this.memberProjectComboDOM.append('<option id="' +user.userName+ '">' + user.firstName+' '+ user.lastName + '</option>');
-					_this.ManagerProjectComboDOM.append('<option id="' +user.userName+ '">' + user.firstName+' '+ user.lastName + '</option>');
+					memberProjectComboDOM.append('<option id="' +user.userName+ '">' + user.firstName+' '+ user.lastName + '</option>');
+					ManagerProjectComboDOM.append('<option id="' +user.userName+ '">' + user.firstName+' '+ user.lastName + '</option>');
 				}else{
-					_this.assigneTaskComboDOM.append('<option id="' +user.userName+ '">' + user.firstName+' '+ user.lastName + '</option>');
-					_this.coworkerTaskComboDOM.append('<option id="' +user.userName+ '">' + user.firstName+' '+ user.lastName + '</option>');				
+					assigneTaskComboDOM.append('<option id="' +user.userName+ '">' + user.firstName+' '+ user.lastName + '</option>');
+					coworkerTaskComboDOM.append('<option id="' +user.userName+ '">' + user.firstName+' '+ user.lastName + '</option>');				
 				}
 			});
 		}

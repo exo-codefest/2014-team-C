@@ -43,7 +43,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
 
           }
           //reload data;
-          TaskManager.getTasksByProject();
+          //TaskManager.getTasksByProject();
        }
     });
 
@@ -83,12 +83,16 @@ jsManager.require("SHARED/portalControl", "portalControl");
                     <div class="control-group">
                       <label class="control-label" for="taskAssigne">Assigne:</label>
                       <div class="controls">
-                        <input type="text" name="taskAssigne" id="taskAssigne" placeholder="ex: root"> *</div>
+                         <select id="taskAssigne">
+                        </select>
+                      </div>
                     </div>
                     <div class="control-group">
                       <label class="control-label" for="taskCoWorker">Co-Worker:</label>
                       <div class="controls">
-                        <input type="text" name="taskCoWorker" id="taskCoWorker" placeholder="ex: root,mary,john"> *</div>
+                        <select id="taskCoWorker">
+                        </select> *
+                      </div>
                     </div>
                     <div class="control-group">
                       <label class="control-label" for="taskEstimateTime">Estimate Time:</label>

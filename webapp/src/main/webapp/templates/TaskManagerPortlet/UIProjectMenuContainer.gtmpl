@@ -46,12 +46,16 @@
                     <div class="control-group">
                       <label class="control-label" for="displayName">Member:</label>
                       <div class="controls">
-                        <input type="text" name="displayMember" id="displayMember" placeholder="Member"> *</div>
+                        <select id="displayMember">
+                        </select> *
+                      </div>
                     </div>
                     <div class="control-group">
                       <label class="control-label" for="displayName">Manager:</label>
                       <div class="controls">
-                        <input type="text" name="displayManager" id="displayManager" placeholder="Manager"> *</div>
+                        <select id="displayManager">
+                        </select> *
+                      </div>
                     </div>
                   </div>
                 </div>                
