@@ -76,6 +76,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
     
     TODO</h5>
     <div name="TODO" class="uiContentBox connectedSortable" id="taskTodoContainerId">
+    <!--
       <div class="task-list draggable priority-heigh">
         <div class="task-name" data-placement="bottom" rel="tooltip" title="task1">Task1</div>
         <a class="edit-task">
@@ -94,6 +95,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
           <i class="uiIconEdit uiIconLightGray"></i>
         </a>
       </div>  
+      -->
     </div>
     <div class="bottom">
       <button class="btn btn-primary" onclick="TaskManager.showTaskCreationForm('TODO');">Add a card</button>
@@ -103,13 +105,14 @@ jsManager.require("SHARED/portalControl", "portalControl");
     <h5 class="title clearfix">
     IN PROGRESS</h5>
     <div name="IN PROGRESS" class="uiContentBox connectedSortable" id="taskIPContainerId">
+     <!--
       <div class="task-list draggable priority-low">
         <div class="task-name" data-placement="bottom" rel="tooltip" title="task1">Task1</div>
         <a class="edit-task">
           <i class="uiIconEdit uiIconLightGray"></i>
         </a>
       </div>  
-      
+    -->
     </div>
     <div class="bottom">
       <button class="btn btn-primary" onclick="TaskManager.showTaskCreationForm('IN PROGRESS');">Add a card</button>
@@ -119,13 +122,14 @@ jsManager.require("SHARED/portalControl", "portalControl");
     <h5 class="title clearfix">
     DONE</h5>
     <div name="DONE" class="uiContentBox connectedSortable" id="taskDoneContainerId">
+    <!--
       <div class="task-list draggable priority-low">
         <div class="task-name" data-placement="bottom" rel="tooltip" title="task1">Task1</div>
         <a class="edit-task">
           <i class="uiIconEdit uiIconLightGray"></i>
         </a>
       </div>  
-      
+     --> 
     </div>
     <div class="bottom">
       <button class="btn btn-primary" onclick="TaskManager.showTaskCreationForm('DONE');">Add a card</button>
