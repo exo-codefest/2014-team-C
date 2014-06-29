@@ -21,12 +21,6 @@ Vu Tuan Anh | CWI
 
 # Features
 
-<style>
-.markdown-body img {
-	max-width: 15%;
-}
-</style>
-
 <table>
 <tr><td>No</td><td>Features Name</td><td>Current Status</td></tr>
 <tr><td>1</td><td>Create a new project</td><td style="text-align: center;"><img src="source-html/task/iconcheck.png" alt="implemented"/ style="width:50px;"></td></tr>
