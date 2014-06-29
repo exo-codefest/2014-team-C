@@ -203,6 +203,13 @@
 }
 
 .UITaskManagementPortlet .resizable {max-height: 300px;}
+
+.uiDetailTask {
+    background: none repeat scroll 0 0 white;
+    border-radius: 5px;
+    padding: 20px;
+}
+
 /****** chart ***************/
 
 
