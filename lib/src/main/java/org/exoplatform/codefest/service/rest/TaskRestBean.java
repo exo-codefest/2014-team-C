@@ -61,6 +61,7 @@ public class TaskRestBean {
     this.id=task.getId();
     this.name=task.getName();
     this.description = task.getDescription();
+    this.creatorId = task.getCreatorId();
     this.assigneeId = task.getAssigneeId();
     if(null!=task.getCoWorkers() && task.getCoWorkers().size()>0){
       this.coWorkers = new ArrayList<String>();
