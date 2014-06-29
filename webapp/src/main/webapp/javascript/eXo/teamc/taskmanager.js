@@ -4,6 +4,12 @@
 		this.lightboxContainerDOM = gj(".LightBoxContainer"); 
 		this.lightboxContentDOM = gj(".LightBoxContent");
 		this.projectComboDOM = gj("#projectComBoId");
+		this.memberProjectComboDOM = gj(".LightBoxContent #displayMember");
+		this.ManagerProjectComboDOM = gj(".LightBoxContent #displayManager");
+		this.assigneTaskComboDOM = gj(".LightBoxContent #taskAssigne");
+		this.coworkerTaskComboDOM = gj(".LightBoxContent #taskCoWorker");
+		this.isPopupProject = false;
+		this.isLoadingData4Popup = false;
 	};
 	TaskManager.prototype.init = function(){
 		this.initProjectLayout();
@@ -20,6 +26,8 @@
 			restURL +='getTaskOfProjectInRestBean';
 		}else if(action == 'getTask'){
 			restURL +='getTask';
+		}else if(action == 'getAllUser'){
+			restURL +='getAllUser';
 		}
 		return restURL;
 	}
@@ -32,14 +40,17 @@
   			url: url,
   			data: data,
   			success: function(data){
-  				// to do later
-  				if(data){
-	  				_this.lightboxContentDOM.html('ok');	  					
-  				}else{
-	  				_this.lightboxContentDOM.html('nok');	  						  					  					
-  				}
-  				callBackFct(data,_this);	
-  				_this.closePopupContainer();
+  				callBackFct(data,_this);
+  				if(!_this.isLoadingData4Popup){
+	  				// to do later
+	  				if(data){
+		  				_this.lightboxContentDOM.html('ok');	  					
+	  				}else{
+		  				_this.lightboxContentDOM.html('nok');	  						  					  					
+	  				}
+	  				_this.closePopupContainer();
+  				}	
+
   			}
 		});
 
@@ -84,7 +95,8 @@
 
 		gj("body").css("overflow", "hidden");
 
-		this.lightboxContainerDOM.show();		
+		this.lightboxContainerDOM.show();
+		this.getUsers();		
 	};
 	TaskManager.prototype.closePopupContainer = function(){
 		this.lightboxContentDOM.html('');
@@ -96,7 +108,10 @@
 			this.getProjects();
 	};
 	TaskManager.prototype.showProjectCreationForm = function(){
+		this.isPopupProject = true;
+		//this.getUsers();
 		this.showPopupContainer('uiPopupProjectCreationForm');
+
 	};
 	TaskManager.prototype.setInputVal = function(id,val){
 
@@ -139,7 +154,7 @@
 	}
 	TaskManager.prototype.showProjects = function (projects,parent){
 		var _this = parent;
-		if(_this != null || _this === undefined ){
+		if(_this == null || _this === undefined ){
 			_this = this;
 		}
 		_this.projectComboDOM.html('');
@@ -174,7 +189,9 @@
 			this.setInputVal('displayProjectIdTask',currentProject.id);	
 			if(status != null && status !== undefined){
 				this.setInputVal('taskStatusComBoId',status);
-			}		
+			}	
+			this.isPopupProject = false;
+			//this.getUsers();	
 		}
 		else
 			alert('cannot get project');
@@ -238,7 +255,7 @@
 
 	};
 	TaskManager.prototype.showTasks = function(tasks,parent,view){
-
+		tasksArray4Chart = new Array();
   		var currentProject = this.getProjectSelected();
   		var hasTask = false;	
 		var taskContainerDOM = gj("#taskListContainerId");
@@ -305,6 +322,40 @@
 	};
 	TaskManager.prototype.showTaskDetailCallBack = function(data,parent){
 		
+	}
+	TaskManager.prototype.getUsers = function(){			
+		var data = {
+			'action':'getAllUser'
+		};
+		this.isLoadingData4Popup = true;
+		this.ajaxCommonRequest(data,this.getUsersCallBack);
+	}
+	TaskManager.prototype.getUsersCallBack = function(users,parent){
+
+		if(users.length > 0){
+			var _this = parent;
+			if(_this == null || _this === undefined ){
+				_this = this;
+			}
+			if(_this.isPopupProject){
+				gj(_this.memberProjectComboDOM).html('');
+				gj(_this.ManagerProjectComboDOM).html('');		
+			}else{
+				_this.assigneTaskComboDOM.html('');
+				_this.coworkerTaskComboDOM.html('');				
+			}
+
+			gj.each(users,function(key,user){
+				if(_this.isPopupProject){
+					_this.memberProjectComboDOM.append('<option id="' +user.userName+ '">' + user.firstName+' '+ user.lastName + '</option>');
+					_this.ManagerProjectComboDOM.append('<option id="' +user.userName+ '">' + user.firstName+' '+ user.lastName + '</option>');
+				}else{
+					_this.assigneTaskComboDOM.append('<option id="' +user.userName+ '">' + user.firstName+' '+ user.lastName + '</option>');
+					_this.coworkerTaskComboDOM.append('<option id="' +user.userName+ '">' + user.firstName+' '+ user.lastName + '</option>');				
+				}
+			});
+		}
+
 	}
 	window.TaskManager = new TaskManager();
 	return window.TaskManager;

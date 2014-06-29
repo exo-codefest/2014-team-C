@@ -74,7 +74,6 @@ jsManager.require("SHARED/teamctaskmanager");
     }
   }
 %>
-
 	<div class="LightBoxContainer">
 	    <div class="LightBoxContent">
 

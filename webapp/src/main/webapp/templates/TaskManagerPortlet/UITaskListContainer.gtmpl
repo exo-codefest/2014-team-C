@@ -135,7 +135,10 @@ jsManager.require("SHARED/portalControl", "portalControl");
 </div>
 <!--End layout column-->
 <script>
-var g = null;
+var g = new JSGantt.GanttChart('g',document.getElementById('GanttChartDIV'), 'day');
+    g.setShowRes(1); // Show/Hide Responsible (0/1)
+    g.setShowDur(0); // Show/Hide Duration (0/1)
+    g.setCaptionType("none");  // Set to Show Caption (None,Caption,Resource,Duration,Complete)
 var tasksArray4Chart = new Array();
 function pushDataForChart(task){
   // Parameters             (pID, pName,                  pStart,      pEnd,        pColor,   pLink,          pMile, pRes,  pComp, pGroup, pParent, pOpen, pDepend, pCaption)
@@ -147,18 +150,20 @@ function pushDataForChart(task){
     color = 'ffcccc';          
   if(task.startedDate != null){
 
+    var sD = new Date(task.startedDate); 
+    var eD = new Date(task.dueDate);
+    console.log();
     tasksArray4Chart.push({
       'id':task.id,
       'name':task.name,
-      'start':task.startedDate,
-      'end':task.dueDate,
+      'start': sD.getMonth()+"/"+sD.getDate()+"/"+sD.getFullYear(),
+      'end': eD.getMonth()+"/"+eD.getDate()+"/"+eD.getFullYear(),
       'color':color,
       'link':'',
       'Mile':0,
       'assigneeId':task.assigneeId,
       'completePercent':task.percentCompleted
     });    
-
   }
 
 }
@@ -166,16 +171,12 @@ function showChart(){
 
   try{
 
-    g = new JSGantt.GanttChart('g',document.getElementById('GanttChartDIV'), 'day');
-    g.setShowRes(1); // Show/Hide Responsible (0/1)
-    g.setShowDur(0); // Show/Hide Duration (0/1)
-    g.setCaptionType("none");  // Set to Show Caption (None,Caption,Resource,Duration,Complete)
     var task;
     if(g){
       for (var i = 0; i < tasksArray4Chart.length; i++) {
         try{
           task = tasksArray4Chart[i];
-          g.AddTaskItem(new JSGantt.TaskItem(task.id,task.name,task.start,task.end,task.color,'',task.Mile,task.assigneeId,task.completePercent,));          
+          g.AddTaskItem(new JSGantt.TaskItem(task.id,task.name,task.start,task.end,task.color,'',task.Mile,task.assigneeId,task.completePercent)); 
         }catch(e){
 
         }  
