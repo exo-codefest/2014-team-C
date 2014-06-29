@@ -83,7 +83,8 @@ public class RestTasks implements ResourceContainer {
   @GET
   @Path("/getTask/{projectId}/{taskId}")
   @RolesAllowed("users")
-  public Response getTask(@PathParam("projectId") String projectId, @PathParam("taskId") String taskId) throws Exception{
+  public Response getTask(@Context SecurityContext sc,
+                          @Context UriInfo uriInfo,@PathParam("projectId") String projectId, @PathParam("taskId") String taskId) throws Exception{
 	  TaskBean task = _managementService.getTask(projectId, taskId);
 	  return Response.ok(task, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
   }
@@ -129,6 +130,16 @@ public class RestTasks implements ResourceContainer {
     return Response.ok(taskRestBeanList, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
   }
  
+  @GET
+  @Path("/getTaskInRestBean/")
+  @RolesAllowed("users")
+  public Response getTaskInRestBean(@Context SecurityContext sc,
+                          @Context UriInfo uriInfo,@QueryParam("projectId") String projectId, @QueryParam("taskId") String taskId) throws Exception{
+
+    TaskBean task = _managementService.getTask(projectId, taskId);
+    TaskRestBean taskRest = new TaskRestBean(task);
+    return Response.ok(taskRest, MediaType.APPLICATION_JSON).cacheControl(cacheControl).build();
+  }
   
   @GET
   @Path("/createTask/")

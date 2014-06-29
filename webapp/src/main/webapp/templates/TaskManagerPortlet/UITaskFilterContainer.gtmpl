@@ -188,7 +188,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
   </button>
   <ul class="actionBarMoreItem pull-left">
     <li>
-      <a class="actionIcon" href="javascript:void(0);">
+      <a class="actionIcon" href="javascript:void(0);" onclick="TaskManager.getTasksByType('assignToMe');">
         <i class="uiIconUser uiIconLightGray"></i>
         Assign to me
          <!—-span class="badge badge-important">6</span—> 
