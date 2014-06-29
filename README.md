@@ -30,6 +30,7 @@ Vu Tuan Anh | CWI
 <tr><td>4</td><td>View task detail info</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
 <tr><td>5</td><td>Tasks filter - filter by status, filter by me...</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
 <tr><td>5</td><td>Follower - who can follow the task status (assignee updates task will be sent to follower)</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
+<tr><td>5</td><td>Tasks Sharing - sharing task between spaces, groups</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
 <tr><td>5</td><td>Tasks Setting - personal configuration</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
 <tr><td>5</td><td>Task report - graphic report, rate of todo, in-progress, done... that will easy follow by manager (follower)</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
 <tr><td>6</td><td>Sharing task's activities on Activity Stream</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
@@ -76,7 +77,7 @@ Vu Tuan Anh | CWI
 
 <img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/task-detail.png" />
 
-## Note ##
+## Notes ##
 
 Due to Football World Cup, these buttons haven't implemented yet
 
