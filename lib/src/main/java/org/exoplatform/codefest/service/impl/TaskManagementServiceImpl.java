@@ -576,11 +576,11 @@ public class TaskManagementServiceImpl implements TaskManagementService {
       }
       
       if(node.hasProperty("exo:resolvedDate")){
-        task.setModifiedDate(node.getProperty("exo:resolvedDate").getDate().getTime());
+        task.setResolvedDate(node.getProperty("exo:resolvedDate").getDate().getTime());
       }
       
       if(node.hasProperty("exo:startedDate")){
-        task.setModifiedDate(node.getProperty("exo:startedDate").getDate().getTime());
+        task.setStartedDate(node.getProperty("exo:startedDate").getDate().getTime());
       }
       
       if(node.hasProperty("exo:creatorId")){
