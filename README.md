@@ -23,13 +23,15 @@ Vu Tuan Anh | CWI
 
 <table>
 <tr><td>No</td><td>Features Name</td><td>Current Status</td></tr>
-<tr><td>1</td><td>Create a new project</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
+<tr><td>1</td><td>Create a new project, manage task by projects</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
 <tr><td>2</td><td>Create a new task</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
 <tr><td>3</td><td>Support 3 views: list views, status view, grantt view</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
 <tr><td>4</td><td>Drag & drop to update task status in status view</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
 <tr><td>4</td><td>View task detail info</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
-<tr><td>5</td><td>Tasks Setting</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
-<tr><td>5</td><td>Task report</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
+<tr><td>5</td><td>Tasks filter - filter by status, filter by me...</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
+<tr><td>5</td><td>Follower - who can follow the task status (assignee updates task will be sent to follower)</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
+<tr><td>5</td><td>Tasks Setting - personal configuration</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
+<tr><td>5</td><td>Task report - graphic report, rate of todo, in-progress, done... that will easy follow by manager (follower)</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
 <tr><td>6</td><td>Sharing task's activities on Activity Stream</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
 </table>
 
@@ -64,9 +66,9 @@ Vu Tuan Anh | CWI
 
 #### Create a new task 
 
-- Click on "Add new Task" button on the right or directly in collumn in default view
+- Click on "Add new Task" button on the right or directly in collumn in default view. It will show a popup to create a new task.
 
-<img src="/source-html/task/createtask.png" />
+<img src="/source-html/task/createtask2.png" />
 
 #### View Task's detail
 
