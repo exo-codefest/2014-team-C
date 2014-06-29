@@ -550,7 +550,8 @@ public class TaskManagementServiceImpl implements TaskManagementService {
       while(iterator.hasNext()){
         Node node = iterator.nextNode();
         TaskBean task = fillNodeToTaskBean(node);
-        listTask.add(task);
+        if(!TaskBean.TASK_STATUS_REMOVED.equals(task.getStatus()) && !"".equals(task.getName()) )
+          listTask.add(task);
       }
       
     }catch (Exception e){

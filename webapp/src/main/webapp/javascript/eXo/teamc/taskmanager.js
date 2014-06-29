@@ -30,6 +30,8 @@
 			restURL +='getTask';
 		}else if(action == 'getAllUser'){
 			restURL +='getAllUser';
+		}else if(action == 'changeTaskStatus'){
+			restURL +='changeTaskStatus';
 		}
 		return restURL;
 	}
@@ -227,10 +229,6 @@
 			alert('something is wrong');
 
 	};
-	TaskManager.prototype.cloneTemplateTask = function(tasks){
-  
-
-	};
 	TaskManager.prototype.doEditTask = function(){
 
 	};
@@ -278,7 +276,7 @@
 					row +='<td class="center">';
 					row +='<a onclick="alert(\''+val.id+'\');" data-original-title="Edit" data-placement="bottom" rel="tooltip" class="actionIcon">';
 					row +='<i class="uiIconEdit"></i></a>';
-					row +='<a data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon">';
+					row +='<a onclick="TaskManager.removeTask(\''+val.id+'\');" data-original-title="Delete" data-placement="bottom" rel="tooltip"  class="actionIcon">';
 					row +='<i class="uiIconDelete"></i></a>'
 					row +='</td>';	
 					row +='</tr>';	
@@ -321,14 +319,32 @@
 	};
 	TaskManager.prototype.showTaskDetailCallBack = function(data,parent){
 		
-	}
+	};
+	TaskManager.prototype.removeTask = function(tid){
+		var currentProject = this.getProjectSelected();
+		if(currentProject != null){
+			var data = {
+				'action':'changeTaskStatus',
+				'projectId':currentProject.id,
+				'id':tid,
+				'status':'REMOVED'
+			};		
+			this.ajaxCommonRequest(data,this.removeTaskCallBack);	
+		}
+
+	};
+	TaskManager.prototype.removeTaskCallBack = function(data,parent){
+		if(data){
+			parent.getTasksByProject(null);
+		}
+	};
 	TaskManager.prototype.getUsers = function(){			
 		var data = {
 			'action':'getAllUser'
 		};
 		this.isLoadingData4Popup = true;
 		this.ajaxCommonRequest(data,this.getUsersCallBack);
-	}
+	};
 	TaskManager.prototype.getUsersCallBack = function(users,parent){
 
 		if(users.length > 0){

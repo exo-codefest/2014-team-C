@@ -27,7 +27,8 @@ public class TaskBean {
   public static final String TASK_PRIORITY_LOW="LOW";
   public static final String TASK_PRIORITY_MEDIUM="MEDIUM";
   public static final String TASK_PRIORITY_HIGH="HIGH";
-  
+  public static final String TASK_STATUS_REMOVED="REMOVED";
+
   private Date createdDate;
   private Date modifiedDate;
   private Date startedDate;
