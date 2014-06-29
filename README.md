@@ -21,6 +21,12 @@ Vu Tuan Anh | CWI
 
 # Features
 
+<table>
+<tr><td>No</td><td>Features Name</td><td>Current Status</td></tr>
+<tr><td>1</td><td>Create a new project</td><td><img src="source-html/task/IconCheck.png" alt="implemented"/></td></tr>
+<tr><td>1</td><td>Sharing task's activities on Activity Stream</td><td><img src="source-html/task/no-time.jpg" alt="not enough time"/></td></tr>
+</table>
+
 - View tasks by 3 supported views: List View, Icon View, Grantt View
 
 * Icon View
