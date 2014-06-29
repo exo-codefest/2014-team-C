@@ -10,6 +10,11 @@ Do Thanh Tung | CWI
 Nguyen Thanh Trung | UI
 Vu Tuan Anh | CWI
 
+# How to test
+
+- Access Acceptance of Group C: http://codefest-4.1-m2-codefest-team_c.acceptance5.exoplatform.org/portal/intranet/tasks
+- Login with : username: root , password: groupc 
+- Click on Tasks page on left menu.
 
 # Description 
 
