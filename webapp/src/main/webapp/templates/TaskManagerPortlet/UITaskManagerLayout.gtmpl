@@ -24,7 +24,7 @@ jsManager.require("SHARED/teamctaskmanager");
   .uiGrid.table td, .uiGrid.table th {
       border-left: 1px solid #CCCCCC;
       font-size: 13px;
-      padding: 8px 16px;
+      padding: 8px 10px;
       vertical-align: middle;
   }
 </style>
