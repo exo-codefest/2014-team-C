@@ -151,13 +151,11 @@ function pushDataForChart(task){
     color = 'ffcccc';          
   if(task.startedDate != null){
 
-    var sD = new Date(task.startedDate); 
-    var eD = new Date(task.dueDate);
     tasksArray4Chart.push({
       'id':task.id,
       'name':task.name,
-      'start': sD.getMonth()+"/"+sD.getDate()+"/"+sD.getFullYear(),
-      'end': eD.getMonth()+"/"+eD.getDate()+"/"+eD.getFullYear(),
+      'start': task.startedDate,
+      'end': task.dueDate,
       'color':color,
       'link':'',
       'Mile':0,
