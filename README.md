@@ -52,7 +52,7 @@ Vu Tuan Anh | CWI
 - In this view you can drag and drop task to update it's status
 - Click on "Add a card" button to add new task. If you create it in TODO column then it will be set as TODO...
 
-* List View
+#### List View
 
 - Click on Task to view it in detail
 
