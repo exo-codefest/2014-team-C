@@ -18,6 +18,18 @@ jsManager.require("SHARED/teamctaskmanager");
 <script src="/team-c-addon-webapp/javascript/eXo/teamc/jquery/jquery-ui.js"></script>
 
 
+
+<style>
+  /*Fix table padding in list view mode*/
+  .uiGrid.table td, .uiGrid.table th {
+      border-left: 1px solid #CCCCCC;
+      font-size: 13px;
+      padding: 8px 16px;
+      vertical-align: middle;
+  }
+</style>
+
+
 <script>
   //DRAG and DROP for COLUMN view
   jQuery(function() {
