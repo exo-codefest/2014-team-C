@@ -96,7 +96,6 @@
 		gj("body").css("overflow", "hidden");
 
 		this.lightboxContainerDOM.show();
-		this.getUsers();		
 	};
 	TaskManager.prototype.closePopupContainer = function(){
 		this.lightboxContentDOM.html('');

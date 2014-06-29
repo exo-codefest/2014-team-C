@@ -135,10 +135,7 @@ jsManager.require("SHARED/portalControl", "portalControl");
 </div>
 <!--End layout column-->
 <script>
-var g = new JSGantt.GanttChart('g',document.getElementById('GanttChartDIV'), 'day');
-    g.setShowRes(1); // Show/Hide Responsible (0/1)
-    g.setShowDur(0); // Show/Hide Duration (0/1)
-    g.setCaptionType("none");  // Set to Show Caption (None,Caption,Resource,Duration,Complete)
+var g = null;
 var tasksArray4Chart = new Array();
 function pushDataForChart(task){
   // Parameters             (pID, pName,                  pStart,      pEnd,        pColor,   pLink,          pMile, pRes,  pComp, pGroup, pParent, pOpen, pDepend, pCaption)
@@ -168,6 +165,10 @@ function pushDataForChart(task){
 
 }
 function showChart(){
+  g = new JSGantt.GanttChart('g',document.getElementById('GanttChartDIV'), 'day');
+  g.setShowRes(1); // Show/Hide Responsible (0/1)
+  g.setShowDur(0); // Show/Hide Duration (0/1)
+  g.setCaptionType("none");  // Set to Show Caption (None,Caption,Resource,Duration,Complete)
 
   try{
 
