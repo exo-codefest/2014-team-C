@@ -88,9 +88,6 @@ jsManager.require("SHARED/teamctaskmanager");
 	<!--Begin detail task page-->
 	<div  style="display:none;" id="uiPopupTaskDetail">
 		<div class="uiDetailTask">
-			<div class="back-to-list">
-				<a href="" class="btn btn-primary"> &#8592; Back to list</a>
-			</div>
 			<div class="alert invite-box ">
 				<div class="title">Task name and description</div>
 				<div class="invite-content">				
