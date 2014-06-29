@@ -17,7 +17,7 @@
 		}else if(action == 'createTask'){
 			restURL +='createTask';
 		}else if(action == 'getTaskOfProject'){
-			restURL +='getTaskOfProject';
+			restURL +='getTaskOfProjectInRestBean';
 		}else if(action == 'getTask'){
 			restURL +='getTask';
 		}
@@ -238,7 +238,7 @@
 
 	};
 	TaskManager.prototype.showTasks = function(tasks,parent,view){
-  		
+
   		var currentProject = this.getProjectSelected();
   		var hasTask = false;	
 		var taskContainerDOM = gj("#taskListContainerId");
@@ -248,7 +248,6 @@
 		var tasksDone = '';
 		if(tasks.length > 0){
 			tasksHTML = '';	
-
 			gj.each(tasks,function(key,val){
 				try{
 					hasTask = true;
@@ -285,19 +284,16 @@
 					}else{
 						tasksDone +=rowView1;
 					}
+					pushDataForChart(val);
 				}catch(e){}
 			});
 		}
-	
 		gj("#taskTodoContainerId").html(tasksTodo);
 		gj("#taskIPContainerId").html(tasksIP);
 		gj("#taskDoneContainerId").html(tasksDone);
-	
-		if(!hasTask){
-		//	gj(".TaskBoxView").html('No Task Found');
-		}
+
 		taskContainerDOM.html(tasksHTML);
-	
+		showChart(tasks);
 	};
 	TaskManager.prototype.showTaskDetail = function(taskId){
 		var currentProject = this.getProjectSelected();

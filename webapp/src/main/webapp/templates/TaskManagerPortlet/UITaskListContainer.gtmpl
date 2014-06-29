@@ -64,56 +64,6 @@ jsManager.require("SHARED/portalControl", "portalControl");
     <div class="uiContentBosx">
       <div style="position:relative" class="gantt" id="GanttChartDIV"></div>  
     </div>
-          <script>
-
-
-        // here's all the html code neccessary to display the chart object
-
-        // Future idea would be to allow XML file name to be passed in and chart tasks built from file.
-
-        var g = new JSGantt.GanttChart('g',document.getElementById('GanttChartDIV'), 'day');
-
-        g.setShowRes(1); // Show/Hide Responsible (0/1)
-        g.setShowDur(0); // Show/Hide Duration (0/1)
-        g.setShowComp(0); // Show/Hide % Complete(0/1)
-         g.setCaptionType("none");  // Set to Show Caption (None,Caption,Resource,Duration,Complete)
-
-
-        //var gr = new Graphics();
-
-        if( g ) {
-
-        // Parameters             (pID, pName,                  pStart,      pEnd,        pColor,   pLink,          pMile, pRes,  pComp, pGroup, pParent, pOpen, pDepend, pCaption)
-        
-        // You can also use the XML file parser JSGantt.parseXML('project.xml',g)
-
-        g.AddTaskItem(new JSGantt.TaskItem(11,  'Chart Object',         '7/20/2008', '7/20/2008', 'ff00ff', 'http://www.yahoo.com', 1, 'Shlomy',  100, 0, 1, 1));
-        g.AddTaskItem(new JSGantt.TaskItem(121, 'Constructor Proc',     '7/21/2008', '8/9/2008',  '00ffff', 'http://www.yahoo.com', 0, 'Brian T.', 60, 0, 12, 1));
-        g.AddTaskItem(new JSGantt.TaskItem(122, 'Task Variables',       '8/6/2008',  '8/11/2008', 'ff0000', 'http://help.com', 0, 'Brian',         60, 0, 12, 1,121));
-        g.AddTaskItem(new JSGantt.TaskItem(123, 'Task by Minute/Hour',       '8/6/2008',  '8/11/2008 12:00', 'ffff00', 'http://help.com', 0, 'Ilan',         60, 0, 12, 1,121));
-        g.AddTaskItem(new JSGantt.TaskItem(124, 'Task Functions',       '8/9/2008',  '8/29/2008', 'ff0000', 'http://help.com', 0, 'Anyone',   60, 0, 12, 1, 0, 'This is another caption'));
-        g.AddTaskItem(new JSGantt.TaskItem(2,   'Create HTML Shell',    '8/24/2008', '8/25/2008', 'ffff00', 'http://help.com', 0, 'Brian',    20, 0, 0, 1,122));
-        g.AddTaskItem(new JSGantt.TaskItem(31,  'Define Variables',     '7/25/2008', '8/17/2008', 'ff00ff', 'http://help.com', 0, 'Brian',    30, 0, 3, 1, '','Caption 1'));
-        g.AddTaskItem(new JSGantt.TaskItem(32,  'Calculate Chart Size', '8/15/2008', '8/24/2008', '00ff00', 'http://help.com', 0, 'Shlomy',   40, 0, 3, 1));
-        g.AddTaskItem(new JSGantt.TaskItem(332, 'Task Label Table',     '8/6/2008',  '8/11/2008', '0000ff', 'http://help.com', 0, 'Brian',    60, 0, 33, 1));
-        g.AddTaskItem(new JSGantt.TaskItem(333, 'Task Scrolling Grid',  '8/9/2008',  '8/20/2008', '0000ff', 'http://help.com', 0, 'Brian',    60, 0, 33, 1));
-        g.AddTaskItem(new JSGantt.TaskItem(341, 'Loop each Task',       '8/26/2008', '9/11/2008', 'ff0000', 'http://help.com', 0, 'Brian',    60, 0, 34, 1));
-        g.AddTaskItem(new JSGantt.TaskItem(342, 'Calculate Start/Stop', '9/12/2008', '10/18/2008', 'ff6666', 'http://help.com', 0, 'Brian',    60, 0, 34, 1));
-        g.AddTaskItem(new JSGantt.TaskItem(343, 'Draw Task Div',        '10/13/2008', '10/17/2008', 'ff0000', 'http://help.com', 0, 'Brian',    60, 0, 34, 1));
-        g.AddTaskItem(new JSGantt.TaskItem(344, 'Draw Completion Div',  '10/17/2008', '11/04/2008', 'ff0000', 'http://help.com', 0, 'Brian',    60, 0, 34, 1,"342,343"));
-        g.Draw(); 
-        g.DrawDependencies();
-
-        } else
-
-        {
-
-        alert("not defined");
-
-        }
-
-      </script>
-
   </div>
 </div>
 <!--End chart layout-->
@@ -184,5 +134,59 @@ jsManager.require("SHARED/portalControl", "portalControl");
 </div>
 </div>
 <!--End layout column-->
+<script>
+var g = null;
+var tasksArray4Chart = new Array();
+function pushDataForChart(task){
+  // Parameters             (pID, pName,                  pStart,      pEnd,        pColor,   pLink,          pMile, pRes,  pComp, pGroup, pParent, pOpen, pDepend, pCaption)
+  //       g.AddTaskItem(new JSGantt.TaskItem(11,  'Chart Object',         '7/20/2008', '7/20/2008', 'ff00ff', 'http://www.yahoo.com', 1, 'Shlomy',  100, 0, 1, 1));
+  var color = 'ffe6c1';
+  if(task.priority == 'LOW')
+    color = 'f4ffdc';
+  else if(task.priority == 'HIGH')
+    color = 'ffcccc';          
+  if(task.startedDate != null){
 
+    tasksArray4Chart.push({
+      'id':task.id,
+      'name':task.name,
+      'start':task.startedDate,
+      'end':task.dueDate,
+      'color':color,
+      'link':'',
+      'Mile':0,
+      'assigneeId':task.assigneeId,
+      'completePercent':task.percentCompleted
+    });    
+
+  }
+
+}
+function showChart(){
+
+  try{
+
+    g = new JSGantt.GanttChart('g',document.getElementById('GanttChartDIV'), 'day');
+    g.setShowRes(1); // Show/Hide Responsible (0/1)
+    g.setShowDur(0); // Show/Hide Duration (0/1)
+    g.setCaptionType("none");  // Set to Show Caption (None,Caption,Resource,Duration,Complete)
+    var task;
+    if(g){
+      for (var i = 0; i < tasksArray4Chart.length; i++) {
+        try{
+          task = tasksArray4Chart[i];
+          g.AddTaskItem(new JSGantt.TaskItem(task.id,task.name,task.start,task.end,task.color,'',task.Mile,task.assigneeId,task.completePercent,));          
+        }catch(e){
+
+        }  
+      }
+      g.Draw(); 
+      g.DrawDependencies();
+    }
+  }catch(e){
+        console.error(e);
+  }
+
+}
+</script>
 </div>
