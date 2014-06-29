@@ -33,11 +33,18 @@ Vu Tuan Anh | CWI
 <tr><td>6</td><td>Sharing task's activities on Activity Stream</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
 </table>
 
+
+# Usages:
+
+- Open Tasks page on the left menu.
+
+- Choose a project (create a new one in case there is no project existed)
+
 - View tasks by 3 supported views: List View, Icon View, Grantt View
 
 * Icon View
 
-<img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/icon_view.png" />
+<img src="source-html/task/iconview1.png" />
 
 * List View
 
@@ -52,10 +59,3 @@ Vu Tuan Anh | CWI
 
 <img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/task-detail.png" />
 
-# Usages:
-
-- Open Tasks page on the left menu.
-
-- Choose a project (create a new one in case there is no project existed)
-
-- 
