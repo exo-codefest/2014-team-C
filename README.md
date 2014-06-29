@@ -42,20 +42,29 @@ Vu Tuan Anh | CWI
 
 - View tasks by 3 supported views: List View, Icon View, Grantt View
 
-* Icon View
+* Default View
 
 <img src="source-html/task/iconview1.png" />
 
+- In this view you can drag and drop task to update it's status
+- Click on "Add a card" button to add new task. If you create it in TODO column then it will be set as TODO...
+
 * List View
 
-<img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/list_view.png" />
+- Click on Task to view it in detail
+
+<img src="/source-html/task/listview.png" />
+
 
 * Grantt View
 
 <img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/grantt_view.png" />
 
+- With this view you can view all task visually 
 
 * View Task's detail
+
+- In List View when you click on Task -> task detail will open in Popup
 
 <img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/task-detail.png" />
 
