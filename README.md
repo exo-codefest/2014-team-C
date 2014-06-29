@@ -27,14 +27,14 @@ Vu Tuan Anh | CWI
 <tr><td>2</td><td>Create a new task</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
 <tr><td>3</td><td>Support 3 views: list views, status view, grantt view</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
 <tr><td>4</td><td>Drag & drop to update task status in status view</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
-
+<tr><td>4</td><td>View task detail info</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
 <tr><td>5</td><td>Tasks Setting</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
 <tr><td>5</td><td>Task report</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
 <tr><td>6</td><td>Sharing task's activities on Activity Stream</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
 </table>
 
 
-# Usages:
+#### Usages:
 
 - Open Tasks page on the left menu.
 
@@ -42,7 +42,7 @@ Vu Tuan Anh | CWI
 
 - View tasks by 3 supported views: List View, Icon View, Grantt View
 
-* Default View
+#### Default View
 
 <img src="source-html/task/iconview1.png" />
 
@@ -56,7 +56,7 @@ Vu Tuan Anh | CWI
 <img src="/source-html/task/listview.png" />
 
 
-* Grantt View
+#### Grantt View
 
 <img src="https://raw.githubusercontent.com/exo-codefest/2014-team-C/master/source-html/task/grantt_view.png" />
 
