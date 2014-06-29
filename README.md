@@ -23,7 +23,7 @@ Vu Tuan Anh | CWI
 
 <table>
 <tr><td>No</td><td>Features Name</td><td>Current Status</td></tr>
-<tr><td>1</td><td>Create a new project</td><td style="text-align: center;"><img src="source-html/task/check.png" alt="implemented"/ style="width:50px;"></td></tr>
+<tr><td>1</td><td>Create a new project</td><td style="text-align: center;"><img src="source-html/task/good.png" alt="implemented"/ style="width:50px;"></td></tr>
 <tr><td>1</td><td>Sharing task's activities on Activity Stream</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
 </table>
 
