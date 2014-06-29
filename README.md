@@ -23,10 +23,10 @@ Vu Tuan Anh | CWI
 
 <table>
 <tr><td>No</td><td>Features Name</td><td>Current Status</td></tr>
-<tr><td>1</td><td>Create a new project</td><td style="text-align: center;"><img src="source-html/task/ok1.png" alt="implemented"/ style="width:50px;"></td></tr>
-<tr><td>2</td><td>Create a new task</td><td style="text-align: center;"><img src="source-html/task/ok1.png" alt="implemented"/ style="width:50px;"></td></tr>
-<tr><td>3</td><td>Support 3 views: list views, status view, grantt view</td><td style="text-align: center;"><img src="source-html/task/ok1.png" alt="implemented"/ style="width:50px;"></td></tr>
-<tr><td>4</td><td>Drag & drop to update task status in status view</td><td style="text-align: center;"><img src="source-html/task/ok1.png" alt="implemented"/ style="width:50px;"></td></tr>
+<tr><td>1</td><td>Create a new project</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
+<tr><td>2</td><td>Create a new task</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
+<tr><td>3</td><td>Support 3 views: list views, status view, grantt view</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
+<tr><td>4</td><td>Drag & drop to update task status in status view</td><td style="text-align: center;"><img src="source-html/task/ok2.png" alt="implemented"/ style="width:50px;"></td></tr>
 
 <tr><td>5</td><td>Tasks Setting</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
 <tr><td>5</td><td>Task report</td><td style="text-align: center;"><img src="source-html/task/notime.jpg" alt="not enough time" style="width:50px;"/></td></tr>
