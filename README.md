@@ -62,7 +62,13 @@ Vu Tuan Anh | CWI
 
 - With this view you can view all task visually 
 
-* View Task's detail
+#### Create a new task 
+
+- Click on "Add new Task" button on the right or directly in collumn in default view
+
+<img src="/source-html/task/createtask.png" />
+
+#### View Task's detail
 
 - In List View when you click on Task -> task detail will open in Popup
 
