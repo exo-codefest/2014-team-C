@@ -123,6 +123,9 @@
 		this.displayPopup = true;
 		this.getUsers();
 	};
+	TaskManager.prototype.setElementContent = function(className,content){
+		return gj('.LightBoxContent .'+className).html(content);
+	}
 	TaskManager.prototype.setInputVal = function(id,val){
 		if(gj('.LightBoxContent #'+id).length != 0 )
 			gj('.LightBoxContent #'+id).val(val);
@@ -315,18 +318,24 @@
 		var currentProject = this.getProjectSelected();
 		if(currentProject !== false){
 			this.isLoadingData4Popup = true;
-			var data = {'action':'getTask','projectId':currentProject.id,'taskId':taskId};			
-			this.ajaxCommonRequest('getTask',data,this.showTaskDetailCallBack);
+			var data = {'action':'getTaskInRestBean','projectId':currentProject.id,'taskId':taskId};			
+			this.ajaxCommonRequest('getTaskInRestBean',data,this.showTaskDetailCallBack);
 		}
 
 	};
-	TaskManager.prototype.showTaskDetailCallBack = function(data,parent){
+	TaskManager.prototype.showTaskDetailCallBack = function(task,parent){
 		var _this = parent;
 		if(_this == null || _this === undefined ){
 			_this = this;
 		}
+			_this.showPopupContainer('uiPopupTaskDetail');
+		if(task){
+			_this.setElementContent('title',task.name);
+			_this.setElementContent('invite-content',task.description);
+
+		}
 //		_this.isLoadingData4Popup = false;		
-		_this.showPopupContainer('uiPopupTaskDetail');
+
 	};
 	TaskManager.prototype.fill
 	TaskManager.prototype.removeTask = function(tid){
@@ -367,6 +376,7 @@
 		var assigneTaskComboDOM = gj("#taskAssigne");
 		var coworkerTaskComboDOM = gj("#taskCoWorker");
 			if(_this.isPopupProject){
+				//'<option value="0">--- select member ----</option>'
 				memberProjectComboDOM.html('');
 				ManagerProjectComboDOM.html('');		
 			}else{
@@ -401,9 +411,33 @@
 			}	
 
 	};
-	TaskManager.prototype.addParticipant = function(type,id){
-		
+	TaskManager.prototype.hasParticiped = function(participants,id){
+
+		for(var i=0;i<participants.length;i++){
+			if(participants[i].id == id){
+				return true;				
+			}
+		}
 	};
+	TaskManager.prototype.addParticipant = function(type,comboId){
+		if(type == 'projectmember'){
+			var val = gj('#'+comboId).val();
+			if(val != 0 && !this.hasParticiped(this.projectMembers)){
+				var txt = gj("#"+comboId+" option[value='"+val+"']").text();
+				this.projectManagers.push({'id':val,'name':txt});
+			}
+		}
+	};
+	TaskManager.prototype.displayParticipants = function(participants,containerId){
+		var content = '';
+		for(var i=0;i<participants.length;i++){
+			content +='<a onclick="TaskManager.removeParticipant('+participants[i].id+')" >'+participants[i].name+'</a>';
+		}
+		gj('#'+containerId).html(content);
+	};
+	TaskManager.prototype.removeParticipant = function(participantId,type){
+
+	}
 	TaskManager.prototype.showProjectMembers = function(){
 
 	};
